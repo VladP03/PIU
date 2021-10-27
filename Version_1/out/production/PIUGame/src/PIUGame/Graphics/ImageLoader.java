@@ -5,9 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class ImageLoader {
-    /*! \fn  public static BufferedImage loadImage(String path)
+    /*
         \brief Incarca o imagine intr-un obiect BufferedImage si returneaza o referinta catre acesta.
-
         \param path Calea relativa pentru localizarea fisierul imagine.
      */
     public static BufferedImage LoadImage(String path) {

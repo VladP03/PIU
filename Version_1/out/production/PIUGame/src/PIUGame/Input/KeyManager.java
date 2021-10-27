@@ -7,11 +7,11 @@ import static java.lang.Thread.sleep;
 
 public class KeyManager implements KeyListener{
 
-    private boolean[] keys; /*!< Vector de flaguri pentru toate tastele. Tastele vor fi regasite dupa cod [0 - 255]*/
-    public boolean up;      /*!< Flag pentru tasta "sus" apasata.*/
-    public boolean down;    /*!< Flag pentru tasta "jos" apasata.*/
-    public boolean left;    /*!< Flag pentru tasta "stanga" apasata.*/
-    public boolean right;   /*!< Flag pentru tasta "dreapta" apasata.*/
+    private boolean[] keys;     // < Vector de flaguri pentru toate tastele. Tastele vor fi regasite dupa cod [0 - 255]
+    public boolean up;          // < Flag pentru tasta "sus" apasata.
+    public boolean down;        // < Flag pentru tasta "jos" apasata.
+    public boolean left;        // < Flag pentru tasta "stanga" apasata.
+    public boolean right;       // < Flag pentru tasta "dreapta" apasata.
 
     public boolean escape;
 
@@ -58,9 +58,8 @@ public class KeyManager implements KeyListener{
         //System.out.println("tasta");
     }
 
-    /*! \fn public void keyReleased(KeyEvent e)
+    /*
         \brief Functie ce va fi apelata atunci cand un un eveniment de tasta eliberata este generat.
-
          \param e obiectul eveniment de tastatura.
      */
     @Override
@@ -70,7 +69,7 @@ public class KeyManager implements KeyListener{
         keys[e.getKeyCode()] = false;
     }
 
-    /*! \fn public void keyTyped(KeyEvent e)
+    /*
         \brief Functie ce va fi apelata atunci cand o tasta a fost apasata si eliberata.
         Momentan aceasta functie nu este utila in program.
      */

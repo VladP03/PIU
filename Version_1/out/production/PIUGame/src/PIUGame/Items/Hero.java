@@ -8,9 +8,8 @@ import PIUGame.RefLinks;
 import PIUGame.Graphics.Assets;
 import PIUGame.States.PlayState;
 
-/*! \class public class Hero extends Character
-    \brief Implementeaza notiunea de erou/player (caracterul controlat de jucator).
-
+/*
+    brief Implementeaza notiunea de erou/player (caracterul controlat de jucator).
     Elementele suplimentare pe care le aduce fata de clasa de baza sunt:
         imaginea (acest atribut poate fi ridicat si in clasa de baza)
         deplasarea
@@ -34,9 +33,8 @@ public class Hero extends Character
 
     public int nr_stone = 0;
 
-    /*! \fn public Hero(RefLinks refLink, float x, float y)
+    /*
         \brief Constructorul de initializare al clasei Hero.
-
         \param refLink Referinta catre obiectul shortcut (obiect ce retine o serie de referinte din program).
         \param x Pozitia initiala pe axa X a eroului.
         \param y Pozitia initiala pe axa Y a eroului.
@@ -73,9 +71,7 @@ public class Hero extends Character
         stoneImage = Assets.stone_image;
     }
 
-    /*! \fn public void Update()
-        \brief Actualizeaza pozitia si imaginea eroului.
-     */
+        // brief Actualizeaza pozitia si imaginea eroului.
     @Override
     public void Update()
     {
@@ -111,9 +107,7 @@ public class Hero extends Character
 
     }
 
-    /*! \fn private void GetInput()
-        \brief Verifica daca a fost apasata o tasta din cele stabilite pentru controlul eroului.
-     */
+        // brief Verifica daca a fost apasata o tasta din cele stabilite pentru controlul eroului.
     private void GetInput()
     {
         ///Implicit eroul nu trebuie sa se deplaseze daca nu este apasata o tasta
@@ -143,11 +137,8 @@ public class Hero extends Character
         //System.out.println("x= "+ x + "    y= " + y);
     }
 
-    /*! \fn public void Draw(Graphics g)
-        \brief Randeaza/deseneaza eroul in noua pozitie.
-
-        \brief g Contextul grafi in care trebuie efectuata desenarea eroului.
-     */
+        // brief Randeaza/deseneaza eroul in noua pozitie.
+        // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
     @Override
     public void Draw(Graphics g)
     {

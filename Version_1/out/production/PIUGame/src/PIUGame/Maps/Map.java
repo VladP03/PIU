@@ -7,10 +7,10 @@ import java.awt.*;
 
 public class Map {
 
-    protected RefLinks refLink;   /*!< O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.*/
-    private int width;          /*!< Latimea hartii in numar de dale.*/
-    private int height;         /*!< Inaltimea hartii in numar de dale.*/
-    private int [][] tiles;     /*!< Referinta catre o matrice cu codurile dalelor ce vor construi harta.*/
+    protected RefLinks refLink;     // < O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.
+    private int width;              // < Latimea hartii in numar de dale.
+    private int height;             // < Inaltimea hartii in numar de dale.
+    private int [][] tiles;         // < Referinta catre o matrice cu codurile dalelor ce vor construi harta.
     private int map_level;
 
     public Map(RefLinks refLink, int map_level)
@@ -26,11 +26,8 @@ public class Map {
 
     }
 
-    /*! \fn public void Draw(Graphics g)
-        \brief Functia de desenare a hartii.
-
-        \param g Contextl grafi in care se realizeaza desenarea.
-     */
+        // brief Functia de desenare a hartii.
+        // param g Contextl grafi in care se realizeaza desenarea.
     public void Draw(Graphics g)
     {
         int xStart =(int) Math.max(0, refLink.GetGame().getGameCamera().getxOffset() / Tile.TILE_WIDTH );
@@ -50,12 +47,9 @@ public class Map {
         }
     }
 
-    /*! \fn public Tile GetTile(int x, int y)
-        \brief Intoarce o referinta catre dala aferenta codului din matrice de dale.
-
-        In situatia in care dala nu este gasita datorita unei erori ce tine de cod dala, coordonate gresite etc se
-        intoarce o dala predefinita (ex. grassTile, mountainTile)
-     */
+        // brief Intoarce o referinta catre dala aferenta codului din matrice de dale.
+        // In situatia in care dala nu este gasita datorita unei erori ce tine de cod dala, coordonate gresite etc se
+        // intoarce o dala predefinita (ex. grassTile, mountainTile)
     public Tile GetTile(int x, int y)
     {
         if(x < 0 || y < 0 || x >= width || y >= height)
@@ -70,10 +64,8 @@ public class Map {
         return t;
     }
 
-    /*! \fn private void LoadWorld()
-        \brief Functie de incarcare a hartii jocului.
-        Aici se poate genera sau incarca din fisier harta. Momentan este incarcata static.
-     */
+        // brief Functie de incarcare a hartii jocului.
+        // Aici se poate genera sau incarca din fisier harta. Momentan este incarcata static.
     private void LoadWorld(int map_level)
     {
         //atentie latimea si inaltimea trebuiesc corelate cu dimensiunile ferestrei sau
@@ -105,12 +97,10 @@ public class Map {
         }
     }
 
-    /*! \fn private int MiddleEastMap(int x ,int y)
-        \brief O harta incarcata static.
 
-        \param x linia pe care se afla codul dalei de interes.
-        \param y coloana pe care se afla codul dalei de interes.
-     */
+        // brief O harta incarcata static.
+        // param x linia pe care se afla codul dalei de interes.
+        // param y coloana pe care se afla codul dalei de interes.
     private int MiddleEastMap(int x ,int y)
     {
         ///Definire statica a matricei de coduri de dale.

@@ -7,18 +7,18 @@ import java.awt.*;
 
 public class GameWindow {
 
-    private JFrame  wndFrame;       /*!< fereastra principala a jocului*/
-    private String  wndTitle;       /*!< titlul ferestrei*/
-    private int     wndWidth;       /*!< latimea ferestrei in pixeli*/
-    private int     wndHeight;      /*!< inaltimea ferestrei in pixeli*/
+    private JFrame  wndFrame;       // < fereastra principala a jocului
+    private String  wndTitle;       // < titlul ferestrei
+    private int     wndWidth;       // < latimea ferestrei in pixeli
+    private int     wndHeight;      // < inaltimea ferestrei in pixeli
 
-    private Canvas  canvas;         /*!< "panza/tablou" in care se poate desena*/
+    private Canvas  canvas;             // < "panza/tablou" in care se poate desena
 
     public GameWindow(String title, int width, int height){
-        wndTitle    = title;    /*!< Retine titlul ferestrei.*/
-        wndWidth    = width;    /*!< Retine latimea ferestrei.*/
-        wndHeight   = height;   /*!< Retine inaltimea ferestrei.*/
-        wndFrame    = null;     /*!< Fereastra nu este construita.*/
+        wndTitle    = title;        // < Retine titlul ferestrei.
+        wndWidth    = width;        // < Retine latimea ferestrei.
+        wndHeight   = height;       // < Retine inaltimea ferestrei.
+        wndFrame    = null;         // < Fereastra nu este construita.
     }
 
     public void BuildGameWindow()
@@ -82,25 +82,22 @@ public class GameWindow {
         return wndWidth;
     }
 
-    /*! \fn public int GetWndWidth()
-        \brief Returneaza inaltimea ferestrei.
-     */
+
+        // brief Returneaza inaltimea ferestrei.
     public int GetWndHeight()
     {
         return wndHeight;
     }
 
-    /*! \fn public int GetCanvas()
-        \brief Returneaza referinta catre canvas-ul din fereastra pe care se poate desena.
-     */
+
+        // brief Returneaza referinta catre canvas-ul din fereastra pe care se poate desena.
     public Canvas GetCanvas()
     {
         return canvas;
     }
 
-    /*! \fn public int GetCanvas()
-        \brief Returneaza referinta catre canvas-ul din fereastra pe care se poate desena.
-     */
+
+        // brief Returneaza referinta catre canvas-ul din fereastra pe care se poate desena.
     public JFrame GetWndFrame()
     {
         return wndFrame;

@@ -48,9 +48,8 @@ public class Assets {
 
 
 
-    /*! \fn public static void Init()
+    /*
         \brief Functia initializaza referintele catre elementele grafice utilizate.
-
         Aceasta functie poate fi rescrisa astfel incat elementele grafice incarcate/utilizate
         sa fie parametrizate. Din acest motiv referintele nu sunt finale.
      */

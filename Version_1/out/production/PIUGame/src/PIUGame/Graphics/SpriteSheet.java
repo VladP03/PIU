@@ -13,9 +13,8 @@ public class SpriteSheet {
     private static final int    monsterWidth = 41;   // latimea playerului
     private static final int    monsterHeight = 54;   // inaltimea playerului
 
-    /*! \fn public SpriteSheet(BufferedImage sheet)
+    /*
         \brief Constructor, initializeaza spriteSheet.
-
         \param buffImg Un obiect BufferedImage valid.
      */
     public SpriteSheet(BufferedImage buffImg)
@@ -24,11 +23,9 @@ public class SpriteSheet {
         spriteSheet = buffImg;
     }
 
-    /*! \fn public BufferedImage crop(int x, int y)
+    /*
         \brief Returneaza un obiect BufferedImage ce contine o subimage (dala).
-
         Subimaginea este localizata avand ca referinta punctul din stanga sus.
-
         \param x numarul dalei din sprite sheet pe axa x.
         \param y numarul dalei din sprite sheet pe axa y.
      */

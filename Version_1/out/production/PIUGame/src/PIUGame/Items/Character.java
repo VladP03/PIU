@@ -3,9 +3,8 @@ package PIUGame.Items;
 import PIUGame.RefLinks;
 import PIUGame.Tiles.Tile;
 
-/*! \class public abstract class Character extends Item
+/*
     \brief Defineste notiunea abstracta de caracter/individ/fiinta din joc.
-
     Notiunea este definita doar de viata, viteza de deplasare si distanta cu care trebuie sa se
     miste/deplaseze in urma calculelor.
  */
@@ -21,9 +20,8 @@ public abstract class Character extends Item
     protected float xMove;  /*!< Retine noua pozitie a caracterului pe axa X.*/
     protected float yMove;  /*!< Retine noua pozitie a caracterului pe axa Y.*/
 
-    /*! \fn public Character(RefLinks refLink, float x, float y, int width, int height)
+    /*
         \brief Constructor de initializare al clasei Character
-
         \param refLink Referinta catre obiectul shortcut (care retine alte referinte utile/necesare in joc).
         \param x Pozitia de start pa axa X a caracterului.
         \param y Pozitia de start pa axa Y a caracterului.
@@ -41,9 +39,7 @@ public abstract class Character extends Item
         yMove   = 0;
     }
 
-    /*! \fn public void Move()
-        \brief Modifica pozitia caracterului
-     */
+        // brief Modifica pozitia caracterului
     public void Move()
     {
         ///Modifica pozitia caracterului pe axa X.
@@ -52,9 +48,8 @@ public abstract class Character extends Item
         MoveY();
     }
 
-    /*! \fn public void MoveX()
-        \brief Modifica pozitia caracterului pe axa X.
-     */
+
+        // brief Modifica pozitia caracterului pe axa X.
     public void MoveX()
     {
         ///Aduna la pozitia curenta numarul de pixeli cu care trebuie sa se deplaseze pe axa X.
@@ -72,9 +67,7 @@ public abstract class Character extends Item
         }
     }
 
-    /*! \fn public void MoveY()
-        \brief Modifica pozitia caracterului pe axa Y.
-     */
+        // brief Modifica pozitia caracterului pe axa Y.
     public void MoveY()
     {
         ///Aduna la pozitia curenta numarul de pixeli cu care trebuie sa se deplaseze pe axa Y.
@@ -98,64 +91,55 @@ public abstract class Character extends Item
 
 
 
-    /*! \fn public int GetLife()
-        \brief Returneaza viata caracterului.
-     */
+
+        // brief Returneaza viata caracterului.
     public int GetLife()
     {
         return life;
     }
 
-    /*! \fn public int GetSpeed()
-        \brief Returneaza viteza caracterului.
-     */
+
+        // brief Returneaza viteza caracterului.
     public float GetSpeed()
     {
         return speed;
     }
 
-    /*! \fn public void SetLife(int life)
-        \brief Seteaza viata caracterului.
-     */
+
+        // brief Seteaza viata caracterului.
     public void SetLife(int life)
     {
         this.life = life;
     }
 
-    /*! \fn public void SetSpeed(float speed)
-        \brief
-     */
+
     public void SetSpeed(float speed) {
         this.speed = speed;
     }
 
-    /*! \fn public float GetXMove()
-        \brief Returneaza distanta in pixeli pe axa X cu care este actualizata pozitia caracterului.
-     */
+
+        // brief Returneaza distanta in pixeli pe axa X cu care este actualizata pozitia caracterului.
     public float GetXMove()
     {
         return xMove;
     }
 
-    /*! \fn public float GetYMove()
-        \brief Returneaza distanta in pixeli pe axa Y cu care este actualizata pozitia caracterului.
-     */
+
+        // brief Returneaza distanta in pixeli pe axa Y cu care este actualizata pozitia caracterului.
     public float GetYMove()
     {
         return yMove;
     }
 
-    /*! \fn public void SetXMove(float xMove)
-        \brief Seteaza distanta in pixeli pe axa X cu care va fi actualizata pozitia caracterului.
-     */
+
+        // brief Seteaza distanta in pixeli pe axa X cu care va fi actualizata pozitia caracterului.
     public void SetXMove(float xMove)
     {
         this.xMove = xMove;
     }
 
-    /*! \fn public void SetYMove(float yMove)
-        \brief Seteaza distanta in pixeli pe axa Y cu care va fi actualizata pozitia caracterului.
-     */
+
+        // brief Seteaza distanta in pixeli pe axa Y cu care va fi actualizata pozitia caracterului.
     public void SetYMove(float yMove)
     {
         this.yMove = yMove;

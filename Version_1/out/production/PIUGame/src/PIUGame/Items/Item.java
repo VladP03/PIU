@@ -5,9 +5,8 @@ import PIUGame.RefLinks;
 import java.awt.*;
 
 
-/*! \class Item
-    \brief. Implementeaza notiunea abstracta de entitate activa din joc, "element cu care se poate interactiona: monstru, turn etc.".
- */
+
+    // brief. Implementeaza notiunea abstracta de entitate activa din joc, "element cu care se poate interactiona: monstru, turn etc.".
 public abstract class Item
 {
     ///asa cum s-a mai precizat, coordonatele x si y sunt de tip float pentru a se elimina erorile de rotunjire
@@ -24,22 +23,20 @@ public abstract class Item
     protected float initialX;
     protected float initialY;
 
-    /*! \fn public Item(RefLinks refLink, float x, float y, int width, int height)
-        \brief Constructor de initializare al clasei
 
-        \param  reflink Referinte "shortcut" catre alte referinte
-        \param  x   Pozitia pe axa X a "tablei" de joc a imaginii entitatii.
-        \param  y   Pozitia pe axa Y a "tablei" de joc a imaginii entitatii.
-        \param  width   Latimea imaginii entitatii.
-        \param  height  Inaltimea imaginii entitatii.
-     */
+        // brief Constructor de initializare al clasei
+        // param  reflink Referinte "shortcut" catre alte referinte
+        // param  x   Pozitia pe axa X a "tablei" de joc a imaginii entitatii.
+        // param  y   Pozitia pe axa Y a "tablei" de joc a imaginii entitatii.
+        // param  width   Latimea imaginii entitatii.
+        // param  height  Inaltimea imaginii entitatii.
     public Item(RefLinks refLink, float x, float y, int width, int height)
     {
-        this.x = x;             /*!< Retine coordonata pe axa X.*/
-        this.y = y;             /*!< Retine coordonata pe axa X.*/
-        this.width = width;     /*!< Retine latimea imaginii.*/
-        this.height = height;   /*!< Retine inaltimea imaginii.*/
-        this.refLink = refLink; /*!< Retine the "shortcut".*/
+        this.x = x;                 // < Retine coordonata pe axa X.
+        this.y = y;                 // < Retine coordonata pe axa X.
+        this.width = width;         // < Retine latimea imaginii.
+        this.height = height;       // < Retine inaltimea imaginii.
+        this.refLink = refLink;     // < Retine the "shortcut".
 
         this.initialX = x;
         this.initialY = y;
@@ -62,81 +59,71 @@ public abstract class Item
     ///Metoda abstracta destinata desenarii starii curente
     public abstract void Draw(Graphics g);
 
-    /*! \fn public float GetX()
-        \brief Returneaza coordonata pe axa X.
-     */
+
+        // brief Returneaza coordonata pe axa X.
     public float GetX()
     {
         return x;
     }
 
-    /*! \fn public float GetY()
-        \brief Returneaza coordonata pe axa Y.
-     */
+
+        // brief Returneaza coordonata pe axa Y.
     public float GetY()
     {
         return y;
     }
 
-    /*! \fn public float GetWidth()
-        \brief Returneaza latimea entitatii.
-     */
+
+        // brief Returneaza latimea entitatii.
     public int GetWidth()
     {
         return width;
     }
 
-    /*! \fn public float GetHeight()
-        \brief Returneaza inaltimea entitatii.
-     */
+
+        // brief Returneaza inaltimea entitatii.
     public int GetHeight()
     {
         return height;
     }
 
-    /*! \fn public float SetX()
-        \brief Seteaza coordonata pe axa X.
-     */
+
+        // brief Seteaza coordonata pe axa X.
     public void SetX(float x)
     {
         this.x = x;
     }
 
-    /*! \fn public float SetY()
-        \brief Seteaza coordonata pe axa Y.
-     */
+
+        // brief Seteaza coordonata pe axa Y.
     public void SetY(float y)
     {
         this.y = y;
     }
 
-    /*! \fn public float SetWidth()
-        \brief Seteaza latimea imaginii entitatii.
-     */
+
+        // brief Seteaza latimea imaginii entitatii.
     public void SetWidth(int width)
     {
         this.width = width;
     }
 
-    /*! \fn public float SetHeight()
-        \brief Seteaza inaltimea imaginii entitatii.
-     */
+
+        // brief Seteaza inaltimea imaginii entitatii.
     public void SetHeight(int height)
     {
         this.height = height;
     }
 
-    /*! \fn public void SetNormalMode()
-        \brief Seteaza modul normal de interactiune
-     */
+
+        // brief Seteaza modul normal de interactiune
     public void SetNormalMode()
     {
         bounds = normalBounds;
     }
 
-    /*! \fn public void SetAttackMode()
-        \brief Seteaza modul de atac de interactiune
-     */
+
+        // brief Seteaza modul de atac de interactiune
     public void SetAttackMode()
     {
         bounds = attackBounds;
