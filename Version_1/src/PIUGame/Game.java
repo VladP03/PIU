@@ -57,7 +57,7 @@ public class Game implements Runnable{
 
 
 
-        Assets.Init();
+        Assets.Init();          // initializam toate elementele de pe harta(tiles, player_frames, diferite obiecte)
 
 
 
@@ -90,7 +90,7 @@ public class Game implements Runnable{
         long curentTime;
 
         final int framesPerSecond   = 60; /*!< Constanta intreaga initializata cu numarul de frame-uri pe secunda.*/
-        final double timeFrame      = 1000000000 / framesPerSecond; /*!< Durata unui frame in nanosecunde.*/
+        final double timeFrame      = 1000000000 / framesPerSecond; /*!< Durata unui frame in nanosecunde.  = 16.666.666ns =~ 16.6ms =~0.016s */
 
         /// Atat timp timp cat threadul este pornit Update() & Draw()
         while (runState == true)

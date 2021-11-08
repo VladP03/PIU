@@ -44,45 +44,41 @@ public class RefLinks {
         return game.GetWidth();
     }
 
-    /*! \fn public int GetHeight()
-        \brief Returneaza inaltimea ferestrei jocului.
-     */
+    // Returneaza inaltimea ferestrei jocului.
     public int GetHeight()
     {
         return game.GetHeight();
     }
 
-    /*! \fn public Game GetGame()
-        \brief Intoarce referinta catre obiectul Game.
-     */
+
+    // Intoarce referinta catre obiectul Game.
+
     public Game GetGame()
     {
         return game;
     }
 
-    /*! \fn public void SetGame(Game game)
-        \brief Seteaza referinta catre un obiect Game.
 
-        \param game Referinta obiectului Game.
-     */
+    // Seteaza referinta catre un obiect Game.
+    // game Referinta obiectului Game.
+
     public void SetGame(Game game)
     {
         this.game = game;
     }
 
-    /*! \fn public Map GetMap()
-        \brief Intoarce referinta catre harta curenta.
-     */
+
+    // Intoarce referinta catre harta curenta.
+
     public Map GetMap()
     {
         return map;
     }
 
-    /*! \fn public void SetMap(Map map)
-        \brief Seteaza referinta catre harta curenta.
 
-        \param map Referinta catre harta curenta.
-     */
+    // Seteaza referinta catre harta curenta.
+    // map Referinta catre harta curenta.
+
     public void SetMap(Map map)
     {
         this.map = map;

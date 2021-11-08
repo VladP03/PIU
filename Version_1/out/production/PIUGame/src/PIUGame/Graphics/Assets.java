@@ -46,6 +46,8 @@ public class Assets {
 
     public static BufferedImage arrow_image;
 
+    public static BufferedImage background_image;
+
 
 
     /*
@@ -69,17 +71,20 @@ public class Assets {
         SpriteSheet wall_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/wall2.png"));
         SpriteSheet arrow_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/arrow.png"));
 
-        //SpriteSheet stone_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/tree1.png"));
 
+        SpriteSheet background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/bg_img.jpg"));
+
+        background_image = background_sheet.crop_precise(0,0, 1350, 770);
+
+        //SpriteSheet stone_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/tree1.png"));
         //SpriteSheet sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/pp1.jpg"));
+
 
         /// Se obtin subimaginile corespunzatoare elementelor necesare.
 
         arrow_image = arrow_sheet.crop_precise(0,0,600, 450);
-
         wall_image = wall_sheet.crop_precise(0,0,60, 56);
         water1 = water_sheet.crop_precise(0,0,400, 350);
-
         stone_image = stone_sheet.crop_precise(0, 0, 1300, 1300);
         tree_image = tree_sheet.crop_precise(0, 0, 800, 1000);
         //stone_image = sheet.crop_precise(0, 0, 180, 180);

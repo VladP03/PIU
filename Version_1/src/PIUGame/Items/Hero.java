@@ -165,9 +165,9 @@ public class Hero extends Character
  
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
-        //g.setColor(Color.blue);
-        //g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
-        //g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
+//        g.setColor(Color.blue);
+//        g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
+//        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
     }
 
     private BufferedImage getCurrentAnimationFrame(){
@@ -207,11 +207,11 @@ public class Hero extends Character
     public boolean stonesAreCollected(){
 
         if(nr_stone == 5){
-            System.out.println("collested-->>>");
+            System.out.println("collected-->>>");
             return true;
         }
         else{
-            System.out.println("NOTT   collested");
+            System.out.println("NOTT   collected");
             return false;
         }
     }

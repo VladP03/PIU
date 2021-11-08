@@ -11,7 +11,6 @@ public class GameCamera {           //mod_2
     private Game game;
     private float xOffset, yOffset;
 
-    //public GameCamera(RefLinks refLink, float xOffset, float yOffset){
     public GameCamera(RefLinks refLink, float xOffset, float yOffset){
         this.refLink = refLink;
         this.xOffset = xOffset;

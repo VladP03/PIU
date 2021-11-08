@@ -16,7 +16,7 @@ public class KeyManager implements KeyListener{
     public boolean escape;
 
     public boolean pause;
-    public boolean pause_value = false;
+    public boolean pause_value = false;     // Flag pentru tasta P pentru pauza.
 
     public KeyManager()
     {

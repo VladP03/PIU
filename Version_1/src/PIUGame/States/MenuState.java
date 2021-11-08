@@ -1,6 +1,8 @@
 package PIUGame.States;
+import PIUGame.GameObjects.UIImageButton;
 import PIUGame.GameObjects.UIManager;
 import PIUGame.GameObjects.UITextButton;
+import PIUGame.Graphics.Assets;
 import PIUGame.Input.ClickListener;
 import PIUGame.RefLinks;
 
@@ -20,13 +22,22 @@ public class MenuState extends State{
         //refLink.GetMouseManager().setUIManager(null);
         //refLink.GetMouseManager().setUIManager(menuManager);
 
-        menuManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, "Start", new ClickListener() {
+        menuManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, Assets.btn_start, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
                 State.SetState(refLink.GetGame().playState);
             }
         }));
+
+
+//        menuManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, "Start", new ClickListener() {
+//            @Override
+//            public void onClick() {
+//                refLink.GetMouseManager().setUIManager(null);
+//                State.SetState(refLink.GetGame().playState);
+//            }
+//        }));
         menuManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 240, 200, 80, "Settings", new ClickListener() {
             @Override
             public void onClick() {
@@ -91,6 +102,10 @@ public class MenuState extends State{
         g.setFont(font1);
         g.setColor(Color.white);
         g.drawString("Menu", refLink.GetGame().GetWidth() / 2 - 70, 70);
+
+        // add a background image
+        g.drawImage(Assets.background_image, 0, 0, 1350, 780, null);
+
 
 //        g.setFont(font2);
 //        g.drawRect(410, 150, 200, 64);
