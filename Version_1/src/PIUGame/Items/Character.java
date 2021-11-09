@@ -17,8 +17,8 @@ public abstract class Character extends Item
 
     protected int life;     /*!< Retine viata caracterului.*/
     protected float speed;  /*!< Retine viteza de deplasare caracterului.*/
-    protected float xMove;  /*!< Retine noua pozitie a caracterului pe axa X.*/
-    protected float yMove;  /*!< Retine noua pozitie a caracterului pe axa Y.*/
+    protected float xMove;  /*!< Retine numarul de pixeli cu care trebuie sa se podifice pozitia caracterului pe axa X.*/
+    protected float yMove;  /*!< Retine numarul de pixeli cu care trebuie sa se podifice pozitia caracterului pe axa Y.*/
 
     /*
         \brief Constructor de initializare al clasei Character

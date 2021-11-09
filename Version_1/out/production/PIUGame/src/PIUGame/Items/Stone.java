@@ -52,7 +52,7 @@ public class Stone extends Item{
             // draw the actual image
             g.drawImage(stone_image, (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
 
-            System.out.println("            exista");
+            //System.out.println("            exista");
         }else{
             System.out.println("nu mai e");
         }

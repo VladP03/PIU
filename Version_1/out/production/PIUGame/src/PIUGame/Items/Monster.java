@@ -17,6 +17,15 @@ public class Monster extends Character{
     private Animation animRight;     //mod_3
     private Animation noAnim;     //mod_3
 
+    private int nr_of_cycles = 0;       // nr of cycles to check if the player has blocked somewere
+    private float previous_x = 0;       // previous position
+    private float previous_y = 0;
+
+    private float target_to_follow_x;
+    private float target_to_follow_y;
+
+    private int blocked = 0;
+
     //private float speed_moster = 2.0f;
 
 
@@ -54,6 +63,10 @@ public class Monster extends Character{
         animLeft = new Animation(100, Assets.monster_left);      //mod_3
         animRight = new Animation(100, Assets.monster_right);      //mod_3
         noAnim = new Animation(0, Assets.monster_noAnim);
+
+        // Initial state
+        previous_x = x;
+        previous_y = y;
     }
 
         // brief Actualizeaza pozitia si imaginea eroului.
@@ -75,8 +88,13 @@ public class Monster extends Character{
         Move();
         ///Actualizeaza imaginea
 
-        //refLink.getGameCamera().centerOnEntity(this);       //mod_2
+        System.out.println("                                               new_m_x: " + x + " --- new_m_y: " + y +  "\n");
 
+
+
+
+//        refLink.getGameCamera().centerOnEntity(this);       //mod_2
+//
 //        if(refLink.GetKeyManager().left == true)
 //        {
 //            image = Assets.heroLeft;
@@ -98,19 +116,82 @@ public class Monster extends Character{
         yMove = 0;
         ///Verificare apasare tasta "sus"
 
+//
+//        System.out.println("m_x: " + x + " --- m_y: " + y +  "\n");
+//
+//        System.out.println("cycles: " + nr_of_cycles + "\n");
+//
+//        System.out.println("rezult_x: " + Math.abs(x - previous_x));
+//        System.out.println("rezult_y: " + Math.abs(y - previous_y));
+//
+//        if(blocked == 0) {
+//            // check if the player has blocked somewere and increment how many times
+//            if (Math.abs(x - previous_x) == 0.0f && Math.abs(y - previous_y) < 0.7f) {
+//                nr_of_cycles++;
+//                System.out.println("aici");
+//            } else {
+//                nr_of_cycles = 0;
+//            }
+//        }
+//        else{
+//            if(blocked == 30){
+//                blocked = 0;
+//                //nr_of_cycles=0;
+//            }
+//        }
+//
+//        if(nr_of_cycles < 10){
+//            target_to_follow_x = PlayState.GetHero().x;
+//            target_to_follow_y = PlayState.GetHero().y;
+//        }
+//        else{
+//            if(nr_of_cycles > 10){
+//                blocked++;
+//                target_to_follow_x = x + 100;
+//                target_to_follow_y = y + 30;
+//            }
+//        }
+
+
+        target_to_follow_x = PlayState.GetHero().x;
+        target_to_follow_y = PlayState.GetHero().y;
+
+        previous_x = x;
+        previous_y = y;
+
         //if(refLink.GetGame().playState.GetHero())
-        if(x > PlayState.GetHero().x){
+        if(x > target_to_follow_x){
             xMove = -speed;
         }
-        if(x < PlayState.GetHero().x){
-            xMove = speed;
+        else{
+            if(x < target_to_follow_x - 3 ) {        // se face comparatia cu pozitia player-ului - 3 pixeli pentru a evita tranzitia deranjanta a imaginii de la stanga la dreapta
+                xMove = speed;
+            }
         }
-        if(y > PlayState.GetHero().y){
+        if(y > target_to_follow_y){
             yMove = -speed;
         }
-        if(y < PlayState.GetHero().y){
+        if(y < target_to_follow_y){
             yMove = speed;
         }
+
+
+
+//        //if(refLink.GetGame().playState.GetHero())
+//        if(x > PlayState.GetHero().x){
+//            xMove = -speed;
+//        }
+//        else{
+//            if(x < PlayState.GetHero().x - 3 ) {        // se face comparatia cu pozitia player-ului - 3 pixeli pentru a evita tranzitia deranjanta a imaginii de la stanga la dreapta
+//                xMove = speed;
+//            }
+//        }
+//        if(y > PlayState.GetHero().y){
+//            yMove = -speed;
+//        }
+//        if(y < PlayState.GetHero().y){
+//            yMove = speed;
+//        }
 
         //System.out.println("                                   xM= "+ x + "    yM= " + y);
 
