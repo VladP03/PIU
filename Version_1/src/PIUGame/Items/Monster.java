@@ -124,7 +124,7 @@ public class Monster extends Character{
 
     public boolean hasKilledPlayer(){
         //if(PlayState.GetHero().normalBounds.contains(x, y)){
-        if(x >= PlayState.GetHero().x && x <= (PlayState.GetHero().x +PlayState.GetHero().width) && y >= PlayState.GetHero().y && y <= (PlayState.GetHero().y +PlayState.GetHero().height)){
+        if(collisionWithPlayer()){
             //System.out.println("                                                                    false");
             //System.out.println("x= " + PlayState.GetHero().x + "     y= " + PlayState.GetHero().y + "      xM= "+ x + "    yM= " + y);
             return true;
@@ -133,7 +133,28 @@ public class Monster extends Character{
             //System.out.println("                                                                    true");
             return false;
         }
+    }
 
+    public boolean collisionWithPlayer() {
+//        float temp_x = PlayState.GetHero().x  + PlayState.GetHero().bounds.x + PlayState.GetHero().bounds.width;
+//        float temp_m_x = x + bounds.x + bounds.width;
+//        System.out.println("temp_x: " + temp_x + "\n");
+//        System.out.println("temp_m_x: " + temp_m_x + "\n");
+//        System.out.println("sx = " + x + "  bounds_x: " + bounds.x + " --- p_x: " + PlayState.GetHero().x + " p_bounds_x: " + PlayState.GetHero().bounds.width + "\n");
+//        System.out.println("sy = " + y + "  bounds_y: " + bounds.y + " --- p_y: " + PlayState.GetHero().y + " p_bounds_y: " + PlayState.GetHero().bounds.height + "\n");
+        if ((x + bounds.x + bounds.width) >= (PlayState.GetHero().x + PlayState.GetHero().bounds.x) &&
+                (x + bounds.x) <= (PlayState.GetHero().x + PlayState.GetHero().bounds.x + PlayState.GetHero().bounds.width) &&
+                (y + bounds.y) <= (PlayState.GetHero().y + PlayState.GetHero().bounds.y + PlayState.GetHero().bounds.height) &&
+                (y + bounds.y + bounds.height) >= (PlayState.GetHero().y + PlayState.GetHero().bounds.y))
+//        if(x + width >= PlayState.GetHero().x  &&
+//                x <= PlayState.GetHero().x + PlayState.GetHero().width &&
+//                y <= PlayState.GetHero().y + PlayState.GetHero().height &&
+//                y + height >= PlayState.GetHero().y)
+        {
+            return true;
+        } else {
+            return false;
+        }
     }
 
         // brief Randeaza/deseneaza eroul in noua pozitie.
@@ -141,12 +162,18 @@ public class Monster extends Character{
     @Override
     public void Draw(Graphics g)
     {
-        g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
+        //g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
+
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
-        //g.setColor(Color.blue);
-        //g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
-        //g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
+        g.setColor(Color.red);
+//        g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
+//        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
+
+
+//        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
+
+        g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
     }
 
     private BufferedImage getCurrentAnimationFrame(){

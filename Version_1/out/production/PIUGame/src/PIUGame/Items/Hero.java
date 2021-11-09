@@ -142,7 +142,7 @@ public class Hero extends Character
     @Override
     public void Draw(Graphics g)
     {
-        g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
+        // g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
 
         //g.fillRect(20, 20, 200, 60);
         //g.fillRect();
@@ -165,9 +165,13 @@ public class Hero extends Character
  
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
-//        g.setColor(Color.blue);
+        g.setColor(Color.blue);
 //        g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
 //        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
+
+//        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
+
+        g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
     }
 
     private BufferedImage getCurrentAnimationFrame(){
