@@ -8,7 +8,8 @@ public class Assets {
     public static BufferedImage[] player_up;
     public static BufferedImage[] player_left;
     public static BufferedImage[] player_right;
-    public static BufferedImage[] player_noAnim;
+    public static BufferedImage[] player_noAnimation;
+
     // Dale
     public static BufferedImage soil;
     public static BufferedImage grass;
@@ -72,7 +73,7 @@ public class Assets {
         SpriteSheet button_exit_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Start&Exit/ExitButton.png"));
 
         // SpriteSheet background
-        SpriteSheet background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/bg_img.jpg"));
+        SpriteSheet background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/BackgroundImage.jpg"));
         background_image = background_sheet.crop_precise(0, 0, 1350, 770);
 
         //SpriteSheet diamond_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/tree1.png"));
@@ -124,9 +125,9 @@ public class Assets {
         player_up = new BufferedImage[3];
         player_left = new BufferedImage[3];
         player_right = new BufferedImage[3];
-        player_noAnim = new BufferedImage[1];
+        player_noAnimation = new BufferedImage[1];
 
-        player_noAnim[0] = hero_SpriteSheet.crop_player(0, 2);
+        player_noAnimation[0] = hero_SpriteSheet.crop_player(0, 2);
 
         player_down[0] = hero_SpriteSheet.crop_player(0, 2);
         player_down[1] = hero_SpriteSheet.crop_player(1, 2);

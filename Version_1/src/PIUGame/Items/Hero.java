@@ -65,7 +65,7 @@ public class Hero extends Character
         animUp = new Animation(100, Assets.player_up);      //mod_3
         animLeft = new Animation(100, Assets.player_left);      //mod_3
         animRight = new Animation(100, Assets.player_right);      //mod_3
-        noAnim = new Animation(0, Assets.player_noAnim);
+        noAnim = new Animation(0, Assets.player_noAnimation);
 
         lifeImage = Assets.lifeImage;
         stoneImage = Assets.stone_image;

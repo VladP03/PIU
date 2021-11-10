@@ -1,0 +1,24 @@
+
+h	java:S116""SRename this field "nr_stone" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å·ÿÕ
+F
+java:S2160"+Override the "equals" method in this class.(¿°…Åùÿÿÿÿ
+Q	java:S1250"<This block of commented-out lines of code should be removed.(Úú¡ß
+N	java:S106U"9Replace this use of System.out or System.err by a logger.(§Ã‘¢
+Q	java:S125]"<This block of commented-out lines of code should be removed.(Ø›‰³
+b	java:S100o"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç®³
+W	java:S125‰"<This block of commented-out lines of code should be removed.(ËÐŸ°ûÿÿÿÿ
+R	java:S125‘"<This block of commented-out lines of code should be removed.(úÃ¬
+Q	java:S125“"<This block of commented-out lines of code should be removed.(öžÂa
+W	java:S125š"<This block of commented-out lines of code should be removed.(½’‘ýÿÿÿÿ
+W	java:S125©"<This block of commented-out lines of code should be removed.(¶—¶•øÿÿÿÿ
+R	java:S125¬"<This block of commented-out lines of code should be removed.(Ñ“éÐ
+]
+java:S1126¿"AReplace this if-then-else statement by a single return statement.(àÓšÐüÿÿÿÿ
+O	java:S106Ë"9Replace this use of System.out or System.err by a logger.(¥æ·›
+W	java:S125É"<This block of commented-out lines of code should be removed.(çôŽùûÿÿÿÿ
+T	java:S106Ö"9Replace this use of System.out or System.err by a logger.(»î¼øÿÿÿÿ
+T	java:S106Ú"9Replace this use of System.out or System.err by a logger.(èß—òþÿÿÿÿ
+i	java:S100æ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨³™£úÿÿÿÿ
+j
+java:S1104""TMake nr_stone a static final constant or non-public and provide accessors if needed.(Å·ÿÕ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èÌœôÿÿÿÿÿ
