@@ -26,7 +26,8 @@ public class MenuState extends State{
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
-                State.SetState(refLink.GetGame().playState);
+                //State.SetState(refLink.GetGame().playState);
+                State.SetState(new ChoseNameState(refLink));
             }
         }));
 
