@@ -1,4 +1,5 @@
 package PIUGame.Tiles;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -6,15 +7,18 @@ public class Tile {
     private static final int NO_TILES   = 32;
     public static Tile[] tiles          = new Tile[NO_TILES];       //  Vector de referinte de tipuri de dale.
 
+    /// De remarcat ca urmatoarele dale sunt statice si publice. Acest lucru imi permite sa le am incarcate
+    /// o singura data in memorie
+    private static final TileFactory factory = new TileFactory();                               // < Fabrica de dale
 
-    public static Tile grassTile        = new GrassTile(0);     // < Dala de tip iarba
-    public static Tile mountainTile     = new MountainTile(1);  // < Dala de tip munte/piatra
-    public static Tile waterTile        = new WaterTile(2);     // < Dala de tip apa
-    public static Tile treeTile         = new TreeTile(3);      // < Dala de tip copac
-    public static Tile soilTile         = new SoilTile(4);      // < Dala de tip sol/pamant
-    public static Tile wallTile         = new WallTile(5);      // < Dala de tip zid
-    public static Tile solidGrassTile         = new SolidGrassTile(6);      // < Dala de tip zid
-    public static Tile wallTile2         = new WallTile2(7);      // < Dala de tip zid
+    public static Tile grassTile        = factory.makeTile(TileTypes.GRASS,0);              // < Dala de tip iarba
+    public static Tile mountainTile     = factory.makeTile(TileTypes.MOUNTAIN,1);           // < Dala de tip munte/piatra
+    public static Tile waterTile        = factory.makeTile(TileTypes.WATER,2);              // < Dala de tip apa
+    public static Tile treeTile         = factory.makeTile(TileTypes.TREE,3);               // < Dala de tip copac
+    public static Tile soilTile         = factory.makeTile(TileTypes.SOIL, 4);              // < Dala de tip sol/pamant
+    public static Tile wallTile         = factory.makeTile(TileTypes.WALL,5);               // < Dala de tip zid
+    public static Tile solidGrassTile   = factory.makeTile(TileTypes.SOLIDGRASS,6);         // < Dala de tip zid
+    public static Tile wallTile2        = factory.makeTile(TileTypes.WALL2,7);              // < Dala de tip zid
 
     public static final int TILE_WIDTH  = 48;                       // < Latimea unei dale.
     public static final int TILE_HEIGHT = 48;                       // < Inaltimea unei dale.
