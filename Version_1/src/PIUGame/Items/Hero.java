@@ -148,21 +148,26 @@ public class Hero extends Character
         //g.fillRect();
         //g.setColor(Color.black);
 
-        for(int i=0; i < life; i++){
-            g.drawImage(lifeImage, 30 + i * 50, 30, 40, 40, null);
-        }
-        //g.setColor(Color.black);
-        //g.fillRect((int)(refLink.GetWidth())-200,(int)(refLink.GetHeight())-200, 200, 200);
 
-        g.drawImage(stoneImage, 200, 30, 40, 40, null);
-        Font font1 = new Font("arial", 1, 40);
-        g.setFont(font1);
-        g.setColor(Color.white);
+        // ---------------------------------------------------------------
+//        for(int i=0; i < life; i++){
+//            g.drawImage(lifeImage, 30 + i * 50, 30, 40, 40, null);
+//        }
+//        //g.setColor(Color.black);
+//        //g.fillRect((int)(refLink.GetWidth())-200,(int)(refLink.GetHeight())-200, 200, 200);
+//
+//        g.drawImage(stoneImage, 200, 30, 40, 40, null);
+//        Font font1 = new Font("arial", 1, 40);
+//        g.setFont(font1);
+//        g.setColor(Color.white);
+//
+//        String nr = Integer.toString(nr_stone);
+//        g.drawString(nr, 240, 50);
 
-        String nr = Integer.toString(nr_stone);
-        g.drawString(nr, 240, 50);
 
- 
+        // ---------------------------------------------------------------
+
+
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
         g.setColor(Color.blue);
