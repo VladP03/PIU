@@ -71,7 +71,7 @@ public class PlayState extends State{
             //stone.stoneCollected();
 
             for (Monster t : monster) {
-                //t.Update();
+                t.Update();
             }
 
             for (Monster m : monster) {
@@ -116,28 +116,28 @@ public class PlayState extends State{
     {
         if(!refLink.GetKeyManager().pause_value) {
             map.Draw(g);
-            //map_elements.Draw(g, index_level);
+            map_elements.Draw(g, index_level);
             hero.Draw(g);
 
 
             for(Stone s: stone) {
-                //s.Draw(g);
+                s.Draw(g);
             }
 
             for (Monster t : monster) {
-                //t.Draw(g);
+                t.Draw(g);
             }
         }else{
             map.Draw(g);
-            //map_elements.Draw(g, index_level);
+            map_elements.Draw(g, index_level);
             hero.Draw(g);
 
             for(Stone s: stone) {
-                //s.Draw(g);
+                s.Draw(g);
             }
 
             for (Monster t : monster) {
-                //t.Draw(g);
+                t.Draw(g);
             }
 
 

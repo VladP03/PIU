@@ -25,11 +25,13 @@ public class Assets {
     public static BufferedImage rockRight;
     public static BufferedImage tree;
     public static BufferedImage tile_1;
+
     public static BufferedImage[] monster_down;
     public static BufferedImage[] monster_up;
     public static BufferedImage[] monster_left;
     public static BufferedImage[] monster_right;
     public static BufferedImage[] monster_noAnim;
+
     public static BufferedImage button_start;
     public static BufferedImage button_exit;
     public static BufferedImage lifeImage;
