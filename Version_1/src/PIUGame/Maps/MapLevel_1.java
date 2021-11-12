@@ -2,6 +2,16 @@ package PIUGame.Maps;
 
 public class MapLevel_1 {
     ///Definire statica a matricei de coduri de dale.
+    /* ID-uri:
+    0 - GRASS - ESTE
+    1 - MOUNTAIN - ESTE
+    2 - WATER - ESTE
+    3 - TREE - ESTE
+    4 - SOIL - ESTE
+    5 - WALL - ESTE
+    6 - SOLIDGRASS - ESTE
+    7 - WALL2
+     */
     private static int map[][] = {
 //            {6, 3, 3, 3, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,    6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1}, //0
 //            {6, 6, 6, 6, 3, 3, 6, 6, 6, 3, 3, 3, 3, 3, 3, 3, 6, 6, 6, 6,    6, 6, 3, 3, 3, 0, 0, 0, 0, 0, 5, 5, 5, 3, 1, 1, 1, 1, 1, 1}, //1

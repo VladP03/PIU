@@ -22,7 +22,7 @@ public class MenuState extends State{
         //refLink.GetMouseManager().setUIManager(null);
         //refLink.GetMouseManager().setUIManager(menuManager);
 
-        menuManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, Assets.btn_start, new ClickListener() {
+        menuManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, Assets.button_start, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);

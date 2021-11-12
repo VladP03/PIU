@@ -1,0 +1,48 @@
+
+—
+java:S1186+"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„ï„ÿ
+:
+java:S2386"Make this member "protected".(ÍÚ¬Å8˜«æËĞ/
+=
+java:S3010&""Remove this assignment of "tiles".(¯ËöÂıÿÿÿÿ
+c	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ï„ÿ
+c	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ°Ôí
+h	java:S100?"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒİÍüÿÿÿÿ
+c	java:S100E"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½°©
+n
+java:S1104"QMake tiles a static final constant or non-public and provide accessors if needed.(ÍÚ¬Å8µ«æËĞ/
+w
+java:S1104"UMake grassTile a static final constant or non-public and provide accessors if needed.(‰ö¼Åüÿÿÿÿ8¶«æËĞ/
+z
+java:S1104"XMake mountainTile a static final constant or non-public and provide accessors if needed.(—Ãİ¸ÿÿÿÿÿ8¶«æËĞ/
+w
+java:S1104"UMake waterTile a static final constant or non-public and provide accessors if needed.(æ‰»»úÿÿÿÿ8¶«æËĞ/
+q
+java:S1104"TMake treeTile a static final constant or non-public and provide accessors if needed.(í›”Ç8·«æËĞ/
+q
+java:S1104"TMake soilTile a static final constant or non-public and provide accessors if needed.(÷´ÛÇ8·«æËĞ/
+v
+java:S1104"TMake wallTile a static final constant or non-public and provide accessors if needed.(å™×şÿÿÿÿÿ8·«æËĞ/
+|
+java:S1104"ZMake solidGrassTile a static final constant or non-public and provide accessors if needed.(¾¥Áúÿÿÿÿ8¸«æËĞ/
+r
+java:S1104"UMake wallTile2 a static final constant or non-public and provide accessors if needed.(â¿®8¸«æËĞ/
+H
+java:S1444"+Make this "public static tiles" field final(ÍÚ¬Å8¸«æËĞ/
+Q
+java:S1444"/Make this "public static grassTile" field final(‰ö¼Åüÿÿÿÿ8¹«æËĞ/
+T
+java:S1444"2Make this "public static mountainTile" field final(—Ãİ¸ÿÿÿÿÿ8º«æËĞ/
+Q
+java:S1444"/Make this "public static waterTile" field final(æ‰»»úÿÿÿÿ8º«æËĞ/
+K
+java:S1444".Make this "public static treeTile" field final(í›”Ç8»«æËĞ/
+K
+java:S1444".Make this "public static soilTile" field final(÷´ÛÇ8»«æËĞ/
+P
+java:S1444".Make this "public static wallTile" field final(å™×şÿÿÿÿÿ8»«æËĞ/
+V
+java:S1444"4Make this "public static solidGrassTile" field final(¾¥Áúÿÿÿÿ8»«æËĞ/
+L
+java:S1444"/Make this "public static wallTile2" field final(â¿®8¼«æËĞ/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÆŞ÷äúÿÿÿÿ
