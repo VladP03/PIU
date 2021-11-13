@@ -61,13 +61,13 @@ public class Hero extends Character
 
 
         //Animation
-        animDown = new Animation(100, Assets.player_down);      //mod_3
-        animUp = new Animation(100, Assets.player_up);      //mod_3
-        animLeft = new Animation(100, Assets.player_left);      //mod_3
-        animRight = new Animation(100, Assets.player_right);      //mod_3
-        noAnim = new Animation(0, Assets.player_noAnimation);
+        animDown = new Animation(100, Assets.hero_down);      //mod_3
+        animUp = new Animation(100, Assets.hero_up);      //mod_3
+        animLeft = new Animation(100, Assets.hero_left);      //mod_3
+        animRight = new Animation(100, Assets.hero_right);      //mod_3
+        noAnim = new Animation(0, Assets.hero_noAnimation);
 
-        lifeImage = Assets.lifeImage;
+        lifeImage = Assets.life_image;
         stoneImage = Assets.stone_image;
     }
 
@@ -151,7 +151,7 @@ public class Hero extends Character
 
         // ---------------------------------------------------------------
 //        for(int i=0; i < life; i++){
-//            g.drawImage(lifeImage, 30 + i * 50, 30, 40, 40, null);
+//            g.drawImage(life_image, 30 + i * 50, 30, 40, 40, null);
 //        }
 //        //g.setColor(Color.black);
 //        //g.fillRect((int)(refLink.GetWidth())-200,(int)(refLink.GetHeight())-200, 200, 200);

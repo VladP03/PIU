@@ -29,7 +29,7 @@ public class UIImageButton extends UIObject{
             g.drawImage(images, (int)x+5, (int)y+5, width, height, null);
         }else{
             g.drawImage(images, (int)x, (int)y, width, height, null);
-            //g.drawImage(Assets.player_down[0], (int)x, (int)y, width, height, null);
+            //g.drawImage(Assets.hero_down[0], (int)x, (int)y, width, height, null);
         }
 
     }

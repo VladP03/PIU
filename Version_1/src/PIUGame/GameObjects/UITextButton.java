@@ -28,7 +28,7 @@ public class UITextButton extends UIObject{
             g.drawString(buttonName, (int)x+5, (int)y+45);
         }else{
             g.drawString(buttonName, (int)x, (int)y+40);
-            //g.drawImage(Assets.player_down[0], (int)x, (int)y, width, height, null);
+            //g.drawImage(Assets.hero_down[0], (int)x, (int)y, width, height, null);
         }
 
     }

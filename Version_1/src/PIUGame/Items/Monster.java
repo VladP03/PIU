@@ -62,7 +62,7 @@ public class Monster extends Character{
         animUp = new Animation(100, Assets.monster_up);      //mod_3
         animLeft = new Animation(100, Assets.monster_left);      //mod_3
         animRight = new Animation(100, Assets.monster_right);      //mod_3
-        noAnim = new Animation(0, Assets.monster_noAnim);
+        noAnim = new Animation(0, Assets.monster_noAnimation);
 
         // Initial state
         previous_x = x;
