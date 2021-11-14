@@ -56,7 +56,7 @@ public class PlayState extends State{
             m.SetSpeed(0.6f);
         }
 
-        map_elements = new MapElements(refLink, index_level);
+        //map_elements = new MapElements(refLink, index_level);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class PlayState extends State{
     {
         if(!refLink.GetKeyManager().pause_value) {
             map.Draw(g);
-            map_elements.Draw(g, index_level);
+            //map_elements.Draw(g, index_level);
             hero.Draw(g);
 
 
@@ -129,7 +129,7 @@ public class PlayState extends State{
             }
         }else{
             map.Draw(g);
-            map_elements.Draw(g, index_level);
+            //map_elements.Draw(g, index_level);
             hero.Draw(g);
 
             for(Stone s: stone) {

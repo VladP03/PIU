@@ -20,6 +20,8 @@ public class Assets {
     // Resources
     public static BufferedImage grass_image;
     public static BufferedImage bush_image;
+    public static BufferedImage wall_1_image;
+    public static BufferedImage wall_2_image;
 
     public static BufferedImage soil;
     public static BufferedImage mountain;
@@ -28,12 +30,6 @@ public class Assets {
     public static BufferedImage townSoil;
     public static BufferedImage water;
     public static BufferedImage water_image;
-    public static BufferedImage rockUp;
-    public static BufferedImage rockDown;
-    public static BufferedImage rockLeft;
-    public static BufferedImage rockRight;
-    public static BufferedImage wall_1_image;
-    public static BufferedImage wall_2_image;
 
     public static BufferedImage buttonStart_image;
     public static BufferedImage buttonExit_image;
@@ -105,17 +101,12 @@ public class Assets {
     }
 
     private static void initResourcesSpriteSheet(SpriteSheet resourcesSpriteSheet) {
-//        grass_image = resourcesSpriteSheet.crop(0, 0);
         soil = resourcesSpriteSheet.crop(1, 0);
         water = resourcesSpriteSheet.crop(2, 0);
         mountain = resourcesSpriteSheet.crop(3, 0);
         townGrass = resourcesSpriteSheet.crop(0, 1);
         townGrassDestroyed = resourcesSpriteSheet.crop(1, 1);
         townSoil = resourcesSpriteSheet.crop(2, 1);
-//        rockUp = resourcesSpriteSheet.crop(2, 2);
-//        rockDown = resourcesSpriteSheet.crop(3, 2);
-//        rockLeft = resourcesSpriteSheet.crop(0, 3);
-//        rockRight = resourcesSpriteSheet.crop(1, 3);
     }
 
     private static void initHeroSpriteSheet(SpriteSheet heroSpriteSheet) {
