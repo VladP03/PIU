@@ -14,7 +14,7 @@ public class PlayState extends State{
     private static Hero hero;   // < Referinta catre obiectul animat erou (controlat de utilizator).
     private Map map;        // < Referinta catre harta curenta.
 
-    private int index_level=2;
+    private int index_level = 2;
 
     public static Monster[] monster = new Monster[1];
 
@@ -117,7 +117,9 @@ public class PlayState extends State{
         if(!refLink.GetKeyManager().pause_value) {
 
             map_elements.Draw(g, index_level);
+
             map.Draw(g);
+            //map_elements.Draw(g, index_level);
             hero.Draw(g);
 
 
