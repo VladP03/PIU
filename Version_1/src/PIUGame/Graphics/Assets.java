@@ -27,6 +27,9 @@ public class Assets {
     public static BufferedImage house_image;
     public static BufferedImage house_type_2_image;
     public static BufferedImage water_type_1_image;
+    public static BufferedImage map_level_2_image;
+
+
 
 
 
@@ -72,6 +75,9 @@ public class Assets {
         SpriteSheet house_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/house_1g.png"));
         SpriteSheet house_type_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/house_2g.png"));
         SpriteSheet water_type_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/water.png"));
+
+        SpriteSheet map_level_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Maps/map_level_2.png"));
+
         //SpriteSheet bush_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Bush.jpg"));
 
         SpriteSheet wall_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Wall1.png"));
@@ -111,6 +117,8 @@ public class Assets {
         house_image = house_SpriteSheet.crop_precise(0,0, 490, 550);
         house_type_2_image = house_type_2_SpriteSheet.crop_precise(0,0, 725, 570);
         water_type_1_image = water_type_1_SpriteSheet.crop_precise(0,0, 565, 260);
+
+        map_level_2_image = map_level_2_SpriteSheet.crop_precise(0,0, 760, 1040);
 
 
         //tree_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);

@@ -14,7 +14,7 @@ public class PlayState extends State{
     private static Hero hero;   // < Referinta catre obiectul animat erou (controlat de utilizator).
     private Map map;        // < Referinta catre harta curenta.
 
-    private int index_level=1;
+    private int index_level=2;
 
     public static Monster[] monster = new Monster[1];
 
@@ -34,7 +34,7 @@ public class PlayState extends State{
         ///Apel al constructorului clasei de baza
         super(refLink);
         ///Construieste harta jocului
-        map = new Map(refLink, 1);
+        map = new Map(refLink, index_level);
         ///Referinta catre harta construita este setata si in obiectul shortcut pentru a fi accesibila si in alte clase ale programului.
         refLink.SetMap(map);
         ///Construieste eroul
@@ -115,8 +115,9 @@ public class PlayState extends State{
     public void Draw(Graphics g)
     {
         if(!refLink.GetKeyManager().pause_value) {
-            map.Draw(g);
+
             map_elements.Draw(g, index_level);
+            map.Draw(g);
             hero.Draw(g);
 
 

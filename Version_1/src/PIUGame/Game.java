@@ -259,4 +259,8 @@ public class Game implements Runnable{
         return (PlayState) playState;
     }
 
+    public RefLinks getRefLink(){
+        return refLink;
+    }
+
 }

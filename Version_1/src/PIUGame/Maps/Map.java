@@ -71,9 +71,21 @@ public class Map {
         //atentie latimea si inaltimea trebuiesc corelate cu dimensiunile ferestrei sau
         //se poate implementa notiunea de camera/cadru de vizualizare al hartii
         ///Se stabileste latimea hartii in numar de dale.
-        width = 40;//30
         ///Se stabileste inaltimea hartii in numar de dale
-        height = 20;//15
+        switch(map_level){
+            case 1:
+                width = 40;//30
+                height = 20;//15
+                break;
+            case 2:
+                width = 31;//30
+                height = 37;//15
+                break;
+            default:
+                width = 20;//30
+                height = 20;//15
+        }
+
         ///Se construieste matricea de coduri de dale
         tiles = new int[width][height];
         //Se incarca matricea cu coduri
