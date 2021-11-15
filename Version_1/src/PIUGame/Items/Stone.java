@@ -54,7 +54,7 @@ public class Stone extends Item{
 
             //System.out.println("            exista");
         }else{
-            System.out.println("nu mai e");
+            //System.out.println("nu mai e");
         }
     }
 

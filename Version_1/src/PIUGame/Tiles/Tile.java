@@ -25,7 +25,7 @@ public class Tile {
 
     protected BufferedImage img;                                    // < Imaginea aferenta tipului de dala.
     protected final int id;                                         // < Id-ul unic aferent tipului de dala.
-
+    String my_id;
 
         // param image Imaginea corespunzatoare dalei.
         // param id Id-ul dalei.
@@ -34,7 +34,7 @@ public class Tile {
     {
         img = image;
         id = idd;
-
+        my_id = "" + idd;
         tiles[id] = this;
     }
 
@@ -56,6 +56,14 @@ public class Tile {
     {
         /// Desenare dala
         g.drawImage(img, x, y, TILE_WIDTH, TILE_HEIGHT, null);
+
+//        Font font1 = new Font("arial", 1, 20);
+//        //Font font2 = new Font("arial", 1, 30);
+//
+//        g.setFont(font1);
+//        g.setColor(Color.white);
+//
+//        g.drawString(my_id, (int)x, (int)y);
     }
 
         // Returneaza proprietatea de dala solida (supusa coliziunilor) sau nu.

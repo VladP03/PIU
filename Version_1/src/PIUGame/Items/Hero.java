@@ -82,7 +82,7 @@ public class Hero extends Character
         animRight.Update();
         noAnim.Update();
 
-        System.out.println(nr_stone);
+        //System.out.println(nr_stone);
 
 
 
@@ -205,7 +205,7 @@ public class Hero extends Character
         if(x > refLink.GetWidth() + refLink.getGameCamera().getxOffset()-200 && y > refLink.GetHeight() +refLink.getGameCamera().getyOffset() -200){
             //System.out.println(refLink.GetWidth() + refLink.getGameCamera().getxOffset());
             //System.out.println(refLink.GetHeight() +refLink.getGameCamera().getyOffset());
-            System.out.println("in zone");
+            //System.out.println("in zone");
             return true;
         }
         else{
@@ -216,11 +216,11 @@ public class Hero extends Character
     public boolean stonesAreCollected(){
 
         if(nr_stone == 5){
-            System.out.println("collected-->>>");
+            //System.out.println("collected-->>>");
             return true;
         }
         else{
-            System.out.println("NOTT   collected");
+            //System.out.println("NOTT   collected");
             return false;
         }
     }

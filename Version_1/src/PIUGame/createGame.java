@@ -8,6 +8,7 @@ public class createGame {
     private createGame(){
         System.out.println("Game is created.\n");
         game = new Game("Please Run ->", 1400, 780);
+        //game = new Game("Please Run ->", 1800, 980);
     }
 
     public static createGame getInstance(){

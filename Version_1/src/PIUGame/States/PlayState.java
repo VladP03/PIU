@@ -16,7 +16,7 @@ public class PlayState extends State{
 
     private int index_level=1;
 
-    public static Monster[] monster = new Monster[4];
+    public static Monster[] monster = new Monster[1];
 
     public static Stone[] stone = new Stone[5];
 
@@ -38,11 +38,11 @@ public class PlayState extends State{
         ///Referinta catre harta construita este setata si in obiectul shortcut pentru a fi accesibila si in alte clase ale programului.
         refLink.SetMap(map);
         ///Construieste eroul
-        hero = new Hero(refLink,50, 200);
+        hero = new Hero(refLink,150, 200);
         monster[0] = new Monster(refLink,844, 310);
-        monster[1] = new Monster(refLink,720, 770);
-        monster[2] = new Monster(refLink,1190, 528);
-        monster[3] = new Monster(refLink,440, 810);
+//        monster[1] = new Monster(refLink,720, 770);
+//        monster[2] = new Monster(refLink,1190, 528);
+//        monster[3] = new Monster(refLink,440, 810);
 
         //aseaza pietrele
         stone[0] = new Stone(refLink, 620, 144);
@@ -56,7 +56,7 @@ public class PlayState extends State{
             m.SetSpeed(0.6f);
         }
 
-        //map_elements = new MapElements(refLink, index_level);
+        map_elements = new MapElements(refLink, index_level);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class PlayState extends State{
             //stone.stoneCollected();
 
             for (Monster t : monster) {
-                t.Update();
+                //t.Update();
             }
 
             for (Monster m : monster) {
@@ -116,7 +116,7 @@ public class PlayState extends State{
     {
         if(!refLink.GetKeyManager().pause_value) {
             map.Draw(g);
-            //map_elements.Draw(g, index_level);
+            map_elements.Draw(g, index_level);
             hero.Draw(g);
 
 
@@ -125,7 +125,7 @@ public class PlayState extends State{
             }
 
             for (Monster t : monster) {
-                t.Draw(g);
+                //t.Draw(g);
             }
         }else{
             map.Draw(g);

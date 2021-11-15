@@ -19,6 +19,17 @@ public class Assets {
 
     // Resources
     public static BufferedImage grass_image;
+    public static BufferedImage tree_type_1_image;
+    public static BufferedImage tree_type_2_image;
+    public static BufferedImage ground_path_horizontal_image;
+    public static BufferedImage ground_path_vertical_image;
+    public static BufferedImage forest_image;
+    public static BufferedImage house_image;
+    public static BufferedImage house_type_2_image;
+    public static BufferedImage water_type_1_image;
+
+
+
     public static BufferedImage bush_image;
     public static BufferedImage wall_1_image;
     public static BufferedImage wall_2_image;
@@ -35,7 +46,6 @@ public class Assets {
     public static BufferedImage buttonExit_image;
     public static BufferedImage life_image;
     public static BufferedImage stone_image;
-    public static BufferedImage tree_image;
     public static BufferedImage arrow_image;
     public static BufferedImage background_image;
 
@@ -53,11 +63,19 @@ public class Assets {
         SpriteSheet monster_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Monster/Monster.png"));
 
         // SpriteSheet-uri pentru dale mapa
-        SpriteSheet grass_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Grass.png"));
-        SpriteSheet bush_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Bush.jpg"));
+        SpriteSheet grass_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/grass.png"));
+        SpriteSheet tree_type_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/tree_type_1.png"));
+        SpriteSheet tree_type_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/tree_type_2.png"));
+        SpriteSheet ground_path_horizontal_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/ground_path_horizontal.png"));
+        SpriteSheet ground_path_vertical_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/ground_path_vertical.png"));
+        SpriteSheet forest_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/forest_2gg.png"));
+        SpriteSheet house_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/house_1g.png"));
+        SpriteSheet house_type_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/house_2g.png"));
+        SpriteSheet water_type_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/water.png"));
+        //SpriteSheet bush_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Bush.jpg"));
+
         SpriteSheet wall_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Wall1.png"));
         SpriteSheet wall_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Wall2.png"));
-        SpriteSheet tree_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Tree.png"));
         SpriteSheet water_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Water.png"));
 
         SpriteSheet diamond_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Diamond.png"));
@@ -72,6 +90,11 @@ public class Assets {
         SpriteSheet buttonStart_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Start&Exit/StartButton.png"));
         SpriteSheet buttonExit_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Start&Exit/ExitButton.png"));
 
+        //SpriteSheet ground_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/grass_2.png"));
+//        grass_image = ground_sheet.crop_precise(0,0, 310, 520);
+        //grass_image = ground_sheet.crop_precise(0,0, 63, 60);
+//        grass_image = ground_sheet.crop_precise(0,0, 317, 178);
+
         // SpriteSheet background
         SpriteSheet background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/BackgroundImage.jpg"));
         background_image = background_sheet.crop_precise(0, 0, 1350, 770);
@@ -79,8 +102,18 @@ public class Assets {
         /// Se obtin subimaginile corespunzatoare elementelor necesare.
         water_image = water_SpriteSheet.crop_precise(0, 0, 400, 350);
         stone_image = diamond_SpriteSheet.crop_precise(0, 0, 1300, 1300);
-//        tree_image = tree_SpriteSheet.crop_precise(0, 0, 800, 1000);
-        tree_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);
+        tree_type_1_image = tree_type_1_SpriteSheet.crop_precise(0,0, 800, 1000);
+        tree_type_2_image = tree_type_2_SpriteSheet.crop_precise(0,0, 310, 520);
+        ground_path_horizontal_image = ground_path_horizontal_SpriteSheet.crop_precise(0,0, 150, 178);
+        ground_path_vertical_image = ground_path_vertical_SpriteSheet.crop_precise(0,0, 178, 150);
+        //forest_image = forest_SpriteSheet.crop_precise(0,0, 350, 280);
+        forest_image = forest_SpriteSheet.crop_precise(0,0, 780, 670);
+        house_image = house_SpriteSheet.crop_precise(0,0, 490, 550);
+        house_type_2_image = house_type_2_SpriteSheet.crop_precise(0,0, 725, 570);
+        water_type_1_image = water_type_1_SpriteSheet.crop_precise(0,0, 565, 260);
+
+
+        //tree_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);
         wall_1_image = wall_1_SpriteSheet.crop(0, 0);
         wall_2_image = wall_2_SpriteSheet.crop_precise(0, 0, 60, 56);
 
@@ -92,8 +125,10 @@ public class Assets {
         buttonExit_image = buttonExit_SpriteSheet.crop_precise(0, 0, 200, 80);
 
         // Resources
-        grass_image = grass_SpriteSheet.crop_precise(0,0, 599, 498);
-        bush_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);
+        grass_image = grass_SpriteSheet.crop_precise(0,0, 63, 60);
+
+        //bush_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);
+
 
         initResourcesSpriteSheet(resources_SpriteSheet);
         initHeroSpriteSheet(hero_SpriteSheet);
