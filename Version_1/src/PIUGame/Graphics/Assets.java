@@ -76,7 +76,7 @@ public class Assets {
         SpriteSheet house_type_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/house_2g.png"));
         SpriteSheet water_type_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/water.png"));
 
-        SpriteSheet map_level_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Maps/map_level_2.png"));
+        SpriteSheet map_level_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Maps/map2.png"));
 
         //SpriteSheet bush_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Bush.jpg"));
 
@@ -106,19 +106,19 @@ public class Assets {
         background_image = background_sheet.crop_precise(0, 0, 1350, 770);
 
         /// Se obtin subimaginile corespunzatoare elementelor necesare.
-        water_image = water_SpriteSheet.crop_precise(0, 0, 400, 350);
-        stone_image = diamond_SpriteSheet.crop_precise(0, 0, 1300, 1300);
-        tree_type_1_image = tree_type_1_SpriteSheet.crop_precise(0,0, 800, 1000);
-        tree_type_2_image = tree_type_2_SpriteSheet.crop_precise(0,0, 310, 520);
-        ground_path_horizontal_image = ground_path_horizontal_SpriteSheet.crop_precise(0,0, 150, 178);
-        ground_path_vertical_image = ground_path_vertical_SpriteSheet.crop_precise(0,0, 178, 150);
-        //forest_image = forest_SpriteSheet.crop_precise(0,0, 350, 280);
-        forest_image = forest_SpriteSheet.crop_precise(0,0, 780, 670);
-        house_image = house_SpriteSheet.crop_precise(0,0, 490, 550);
-        house_type_2_image = house_type_2_SpriteSheet.crop_precise(0,0, 725, 570);
-        water_type_1_image = water_type_1_SpriteSheet.crop_precise(0,0, 565, 260);
+//        water_image = water_SpriteSheet.crop_precise(0, 0, 400, 350);
+//        stone_image = diamond_SpriteSheet.crop_precise(0, 0, 1300, 1300);
+//        tree_type_1_image = tree_type_1_SpriteSheet.crop_precise(0,0, 800, 1000);
+//        tree_type_2_image = tree_type_2_SpriteSheet.crop_precise(0,0, 310, 520);
+//        ground_path_horizontal_image = ground_path_horizontal_SpriteSheet.crop_precise(0,0, 150, 178);
+//        ground_path_vertical_image = ground_path_vertical_SpriteSheet.crop_precise(0,0, 178, 150);
+//        //forest_image = forest_SpriteSheet.crop_precise(0,0, 350, 280);
+//        forest_image = forest_SpriteSheet.crop_precise(0,0, 780, 670);
+//        house_image = house_SpriteSheet.crop_precise(0,0, 490, 550);
+//        house_type_2_image = house_type_2_SpriteSheet.crop_precise(0,0, 725, 570);
+//        water_type_1_image = water_type_1_SpriteSheet.crop_precise(0,0, 565, 260);
 
-        map_level_2_image = map_level_2_SpriteSheet.crop_precise(0,0, 760, 1040);
+        map_level_2_image = map_level_2_SpriteSheet.crop_precise(0,0, 1488, 1872);
 
 
         //tree_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);
@@ -138,7 +138,7 @@ public class Assets {
         //bush_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);
 
 
-        initResourcesSpriteSheet(resources_SpriteSheet);
+//        initResourcesSpriteSheet(resources_SpriteSheet);
         initHeroSpriteSheet(hero_SpriteSheet);
         initMonsterSpriteSheet(monster_SpriteSheet);
     }

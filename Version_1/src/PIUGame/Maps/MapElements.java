@@ -129,7 +129,7 @@ public class MapElements {
 //                g.drawImage(Assets.arrow_image, (int)(1790 - refLink.getGameCamera().getxOffset()),(int)(850 - refLink.getGameCamera().getyOffset()),60,50, null);
                 break;
             case 2:
-                g.drawImage(Assets.map_level_2_image, (int)(0 - refLink.getGameCamera().getxOffset()),(int)(0 - refLink.getGameCamera().getyOffset()),1500, 1900, null);
+                g.drawImage(Assets.map_level_2_image, (int)(0 - refLink.getGameCamera().getxOffset()),(int)(0 - refLink.getGameCamera().getyOffset()),2*1488, 2*1872, null);
                 break;
             case 3:
                 break;

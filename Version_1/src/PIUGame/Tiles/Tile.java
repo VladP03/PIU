@@ -61,16 +61,15 @@ public class Tile {
         //g.drawImage(img, x, y, TILE_WIDTH, TILE_HEIGHT, null);
 
         Font font1 = new Font("arial", 1, 20);
-        //Font font2 = new Font("arial", 1, 30);
+        Font font2 = new Font("arial", 1, 30);
 
-        //RefLinks refLinks = Game.getRefLink();
-
+//        RefLinks refLinks = Game.getRefLink();
         g.setFont(font1);
         g.setColor(Color.white);
 
         g.drawString(my_id, (int)x, (int)y);
         g.drawRect((int)(x), (int)(y), 48, 48);
-        //g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), 48, 48);
+//        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), 48, 48);
     }
 
         // Returneaza proprietatea de dala solida (supusa coliziunilor) sau nu.

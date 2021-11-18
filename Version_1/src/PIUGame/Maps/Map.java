@@ -78,8 +78,8 @@ public class Map {
                 height = 20;//15
                 break;
             case 2:
-                width = 31;//30
-                height = 37;//15
+                width = 2*31;
+                height = 2*39;
                 break;
             default:
                 width = 20;//30
