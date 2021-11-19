@@ -4,9 +4,18 @@ import PIUGame.Database.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecordDAO {
+
+    public void startSession() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void saveRecord(Record record) {
 
         Transaction transaction = null;
@@ -26,9 +35,9 @@ public class RecordDAO {
         }
     }
 
-    public List<Record> getRecords() {
+    public ArrayList<Record> getRecords() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from Record ", Record.class).list();
+            return (ArrayList<Record>) session.createQuery("from Record ", Record.class).list();
         }
     }
 }

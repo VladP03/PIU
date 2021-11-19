@@ -83,7 +83,7 @@ public class PlayState extends State{
                         t.resetPosition();
                     }
                     if (hero.GetLife() == 0) {
-                        refLink.GetGame().getDatabaseConnection().update();
+//                        refLink.GetGame().getDatabaseConnection().update();
                         State.SetState(new LoseState(refLink));
                     }
                 }
@@ -92,7 +92,7 @@ public class PlayState extends State{
 
         if(hero.levelFinished()){
             if(index_level == 2){
-                refLink.GetGame().getDatabaseConnection().update();
+//                refLink.GetGame().getDatabaseConnection().update();
                 State.SetState(new FinishedGame(refLink));
             }else {
                 hero.resetPosition();

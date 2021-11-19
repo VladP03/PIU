@@ -1,16 +1,16 @@
 package PIUGame.Database.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import PIUGame.States.Difficulty.Difficulty;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Records")
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Record {
 
     @Id
@@ -18,5 +18,6 @@ public class Record {
     private Long id;
 
     private String name;
+    private Difficulty difficulty;
     private Double time;
 }

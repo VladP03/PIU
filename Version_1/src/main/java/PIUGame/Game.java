@@ -1,6 +1,5 @@
 package PIUGame;
 
-import PIUGame.DatabaseConnection.DatabaseConnection;
 import PIUGame.GameCamera.GameCamera;
 import PIUGame.GameWindow.GameWindow;
 import PIUGame.Graphics.Assets;
@@ -33,8 +32,6 @@ public class Game implements Runnable{
     public MouseManager mouseManager;      //mod_1
     private RefLinks refLink;
 
-    private DatabaseConnection databaseConnection;
-
 
     private Tile tile;
 
@@ -65,7 +62,6 @@ public class Game implements Runnable{
         gameCamera = new GameCamera(refLink, 0,0);         //mod_2
 
         playState = new PlayState(refLink);
-        databaseConnection = new DatabaseConnection(refLink);
 
 
         //settingState = new SettingState(refLink);
@@ -252,9 +248,6 @@ public class Game implements Runnable{
         this.g = g;
     }
 
-    public DatabaseConnection getDatabaseConnection(){
-        return databaseConnection;
-    }
     public PlayState getPlayState(){
         return (PlayState) playState;
     }
