@@ -6,13 +6,9 @@ import PIUGame.GameObjects.UIManager;
 import PIUGame.GameObjects.UITextButton;
 import PIUGame.Input.ClickListener;
 import PIUGame.RefLinks;
-import PIUGame.States.Difficulty.Difficulty;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class ScoreState extends State {
 
@@ -83,16 +79,13 @@ public class ScoreState extends State {
     }
 
     private void sort() {
-        recordList.sort(new Comparator<Record>() {
-            @Override
-            public int compare(Record first, Record second) {
-                if (first.getDifficulty().compareTo(second.getDifficulty()) == 0) {
-                    return first.getTime().compareTo(second.getTime());
-                } else if (first.getDifficulty().compareTo(second.getDifficulty()) > 0) {
-                    return -1;
-                } else {
-                    return 1;
-                }
+        recordList.sort((first, second) -> {
+            if (first.getDifficulty().compareTo(second.getDifficulty()) == 0) {
+                return first.getTime().compareTo(second.getTime());
+            } else if (first.getDifficulty().compareTo(second.getDifficulty()) > 0) {
+                return -1;
+            } else {
+                return 1;
             }
         });
     }
