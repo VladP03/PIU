@@ -52,7 +52,7 @@ public class MouseManager extends MouseAdapter {
     public void mouseMoved(MouseEvent e){
         int mouseX = e.getX();
         int mouseY = e.getY();
-        //System.out.println("mouse_x: " + mouseX + " ---  mouse_y: " + mouseY);
+        System.out.println("mouse_x: " + mouseX + " ---  mouse_y: " + mouseY);
         if(uiManager != null) {
             uiManager.onMouseMove(e);
         }

@@ -8,6 +8,7 @@ public class main {
     public static void main(String [] args){
         RecordDAO recordDAO = new RecordDAO();
         recordDAO.startSession();
+
 //        Record record = Record.builder()
 //                .difficulty(Difficulty.EASY)
 //                .name("Iuli")
