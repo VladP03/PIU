@@ -6,8 +6,9 @@ services:
     container_name: PIU_VanatoareaDeDiamante
     restart: always
     environment:
-      POSTGRES_USER: pq_piu
-      POSTGRES_PASSWORD: pq_piu
       POSTGRES_DB: piu_project
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
     ports:
       - 5432:5432
