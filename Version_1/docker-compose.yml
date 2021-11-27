@@ -1,4 +1,6 @@
 version: "3.7"
+
+services:
   postgresdb:
     image: postgres:14
     container_name: PIU_VanatoareaDeDiamante
@@ -7,6 +9,5 @@ version: "3.7"
       POSTGRES_DB: piu_project
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-
     ports:
       - 5432:5432

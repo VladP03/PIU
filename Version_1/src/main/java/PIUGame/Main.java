@@ -4,10 +4,10 @@ import PIUGame.Database.Table.Record;
 import PIUGame.Database.Table.RecordDAO;
 import PIUGame.States.Difficulty.Difficulty;
 
-public class main {
+public class Main {
     public static void main(String [] args){
         RecordDAO recordDAO = new RecordDAO();
-        //recordDAO.startSession();
+        recordDAO.startSession();
 
 //        Record record = Record.builder()
 //                .difficulty(Difficulty.EASY)

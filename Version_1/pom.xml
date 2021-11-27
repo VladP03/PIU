@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <build>
         <finalName>VanatoareaDeDiamante</finalName>
-        <sourceDirectory>src/main/java/PIUGame</sourceDirectory>
+        <sourceDirectory>src/main/java/</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
