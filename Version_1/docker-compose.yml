@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  postgresdb:
+    image: postgres:14
+    container_name: PIU_VanatoareaDeDiamante
+    restart: always
+    environment:
+      POSTGRES_USER: pq_piu
+      POSTGRES_PASSWORD: pq_piu
+      POSTGRES_DB: piu_project
+    ports:
+      - 5432:5432
