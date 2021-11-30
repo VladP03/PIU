@@ -32,6 +32,15 @@ public class Assets {
     public static BufferedImage menu_button_image;
     public static BufferedImage heart_life_image;
 
+    // Buttons
+    public static BufferedImage start_button_image;
+    public static BufferedImage continue_button_image;
+    public static BufferedImage settings_button_image;
+    public static BufferedImage score_button_image;
+    public static BufferedImage about_button_image;
+    public static BufferedImage main_menu_button_image;
+    public static BufferedImage exit_button_image;
+
 
 
 
@@ -50,8 +59,7 @@ public class Assets {
     public static BufferedImage water;
     public static BufferedImage water_image;
 
-    public static BufferedImage buttonStart_image;
-    public static BufferedImage buttonExit_image;
+
     public static BufferedImage life_image;
     public static BufferedImage stone_image;
     public static BufferedImage arrow_image;
@@ -80,13 +88,15 @@ public class Assets {
         SpriteSheet house_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/house_1g.png"));
         SpriteSheet house_type_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/house_2g.png"));
         SpriteSheet water_type_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/water.png"));
-        SpriteSheet finish_zone_level_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/finish_zone_level_1.png"));
         SpriteSheet menu_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/menu-button.png"));
-        SpriteSheet heart_life_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/heart_life.png"));
-
-
 
         SpriteSheet map_level_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Maps/map2.png"));
+
+        // Buttons
+        SpriteSheet start_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/start_button.png"));
+
+
+
 
         //SpriteSheet bush_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Bush.jpg"));
 
@@ -98,22 +108,20 @@ public class Assets {
 
         // SpriteSheet pentru indicarea nivelului urmator
         SpriteSheet arrow_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Arrow.png"));
+        SpriteSheet finish_zone_level_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/finish_zone_level_1.png"));
 
         // SpriteSheet pentru viata
+        SpriteSheet heart_life_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/heart_life.png"));
         SpriteSheet life_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Life.png"));
 
-        // SpriteSheet start & exit
-        SpriteSheet buttonStart_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Start&Exit/StartButton.png"));
-        SpriteSheet buttonExit_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Start&Exit/ExitButton.png"));
 
-        //SpriteSheet ground_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/grass_2.png"));
-//        grass_image = ground_sheet.crop_precise(0,0, 310, 520);
-        //grass_image = ground_sheet.crop_precise(0,0, 63, 60);
-//        grass_image = ground_sheet.crop_precise(0,0, 317, 178);
 
         // SpriteSheet background
         SpriteSheet background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/BackgroundImage.jpg"));
         background_image = background_sheet.crop_precise(0, 0, 1350, 770);
+
+
+
 
         /// Se obtin subimaginile corespunzatoare elementelor necesare.
         water_image = water_SpriteSheet.crop_precise(0, 0, 400, 350);
@@ -132,6 +140,8 @@ public class Assets {
         menu_button_image = menu_button_SpriteSheet.crop_precise(0,0, 460, 160);
         heart_life_image = heart_life_SpriteSheet.crop_precise(0,0, 635, 355);
 
+        // Buttons
+        start_button_image = start_button_SpriteSheet.crop_precise(0,0, 250, 100);
 
 
         //tree_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);
@@ -141,9 +151,6 @@ public class Assets {
         arrow_image = arrow_SpriteSheet.crop_precise(0, 0, 600, 450);
         life_image = life_SpriteSheet.crop_precise(0, 0, 540, 530);
 
-        // start / exit button
-        buttonStart_image = buttonStart_SpriteSheet.crop_precise(0, 0, 200, 80);
-        buttonExit_image = buttonExit_SpriteSheet.crop_precise(0, 0, 200, 80);
 
         // Resources
         grass_image = grass_SpriteSheet.crop_precise(0,0, 63, 60);
