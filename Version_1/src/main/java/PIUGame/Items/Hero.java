@@ -8,6 +8,8 @@ import PIUGame.RefLinks;
 import PIUGame.Graphics.Assets;
 import PIUGame.States.PlayState;
 
+import static java.lang.Thread.sleep;
+
 /*
     brief Implementeaza notiunea de erou/player (caracterul controlat de jucator).
     Elementele suplimentare pe care le aduce fata de clasa de baza sunt:
@@ -27,6 +29,14 @@ public class Hero extends Character
 
     private BufferedImage lifeImage;
     private BufferedImage stoneImage;
+
+    private int finish_zone_x = 0;
+    private int finish_zone_y = 0;
+
+    private float target_to_follow_x;
+    private float target_to_follow_y;
+    private boolean  is_arrive_at_gate = false;
+    private boolean in_finish_zone = false;
 
 
     private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
@@ -115,25 +125,46 @@ public class Hero extends Character
         yMove = 0;
         ///Verificare apasare tasta "sus"
 
-        if(refLink.GetKeyManager().up)
-        {
-            yMove = -speed;
+        if(in_finish_zone == true && stonesAreCollected()) {             // player-ul se afla in zona de trecere catre urmatorul nivel
+            if(x > target_to_follow_x - 10 && y < target_to_follow_y + 10){
+                is_arrive_at_gate = true;
+            }else{
+                if(x < target_to_follow_x){
+                    xMove = speed / 8;
+                }
+                else{
+                    xMove = -speed / 8;
+                }
+                if(y > target_to_follow_y){
+                    yMove = -speed / 8;
+                }
+                else{
+                    yMove = speed / 8;
+                }
+            }
         }
-        ///Verificare apasare tasta "jos"
-        if(refLink.GetKeyManager().down)
-        {
-            yMove = speed;
+        else{                               // player-ul se deplaseaza normal
+            if(refLink.GetKeyManager().up)
+            {
+                yMove = -speed;
+            }
+            ///Verificare apasare tasta "jos"
+            if(refLink.GetKeyManager().down)
+            {
+                yMove = speed;
+            }
+            ///Verificare apasare tasta "left"
+            if(refLink.GetKeyManager().left)
+            {
+                xMove = -speed;
+            }
+            ///Verificare apasare tasta "dreapta"
+            if(refLink.GetKeyManager().right)
+            {
+                xMove = speed;
+            }
         }
-        ///Verificare apasare tasta "left"
-        if(refLink.GetKeyManager().left)
-        {
-            xMove = -speed;
-        }
-        ///Verificare apasare tasta "dreapta"
-        if(refLink.GetKeyManager().right)
-        {
-            xMove = speed;
-        }
+
         //System.out.println("x= "+ x + "    y= " + y);
     }
 
@@ -176,7 +207,7 @@ public class Hero extends Character
 
 //        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
 
-        //System.out.println("player_x: " + x + " ---  player_y: " + y);
+        System.out.println("player_x: " + x + " ---  player_y: " + y);
 
         g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
     }
@@ -195,7 +226,7 @@ public class Hero extends Character
     }
 
     public boolean levelFinished(){
-        if(playerInFinishZone() && stonesAreCollected()){
+        if(playerInFinishZone() && stonesAreCollected() && is_arrive_at_gate){
             return true;
         }
         else{
@@ -204,20 +235,22 @@ public class Hero extends Character
     }
 
     public boolean playerInFinishZone(){
-        if(x > refLink.GetWidth() + refLink.getGameCamera().getxOffset()-200 && y > refLink.GetHeight() +refLink.getGameCamera().getyOffset() -200){
-            //System.out.println(refLink.GetWidth() + refLink.getGameCamera().getxOffset());
-            //System.out.println(refLink.GetHeight() +refLink.getGameCamera().getyOffset());
-            //System.out.println("in zone");
+        //if(x > refLink.GetWidth() + refLink.getGameCamera().getxOffset()-200 && y > refLink.GetHeight() +refLink.getGameCamera().getyOffset() -200){
+        if(x > finish_zone_x && y > finish_zone_y){
+            in_finish_zone = true;
             return true;
         }
         else{
+            if(x < finish_zone_x-80 && y < finish_zone_y - 80) {
+                in_finish_zone = false;
+            }
             return false;
         }
     }
 
     public boolean stonesAreCollected(){
 
-        if(nr_stone == 5){
+        if(nr_stone >= 1){
             //System.out.println("collected-->>>");
             return true;
         }
@@ -238,8 +271,37 @@ public class Hero extends Character
         return nr_stone;
     }
 
+    public int getFinish_zone_x() {
+        return finish_zone_x;
+    }
 
+    public void setFinish_zone_x(int finish_zone_x) {
+        this.finish_zone_x = finish_zone_x;
+    }
 
+    public int getFinish_zone_y() {
+        return finish_zone_y;
+    }
+
+    public void setFinish_zone_y(int finish_zone_y) {
+        this.finish_zone_y = finish_zone_y;
+    }
+
+    public float getTarget_to_follow_x() {
+        return target_to_follow_x;
+    }
+
+    public void setTarget_to_follow_x(float target_to_follow_x) {
+        this.target_to_follow_x = target_to_follow_x;
+    }
+
+    public float getTarget_to_follow_y() {
+        return target_to_follow_y;
+    }
+
+    public void setTarget_to_follow_y(float target_to_follow_y) {
+        this.target_to_follow_y = target_to_follow_y;
+    }
 }
 
 

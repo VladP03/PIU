@@ -32,8 +32,19 @@ public class ReinitializeObjects {
         refLink.GetGame().getPlayState().GetHero().SetX(150);
         refLink.GetGame().getPlayState().GetHero().SetY(200);
 
+        refLink.GetGame().getPlayState().GetHero().SetX(1700);
+        refLink.GetGame().getPlayState().GetHero().SetY(800);
+
         refLink.GetGame().getPlayState().GetHero().setInitialX(150);
         refLink.GetGame().getPlayState().GetHero().setInitialY(200);
+
+
+        // stabilesc zona in care player-ul va trece la nivelul urmator
+        refLink.GetGame().getPlayState().GetHero().setFinish_zone_x(1750);
+        refLink.GetGame().getPlayState().GetHero().setFinish_zone_y(770);
+
+        refLink.GetGame().getPlayState().GetHero().setTarget_to_follow_x(1825);
+        refLink.GetGame().getPlayState().GetHero().setTarget_to_follow_y(770);
 
 
 

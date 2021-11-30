@@ -114,6 +114,9 @@ public class MapElements {
                     //g.drawImage(Assets.tree_type_1_image, (int) (200 - refLink.getGameCamera().getxOffset()), (int) (i*70 - refLink.getGameCamera().getyOffset()), 50, 70, null);
                 }
 
+                // zona finala in care player-ul trece la nivelul urmator
+                g.drawImage(Assets.finish_zone_level_1_image, (int) (1800 - refLink.getGameCamera().getxOffset()), (int) (680 - refLink.getGameCamera().getyOffset()), 120, 150, null);
+
 
                 break;
             case 2:

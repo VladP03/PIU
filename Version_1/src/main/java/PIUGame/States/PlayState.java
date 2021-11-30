@@ -65,7 +65,7 @@ public class PlayState extends State{
             }
 
             for (Monster t : monster) {
-                t.Update();
+                //t.Update();
             }
 
             for (Monster m : monster) {
