@@ -1,4 +1,9 @@
 package PIUGame.States;
+import PIUGame.GameObjects.UIImageButton;
+import PIUGame.GameObjects.UIManager;
+import PIUGame.GameObjects.UITextButton;
+import PIUGame.Graphics.Assets;
+import PIUGame.Input.ClickListener;
 import PIUGame.Maps.Map;
 import PIUGame.Maps.MapElements;
 import PIUGame.RefLinks;
@@ -10,22 +15,24 @@ import java.awt.*;
 public class PlayState extends State{
 
 
-    //private UIManager uiManager;
+    private UIManager resumeManager;
+    private RefLinks refLink;
 
     private static Hero hero;   // < Referinta catre obiectul animat erou (controlat de utilizator).
     private Map map;        // < Referinta catre harta curenta.
 
     private int index_level = 1;
-
     public static Monster[] monster;
-
     public static Stone[] stone;
-
     public static MapElements map_elements;
-
     public static String difficulty_level = "Easy";
-
     public static ReinitializeObjects reinitializeObjects;
+
+    public static int minutes = 0;
+    public static int seconds = 0;
+    public static int timer_count = 0;
+
+
 
     //monster.SetSpeed(32.3);
 
@@ -36,6 +43,10 @@ public class PlayState extends State{
     {
         ///Apel al constructorului clasei de baza
         super(refLink);
+        this.refLink = refLink;
+
+        updateObjectWithListener();
+
 
         ///Construieste harta jocului
         map = new Map(refLink, index_level);
@@ -54,10 +65,29 @@ public class PlayState extends State{
         map_elements = new MapElements(refLink, index_level);
     }
 
+
+    // se actualizeaza obiectele cand starea de playState este resetata deoarece se pierde focusul
+    public void updateObjectWithListener(){
+        // Seteaza un buton de resume
+        resumeManager = new UIManager(refLink);
+        refLink.GetMouseManager().setUIManager(resumeManager);
+
+        resumeManager.addObject(new UIImageButton( 1100, 28, 130, 44, Assets.menu_button_image, new ClickListener() {
+        //resumeManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, Assets.buttonStart_image, new ClickListener() {
+            @Override
+            public void onClick() {
+                refLink.GetMouseManager().setUIManager(null);
+                State.SetState(new ResumeState(refLink));
+                //State.SetState(new ChooseNameState(refLink));
+            }
+        }));
+    }
+
+
     @Override
     public void Update()
     {
-        if(!refLink.GetKeyManager().pause_value) {      //joc pus pe pauza
+        if(!refLink.GetKeyManager().pause_value) {      //jocul este pornit
             map.Update();
             hero.Update();
             for(Stone s: stone) {
@@ -82,6 +112,21 @@ public class PlayState extends State{
                     }
                 }
             }
+
+            if(timer_count <= 60){
+                timer_count++;
+            }
+            else{
+                timer_count = 0;
+                if(seconds == 59){
+                    minutes++;
+                    seconds = 0;
+                }else{
+                    seconds++;
+                }
+
+            }
+
         }
 
         if(hero.levelFinished()){
@@ -105,6 +150,7 @@ public class PlayState extends State{
             }
         }
 
+        //resumeManager.Update();
     }
 
         // brief Deseneaza (randeaza) pe ecran starea curenta a jocului.
@@ -112,6 +158,8 @@ public class PlayState extends State{
     @Override
     public void Draw(Graphics g)
     {
+
+
         if(!refLink.GetKeyManager().pause_value) {      // jocul este pornit
 
             //map_elements.Draw(g, index_level);
@@ -128,6 +176,9 @@ public class PlayState extends State{
             for (Monster t : monster) {
                 t.Draw(g);
             }
+
+
+
         }else{
             map.Draw(g);
             map_elements.Draw(g, index_level);
@@ -141,12 +192,25 @@ public class PlayState extends State{
                 t.Draw(g);
             }
 
-
-            Font font1 = new Font("arial", 1, 50);
-            g.setFont(font1);
+            Font font_pause = new Font("arial", 1, 50);
+            g.setFont(font_pause);
             g.setColor(Color.WHITE);
             g.drawString("PAUSE", (int)refLink.GetWidth()/2 - 50, (int)refLink.GetHeight()/2 - 50);
         }
+
+        // afiseaza timpul
+        g.setColor(Color.GRAY);
+        g.fillRoundRect(1230, 30, 110, 40, 20, 20);
+
+        Font font_timer = new Font("arial", 1, 25);
+        g.setFont(font_timer);
+        g.setColor(Color.WHITE);
+        g.drawString(""+ minutes + " : " + seconds, 1250, 60);
+
+
+        // deseneaza butonul de resume
+        resumeManager.Draw(g);
+
 
     }
 

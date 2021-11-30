@@ -126,9 +126,11 @@ public class Hero extends Character
         ///Verificare apasare tasta "sus"
 
         if(in_finish_zone == true && stonesAreCollected()) {             // player-ul se afla in zona de trecere catre urmatorul nivel
+            // se verifica daca player-ul a ajuns in zona de trecere catre urmatorul nivel si astfel tranzitia este terminata
             if(x > target_to_follow_x - 10 && y < target_to_follow_y + 10){
                 is_arrive_at_gate = true;
             }else{
+                // daca player-ul este in apropierea zonei de final se realizeaza o tranzitie care duce caracterul catre portal
                 if(x < target_to_follow_x){
                     xMove = speed / 8;
                 }
@@ -181,19 +183,28 @@ public class Hero extends Character
 
 
         // ---------------------------------------------------------------
+
+        // afiseaza numarul de vieti ale player-ului
+        g.setColor(Color.GREEN);
+        g.fillRoundRect(20, 20, 170, 60, 20, 20);
         for(int i=0; i < life; i++){
-            g.drawImage(lifeImage, 30 + i * 50, 30, 40, 40, null);
+            g.drawImage(Assets.heart_life_image, 30 + i * 50, 30, 60, 40, null);
         }
         //g.setColor(Color.black);
         //g.fillRect((int)(refLink.GetWidth())-200,(int)(refLink.GetHeight())-200, 200, 200);
 
-        g.drawImage(stoneImage, 200, 30, 40, 40, null);
+
+        // afiseaza numarul de pietre colectate de player
+        g.setColor(Color.cyan);
+        g.fillRoundRect(200, 20, 100, 60, 20, 20);
+
+        g.drawImage(stoneImage, 210, 30, 40, 40, null);
         Font font1 = new Font("arial", 1, 40);
         g.setFont(font1);
         g.setColor(Color.white);
 
         String nr = Integer.toString(nr_stone);
-        g.drawString(nr, 240, 50);
+        g.drawString(nr, 250, 55);
 
 
         // ---------------------------------------------------------------
@@ -202,10 +213,10 @@ public class Hero extends Character
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
         g.setColor(Color.blue);
-//        g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
-//        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
+        //g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
+        //g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
 
-//        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
+        //g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
 
         System.out.println("player_x: " + x + " ---  player_y: " + y);
 
@@ -241,6 +252,7 @@ public class Hero extends Character
             return true;
         }
         else{
+            // pentru a nu se activa, in mod eronat, tranzitia care duce player-ul catre poarta cand pietrele au fost colectate, se foloseste o variabila de verificare in plus (in_finish_zone)
             if(x < finish_zone_x-80 && y < finish_zone_y - 80) {
                 in_finish_zone = false;
             }
@@ -249,7 +261,6 @@ public class Hero extends Character
     }
 
     public boolean stonesAreCollected(){
-
         if(nr_stone >= 1){
             //System.out.println("collected-->>>");
             return true;

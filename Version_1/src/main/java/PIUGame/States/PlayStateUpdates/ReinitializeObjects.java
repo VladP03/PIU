@@ -32,8 +32,8 @@ public class ReinitializeObjects {
         refLink.GetGame().getPlayState().GetHero().SetX(150);
         refLink.GetGame().getPlayState().GetHero().SetY(200);
 
-        refLink.GetGame().getPlayState().GetHero().SetX(1700);
-        refLink.GetGame().getPlayState().GetHero().SetY(800);
+//        refLink.GetGame().getPlayState().GetHero().SetX(1700);
+//        refLink.GetGame().getPlayState().GetHero().SetY(800);
 
         refLink.GetGame().getPlayState().GetHero().setInitialX(150);
         refLink.GetGame().getPlayState().GetHero().setInitialY(200);
@@ -59,7 +59,7 @@ public class ReinitializeObjects {
 
         // stabilesc pozitiile inamicilor
         Monster[] monster = new Monster[5];
-        monster[0] = new Monster(refLink,680, 260);
+        monster[0] = new Monster(refLink,760, 430);
         monster[1] = new Monster(refLink,1300, 380);
         monster[2] = new Monster(refLink,700, 700);
         monster[3] = new Monster(refLink,150, 300, MonsterDirection.DOWN, 400);

@@ -24,16 +24,8 @@ public class ChooseNameState extends State {
         chooseNameManager = new UIManager(refLink);
         refLink.GetMouseManager().setUIManager(chooseNameManager);
 
-
-        System.out.println("before create window");
-
         // se creeaza o noua fereastra in care se va introduce numele
         chooseNameWindow = new ChooseNameWindow(refLink);
-
-        //wndFrame = refLink.GetGame().getWnd().GetWndFrame();
-
-
-
 
     }
 

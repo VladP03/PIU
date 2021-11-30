@@ -68,6 +68,7 @@ public class Tile {
 
         //g.drawString(my_id, (int)x, (int)y);
         //g.drawRect((int)(x), (int)(y), 48, 48);
+
 //        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), 48, 48);
     }
 

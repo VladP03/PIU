@@ -29,6 +29,9 @@ public class Assets {
     public static BufferedImage water_type_1_image;
     public static BufferedImage map_level_2_image;
     public static BufferedImage finish_zone_level_1_image;
+    public static BufferedImage menu_button_image;
+    public static BufferedImage heart_life_image;
+
 
 
 
@@ -78,6 +81,8 @@ public class Assets {
         SpriteSheet house_type_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/house_2g.png"));
         SpriteSheet water_type_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/water.png"));
         SpriteSheet finish_zone_level_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/finish_zone_level_1.png"));
+        SpriteSheet menu_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/menu-button.png"));
+        SpriteSheet heart_life_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/heart_life.png"));
 
 
 
@@ -124,6 +129,8 @@ public class Assets {
         water_type_1_image = water_type_1_SpriteSheet.crop_precise(0,0, 565, 260);
         map_level_2_image = map_level_2_SpriteSheet.crop_precise(0,0, 1488, 1872);
         finish_zone_level_1_image = finish_zone_level_1_SpriteSheet.crop_precise(0,0, 124, 162);
+        menu_button_image = menu_button_SpriteSheet.crop_precise(0,0, 460, 160);
+        heart_life_image = heart_life_SpriteSheet.crop_precise(0,0, 635, 355);
 
 
 

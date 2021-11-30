@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class AboutState extends State{
 
-    private UIManager settingManager;
+    private UIManager aboutManager;
 
         // brief Constructorul de initializare al clasei.
         // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
@@ -16,15 +16,15 @@ public class AboutState extends State{
     {
         ///Apel al constructorului clasei de baza.
         super(refLink);
-        settingManager = new UIManager(refLink);
-        refLink.GetMouseManager().setUIManager(settingManager);
+        aboutManager = new UIManager(refLink);
+        refLink.GetMouseManager().setUIManager(aboutManager);
 
 
-        settingManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 200, 600, 200, 80, "Back to meniu", new ClickListener() {
+        aboutManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 200, 600, 200, 80, "Back to meniu", new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
-                State.SetState(new PlayState(refLink));
+                //State.SetState(new PlayState(refLink));
                 State.SetState(new MenuState(refLink));
             }
         }));
@@ -65,7 +65,6 @@ public class AboutState extends State{
         font1 = new Font("arial", 1, 50);
         g.setFont(font1);
 
-
-        settingManager.Draw(g);
+        aboutManager.Draw(g);
     }
 }

@@ -86,6 +86,7 @@ public class ChooseNameWindow implements ActionListener {
             //System.out.println("Button pressed");
             newNameFrame.dispose();
             State.SetState(refLink.GetGame().playState);
+            refLink.GetGame().getPlayState().updateObjectWithListener();
 
         }
     }
