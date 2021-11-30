@@ -7,7 +7,7 @@ import PIUGame.States.Difficulty.Difficulty;
 public class Main {
     public static void main(String [] args){
         RecordDAO recordDAO = new RecordDAO();
-        recordDAO.startSession();
+        //recordDAO.startSession();
 
 //        Record record = Record.builder()
 //                .difficulty(Difficulty.EASY)

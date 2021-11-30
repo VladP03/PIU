@@ -8,6 +8,9 @@ import PIUGame.States.PlayState;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+
+
+
 public class Monster extends Character{
 
     //Animation
@@ -25,6 +28,10 @@ public class Monster extends Character{
     private float target_to_follow_y;
 
     private int blocked = 0;
+
+    private MonsterDirection monsterDirection = MonsterDirection.NONE;
+    private int distance_to_walk = 0;
+    private int distance_contor = 0;
 
     //private float speed_moster = 2.0f;
 
@@ -69,6 +76,45 @@ public class Monster extends Character{
         previous_y = y;
     }
 
+
+    // constructor pentru caracterele ce se misca pe o traiectorie fixa
+    public Monster(RefLinks refLink, float x, float y, MonsterDirection monsterDirection, int distance_to_walk)
+    {
+        ///Apel al constructorului clasei de baza
+        super(refLink, x,y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
+
+        ///Seteaza imaginea de start a eroului
+        //image = Assets.heroLeft;
+
+        ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
+        normalBounds.x = 20;
+        normalBounds.y = 20;
+        normalBounds.width = 26;
+        normalBounds.height = 36;
+
+        ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea de atac
+        attackBounds.x = 10;
+        attackBounds.y = 10;
+        attackBounds.width = 38;
+        attackBounds.height = 38;
+
+
+        //Animation
+        animDown = new Animation(100, Assets.monster_down);      //mod_3
+        animUp = new Animation(100, Assets.monster_up);      //mod_3
+        animLeft = new Animation(100, Assets.monster_left);      //mod_3
+        animRight = new Animation(100, Assets.monster_right);      //mod_3
+        noAnim = new Animation(0, Assets.monster_noAnimation);
+
+        // Initial state
+        previous_x = x;
+        previous_y = y;
+
+        // seteaza atribute pentru traiectoria fixa
+        this.monsterDirection = monsterDirection;
+        this.distance_to_walk = distance_to_walk;
+    }
+
         // brief Actualizeaza pozitia si imaginea eroului.
 
     @Override
@@ -88,7 +134,7 @@ public class Monster extends Character{
         Move();
         ///Actualizeaza imaginea
 
-        System.out.println("                                               new_m_x: " + x + " --- new_m_y: " + y +  "\n");
+        //System.out.println("                                               new_m_x: " + x + " --- new_m_y: " + y +  "\n");
 
 
 
@@ -159,21 +205,74 @@ public class Monster extends Character{
         previous_x = x;
         previous_y = y;
 
-        //if(refLink.GetGame().playState.GetHero())
-        if(x > target_to_follow_x){
-            xMove = -speed;
-        }
-        else{
-            if(x < target_to_follow_x - 3 ) {        // se face comparatia cu pozitia player-ului - 3 pixeli pentru a evita tranzitia deranjanta a imaginii de la stanga la dreapta
-                xMove = speed;
+        if(monsterDirection == MonsterDirection.NONE){
+            //if(refLink.GetGame().playState.GetHero())
+            if(x > target_to_follow_x){
+                xMove = -speed;
+            }
+            else{
+                if(x < target_to_follow_x - 3 ) {        // se face comparatia cu pozitia player-ului - 3 pixeli pentru a evita tranzitia deranjanta a imaginii de la stanga la dreapta
+                    xMove = speed;
+                }
+            }
+            if(y > target_to_follow_y){
+                yMove = -speed;
+            }
+            if(y < target_to_follow_y){
+                yMove = speed;
             }
         }
-        if(y > target_to_follow_y){
-            yMove = -speed;
+        else
+        {
+            switch(monsterDirection){
+                case DOWN:
+                    if( distance_contor < distance_to_walk){
+                        yMove = speed;
+                        distance_contor++;
+                    }
+                    else{
+                        monsterDirection = MonsterDirection.UP;
+                        distance_contor = 0;
+                    }
+                    break;
+                case UP:
+                    if( distance_contor < distance_to_walk){
+                        yMove = -speed;
+                        distance_contor++;
+                    }
+                    else{
+                        monsterDirection = MonsterDirection.DOWN;
+                        distance_contor = 0;
+                    }
+                    break;
+                case LEFT:
+                    if( distance_contor < distance_to_walk){
+                        xMove = -speed;
+                        distance_contor++;
+                    }
+                    else{
+                        monsterDirection = MonsterDirection.RIGHT;
+                        distance_contor = 0;
+                    }
+                    break;
+                case RIGHT:
+                    if( distance_contor < distance_to_walk){
+                        xMove = speed;
+                        distance_contor++;
+                    }
+                    else{
+                        monsterDirection = MonsterDirection.LEFT;
+                        distance_contor = 0;
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
-        if(y < target_to_follow_y){
-            yMove = speed;
-        }
+
+
+
+
 
 
 
@@ -270,4 +369,20 @@ public class Monster extends Character{
         return noAnim.getCurrentFrame();
     }
 
+
+    public MonsterDirection getMonsterDirection() {
+        return monsterDirection;
+    }
+
+    public void setMonsterDirection(MonsterDirection monsterDirection) {
+        this.monsterDirection = monsterDirection;
+    }
+
+    public int getDistance_to_walk() {
+        return distance_to_walk;
+    }
+
+    public void setDistance_to_walk(int distance_to_walk) {
+        this.distance_to_walk = distance_to_walk;
+    }
 }

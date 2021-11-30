@@ -16,6 +16,7 @@ public class MapElements {
     }
 
     public void Draw(Graphics g, int index_level){
+
         switch(index_level){
             case 1:
 
@@ -114,19 +115,6 @@ public class MapElements {
                 }
 
 
-
-//                g.drawImage(Assets.tree_image, (int)(10 - refLink.getGameCamera().getxOffset()),(int)(10 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(50 - refLink.getGameCamera().getxOffset()),(int)(20 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(100 - refLink.getGameCamera().getxOffset()),(int)(90 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(150 - refLink.getGameCamera().getxOffset()),(int)(90 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(200 - refLink.getGameCamera().getxOffset()),(int)(100 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(250 - refLink.getGameCamera().getxOffset()),(int)(90 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(300 - refLink.getGameCamera().getxOffset()),(int)(80 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(350 - refLink.getGameCamera().getxOffset()),(int)(90 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(450 - refLink.getGameCamera().getxOffset()),(int)(90 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(500 - refLink.getGameCamera().getxOffset()),(int)(100 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.tree_image, (int)(550 - refLink.getGameCamera().getxOffset()),(int)(90 - refLink.getGameCamera().getyOffset()),50,70, null);
-//                g.drawImage(Assets.arrow_image, (int)(1790 - refLink.getGameCamera().getxOffset()),(int)(850 - refLink.getGameCamera().getyOffset()),60,50, null);
                 break;
             case 2:
                 g.drawImage(Assets.map_level_2_image, (int)(0 - refLink.getGameCamera().getxOffset()),(int)(0 - refLink.getGameCamera().getyOffset()),2*1488, 2*1872, null);

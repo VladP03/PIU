@@ -25,7 +25,7 @@ public class ChooseNameWindow implements ActionListener {
 
         this.refLink = refLink;
 
-        System.out.println("in create window constructor");
+        //System.out.println("in create window constructor");
 
         initWindow();
     }

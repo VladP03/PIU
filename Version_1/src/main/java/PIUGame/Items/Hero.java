@@ -150,19 +150,19 @@ public class Hero extends Character
 
 
         // ---------------------------------------------------------------
-//        for(int i=0; i < life; i++){
-//            g.drawImage(life_image, 30 + i * 50, 30, 40, 40, null);
-//        }
-//        //g.setColor(Color.black);
-//        //g.fillRect((int)(refLink.GetWidth())-200,(int)(refLink.GetHeight())-200, 200, 200);
-//
-//        g.drawImage(stoneImage, 200, 30, 40, 40, null);
-//        Font font1 = new Font("arial", 1, 40);
-//        g.setFont(font1);
-//        g.setColor(Color.white);
-//
-//        String nr = Integer.toString(nr_stone);
-//        g.drawString(nr, 240, 50);
+        for(int i=0; i < life; i++){
+            g.drawImage(lifeImage, 30 + i * 50, 30, 40, 40, null);
+        }
+        //g.setColor(Color.black);
+        //g.fillRect((int)(refLink.GetWidth())-200,(int)(refLink.GetHeight())-200, 200, 200);
+
+        g.drawImage(stoneImage, 200, 30, 40, 40, null);
+        Font font1 = new Font("arial", 1, 40);
+        g.setFont(font1);
+        g.setColor(Color.white);
+
+        String nr = Integer.toString(nr_stone);
+        g.drawString(nr, 240, 50);
 
 
         // ---------------------------------------------------------------
@@ -175,6 +175,8 @@ public class Hero extends Character
 //        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
 
 //        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
+
+        //System.out.println("player_x: " + x + " ---  player_y: " + y);
 
         g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
     }

@@ -128,4 +128,20 @@ public abstract class Item
     {
         bounds = attackBounds;
     }
+
+    public float getInitialX() {
+        return initialX;
+    }
+
+    public void setInitialX(float initialX) {
+        this.initialX = initialX;
+    }
+
+    public float getInitialY() {
+        return initialY;
+    }
+
+    public void setInitialY(float initialY) {
+        this.initialY = initialY;
+    }
 }
