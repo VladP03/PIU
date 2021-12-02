@@ -1,6 +1,6 @@
 package PIUGame.Items;
 
-public enum MonsterDirection {
+public enum ItemDirection {
         UP,
         DOWN,
         LEFT,

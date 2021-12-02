@@ -14,6 +14,7 @@ public class KeyManager implements KeyListener{
     public boolean right;       // < Flag pentru tasta "dreapta" apasata.
 
     public boolean escape;
+    public boolean space;
 
     public boolean pause;
     public boolean pause_value = false;     // Flag pentru tasta P pentru pauza.
@@ -33,6 +34,7 @@ public class KeyManager implements KeyListener{
         right = keys[KeyEvent.VK_D];
 
         escape = keys[KeyEvent.VK_ESCAPE];
+        space  = keys[KeyEvent.VK_SPACE];
 
         pause = keys[KeyEvent.VK_P];
         if(pause){

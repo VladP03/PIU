@@ -1,7 +1,9 @@
 package PIUGame.States.PlayStateUpdates;
 
+import java.util.ArrayList;
+import java.util.List;
 import PIUGame.Items.Monster;
-import PIUGame.Items.MonsterDirection;
+import PIUGame.Items.ItemDirection;
 import PIUGame.Items.Stone;
 import PIUGame.RefLinks;
 
@@ -58,12 +60,12 @@ public class ReinitializeObjects {
 
 
         // stabilesc pozitiile inamicilor
-        Monster[] monster = new Monster[5];
-        monster[0] = new Monster(refLink,760, 430);
-        monster[1] = new Monster(refLink,1300, 380);
-        monster[2] = new Monster(refLink,700, 700);
-        monster[3] = new Monster(refLink,150, 300, MonsterDirection.DOWN, 400);
-        monster[4] = new Monster(refLink,1100, 800, MonsterDirection.RIGHT, 500);
+        List<Monster> monster = new ArrayList<Monster>();
+        monster.add(new Monster(refLink,760, 430));
+        monster.add(new Monster(refLink,1300, 380));
+        monster.add(new Monster(refLink,700, 700));
+        monster.add(new Monster(refLink,150, 300, ItemDirection.DOWN, 400));
+        monster.add(new Monster(refLink,1100, 800, ItemDirection.RIGHT, 500));
 
         // seteaza viteza monstrului
         for(Monster m: monster){
@@ -96,11 +98,11 @@ public class ReinitializeObjects {
 
 
         // stabilesc pozitiile inamicilor
-        Monster[] monster = new Monster[4];
-        monster[0] = new Monster(refLink,680, 367, MonsterDirection.RIGHT, 500);
-        monster[1] = new Monster(refLink,1820, 560, MonsterDirection.RIGHT, 400);
-        monster[2] = new Monster(refLink,2193, 980, MonsterDirection.DOWN, 300);
-        monster[3] = new Monster(refLink,80, 300, MonsterDirection.DOWN, 400);
+        List<Monster> monster = new ArrayList<Monster>();
+        monster.add(new Monster(refLink,680, 367, ItemDirection.RIGHT, 500));
+        monster.add(new Monster(refLink,1820, 560, ItemDirection.RIGHT, 400));
+        monster.add(new Monster(refLink,2193, 980, ItemDirection.DOWN, 300));
+        monster.add(new Monster(refLink,80, 300, ItemDirection.DOWN, 400));
 
 
         // seteaza viteza monstrului

@@ -29,7 +29,7 @@ public class Monster extends Character{
 
     private int blocked = 0;
 
-    private MonsterDirection monsterDirection = MonsterDirection.NONE;
+    private ItemDirection itemDirection = ItemDirection.NONE;
     private int distance_to_walk = 0;
     private int distance_contor = 0;
 
@@ -78,7 +78,7 @@ public class Monster extends Character{
 
 
     // constructor pentru caracterele ce se misca pe o traiectorie fixa
-    public Monster(RefLinks refLink, float x, float y, MonsterDirection monsterDirection, int distance_to_walk)
+    public Monster(RefLinks refLink, float x, float y, ItemDirection itemDirection, int distance_to_walk)
     {
         ///Apel al constructorului clasei de baza
         super(refLink, x,y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
@@ -111,7 +111,7 @@ public class Monster extends Character{
         previous_y = y;
 
         // seteaza atribute pentru traiectoria fixa
-        this.monsterDirection = monsterDirection;
+        this.itemDirection = itemDirection;
         this.distance_to_walk = distance_to_walk;
     }
 
@@ -205,7 +205,7 @@ public class Monster extends Character{
         previous_x = x;
         previous_y = y;
 
-        if(monsterDirection == MonsterDirection.NONE){
+        if(itemDirection == ItemDirection.NONE){
             //if(refLink.GetGame().playState.GetHero())
             if(x > target_to_follow_x){
                 xMove = -speed;
@@ -224,14 +224,14 @@ public class Monster extends Character{
         }
         else
         {
-            switch(monsterDirection){
+            switch(itemDirection){
                 case DOWN:
                     if( distance_contor < distance_to_walk){
                         yMove = speed;
                         distance_contor++;
                     }
                     else{
-                        monsterDirection = MonsterDirection.UP;
+                        itemDirection = ItemDirection.UP;
                         distance_contor = 0;
                     }
                     break;
@@ -241,7 +241,7 @@ public class Monster extends Character{
                         distance_contor++;
                     }
                     else{
-                        monsterDirection = MonsterDirection.DOWN;
+                        itemDirection = ItemDirection.DOWN;
                         distance_contor = 0;
                     }
                     break;
@@ -251,7 +251,7 @@ public class Monster extends Character{
                         distance_contor++;
                     }
                     else{
-                        monsterDirection = MonsterDirection.RIGHT;
+                        itemDirection = ItemDirection.RIGHT;
                         distance_contor = 0;
                     }
                     break;
@@ -261,7 +261,7 @@ public class Monster extends Character{
                         distance_contor++;
                     }
                     else{
-                        monsterDirection = MonsterDirection.LEFT;
+                        itemDirection = ItemDirection.LEFT;
                         distance_contor = 0;
                     }
                     break;
@@ -370,12 +370,12 @@ public class Monster extends Character{
     }
 
 
-    public MonsterDirection getMonsterDirection() {
-        return monsterDirection;
+    public ItemDirection getItemDirection() {
+        return itemDirection;
     }
 
-    public void setMonsterDirection(MonsterDirection monsterDirection) {
-        this.monsterDirection = monsterDirection;
+    public void setItemDirection(ItemDirection itemDirection) {
+        this.itemDirection = itemDirection;
     }
 
     public int getDistance_to_walk() {

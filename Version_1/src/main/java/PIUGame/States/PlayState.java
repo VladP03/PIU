@@ -10,7 +10,9 @@ import PIUGame.RefLinks;
 import PIUGame.Items.*;
 import PIUGame.States.PlayStateUpdates.ReinitializeObjects;
 
+import java.util.List;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class PlayState extends State{
 
@@ -22,11 +24,12 @@ public class PlayState extends State{
     private Map map;        // < Referinta catre harta curenta.
 
     private int index_level = 1;
-    public static Monster[] monster;
+    public static List<Monster> monster;
     public static Stone[] stone;
     public static MapElements map_elements;
     public static String difficulty_level = "Easy";
     public static ReinitializeObjects reinitializeObjects;
+    public List<Sord> sords = new ArrayList<Sord>();
 
     public static int minutes = 0;
     public static int seconds = 0;
@@ -38,15 +41,15 @@ public class PlayState extends State{
 
 
         // brief Constructorul de initializare al clasei
-        // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program   // `
+        // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
     public PlayState(RefLinks refLink)
     {
         ///Apel al constructorului clasei de baza
         super(refLink);
         this.refLink = refLink;
 
+        // se actualizeaza obiectele cand starea de playState este resetata deoarece se pierde focusul(este esentiala la trecerea dintr-o stare in alta: de ex, din starea meniu in playState)
         updateObjectWithListener();
-
 
         ///Construieste harta jocului
         map = new Map(refLink, index_level);
@@ -90,6 +93,17 @@ public class PlayState extends State{
         if(!refLink.GetKeyManager().pause_value) {      //jocul este pornit
             map.Update();
             hero.Update();
+
+            if(!sords.isEmpty()){
+                for(Sord s: sords){
+                    s.Update();
+                    if(sords.isEmpty()){
+                        break;
+                    }
+                    System.out.println("update_sord");
+                }
+            }
+
             for(Stone s: stone) {
                 s.Update();
             }
@@ -168,6 +182,11 @@ public class PlayState extends State{
             map_elements.Draw(g, index_level);
             hero.Draw(g);
 
+            if(!sords.isEmpty()){
+                for(Sord s: sords){
+                    s.Draw(g);
+                }
+            }
 
             for(Stone s: stone) {
                 s.Draw(g);
@@ -214,11 +233,11 @@ public class PlayState extends State{
 
     }
 
-    public static Monster[] GetMonster(){
+    public static List<Monster> GetMonster(){
         return monster;
     }
 
-    public static void setMonster(Monster[] monster) {
+    public static void setMonster(List<Monster> monster) {
         PlayState.monster = monster;
     }
 
@@ -244,5 +263,13 @@ public class PlayState extends State{
 
     public static void setStone(Stone[] stone) {
         PlayState.stone = stone;
+    }
+
+    public List<Sord> getSords() {
+        return sords;
+    }
+
+    public void setSords(List<Sord> sords) {
+        this.sords = sords;
     }
 }

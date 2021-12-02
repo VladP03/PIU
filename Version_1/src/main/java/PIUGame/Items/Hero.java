@@ -1,5 +1,6 @@
 package PIUGame.Items;
 
+import java.util.List;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -37,6 +38,13 @@ public class Hero extends Character
     private float target_to_follow_y;
     private boolean  is_arrive_at_gate = false;
     private boolean in_finish_zone = false;
+
+    private ItemDirection heroDirection = ItemDirection.NONE;
+
+    // deoarece update-urile la taste sunt foarte rapide, o singura apasare va fi considerata ca mai multe apasari;
+    // se folosesc pentru tasta space, pentru a nu lansa mai multe sulite la o singura apasare
+    private boolean key_already_pressed = false;
+    private int number_key_pressed = 0;
 
 
     private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
@@ -123,7 +131,15 @@ public class Hero extends Character
         ///Implicit eroul nu trebuie sa se deplaseze daca nu este apasata o tasta
         xMove = 0;
         yMove = 0;
-        ///Verificare apasare tasta "sus"
+
+        if(key_already_pressed == true && number_key_pressed < 100){
+            number_key_pressed++;
+        }
+        else
+        {
+            number_key_pressed = 0;
+            key_already_pressed = false;
+        }
 
         if(in_finish_zone == true && stonesAreCollected()) {             // player-ul se afla in zona de trecere catre urmatorul nivel
             // se verifica daca player-ul a ajuns in zona de trecere catre urmatorul nivel si astfel tranzitia este terminata
@@ -146,25 +162,38 @@ public class Hero extends Character
             }
         }
         else{                               // player-ul se deplaseaza normal
+            ///Verificare apasare tasta "sus"
             if(refLink.GetKeyManager().up)
             {
                 yMove = -speed;
+                heroDirection = ItemDirection.UP;
             }
             ///Verificare apasare tasta "jos"
             if(refLink.GetKeyManager().down)
             {
                 yMove = speed;
+                heroDirection = ItemDirection.DOWN;
             }
             ///Verificare apasare tasta "left"
             if(refLink.GetKeyManager().left)
             {
                 xMove = -speed;
+                heroDirection = ItemDirection.LEFT;
             }
             ///Verificare apasare tasta "dreapta"
             if(refLink.GetKeyManager().right)
             {
                 xMove = speed;
+                heroDirection = ItemDirection.RIGHT;
             }
+            ///Verificare apasare tasta "space" pentru tragere
+            if(refLink.GetKeyManager().space && key_already_pressed == false)
+            {
+                System.out.println("space apasat");
+                key_already_pressed = true;
+                createSord(heroDirection);
+            }
+
         }
 
         //System.out.println("x= "+ x + "    y= " + y);
@@ -218,7 +247,7 @@ public class Hero extends Character
 
         //g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
 
-        System.out.println("player_x: " + x + " ---  player_y: " + y);
+        //System.out.println("player_x: " + x + " ---  player_y: " + y);
 
         g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
     }
@@ -277,6 +306,21 @@ public class Hero extends Character
         }
         nr_stone =0;
     }
+
+
+    public void createSord(ItemDirection heroDirection){
+        // creez un obiect de tip sabie
+        Sord sord = new Sord(refLink, x + 20, y + 20, heroDirection);
+
+        // adaug obiectul in lista de sabii pentru a putea fi actualizat atat timp cat exista
+        List<Sord> sords = refLink.GetGame().getPlayState().getSords();
+        sords.add(sord);
+        refLink.GetGame().getPlayState().setSords(sords);
+
+        System.out.println("sord setted");
+
+    }
+
 
     public int getNr_stone(){
         return nr_stone;

@@ -5,12 +5,13 @@ import PIUGame.Input.ClickListener;
 import PIUGame.Items.Monster;
 import PIUGame.RefLinks;
 
+import java.util.List;
 import java.awt.*;
 
 public class SettingState extends State{
 
     private UIManager settingManager;
-    public Monster []settingMonster;
+    public List<Monster> settingMonster;
 
     private static String difficultyLevel = "Easy";
 

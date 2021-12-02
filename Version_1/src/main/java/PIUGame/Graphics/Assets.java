@@ -32,6 +32,14 @@ public class Assets {
     public static BufferedImage menu_button_image;
     public static BufferedImage heart_life_image;
 
+    // Sord
+    public static BufferedImage sord_up_image;
+    public static BufferedImage sord_down_image;
+    public static BufferedImage sord_right_image;
+    public static BufferedImage sord_left_image;
+
+
+
     // Buttons
     public static BufferedImage start_button_image;
     public static BufferedImage continue_button_image;
@@ -90,6 +98,13 @@ public class Assets {
         SpriteSheet water_type_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/water.png"));
         SpriteSheet menu_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/menu-button.png"));
 
+        // Sord
+        SpriteSheet sord_up_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/sord_up.png"));
+        SpriteSheet sord_down_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/sord_down.png"));
+        SpriteSheet sord_right_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/sord_right.png"));
+        SpriteSheet sord_left_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/sord_left.png"));
+
+
         SpriteSheet map_level_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Maps/map2.png"));
 
         // Buttons
@@ -139,6 +154,13 @@ public class Assets {
         finish_zone_level_1_image = finish_zone_level_1_SpriteSheet.crop_precise(0,0, 124, 162);
         menu_button_image = menu_button_SpriteSheet.crop_precise(0,0, 460, 160);
         heart_life_image = heart_life_SpriteSheet.crop_precise(0,0, 635, 355);
+
+        // Sord
+        sord_up_image = sord_up_SpriteSheet.crop_precise(0,0, 67, 300);
+        sord_down_image = sord_down_SpriteSheet.crop_precise(0,0, 67, 300);
+        sord_right_image = sord_right_SpriteSheet.crop_precise(0,0, 300, 60);
+        sord_left_image = sord_left_SpriteSheet.crop_precise(0,0, 300, 60);
+
 
         // Buttons
         start_button_image = start_button_SpriteSheet.crop_precise(0,0, 250, 100);
