@@ -38,6 +38,8 @@ public class Assets {
     public static BufferedImage sord_right_image;
     public static BufferedImage sord_left_image;
 
+    // Explosion
+    public static BufferedImage[] explosion_effect_image;
 
 
     // Buttons
@@ -104,8 +106,11 @@ public class Assets {
         SpriteSheet sord_right_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/sord_right.png"));
         SpriteSheet sord_left_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/sord_left.png"));
 
+        // Explosion effect
+        SpriteSheet explosion_effect_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/explosion.png"));
 
         SpriteSheet map_level_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Maps/map2.png"));
+
 
         // Buttons
         SpriteSheet start_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/start_button.png"));
@@ -162,6 +167,8 @@ public class Assets {
         sord_left_image = sord_left_SpriteSheet.crop_precise(0,0, 300, 60);
 
 
+
+
         // Buttons
         start_button_image = start_button_SpriteSheet.crop_precise(0,0, 250, 100);
 
@@ -183,6 +190,7 @@ public class Assets {
 //        initResourcesSpriteSheet(resources_SpriteSheet);
         initHeroSpriteSheet(hero_SpriteSheet);
         initMonsterSpriteSheet(monster_SpriteSheet);
+        initExplosionEffectSpriteSheet(explosion_effect_SpriteSheet);
     }
 
     private static void initResourcesSpriteSheet(SpriteSheet resourcesSpriteSheet) {
@@ -245,4 +253,44 @@ public class Assets {
         monster_right[1] = monsterSpriteSheet.crop_monster(1, 1);
         monster_right[2] = monsterSpriteSheet.crop_monster(2, 1);
     }
+
+
+    private static void initExplosionEffectSpriteSheet(SpriteSheet explosion_effect_SpriteSheet) {
+        explosion_effect_image = new BufferedImage[28];
+
+        explosion_effect_image[0] = explosion_effect_SpriteSheet.crop_explosion(0, 0);
+        explosion_effect_image[1] = explosion_effect_SpriteSheet.crop_explosion(1, 0);
+        explosion_effect_image[2] = explosion_effect_SpriteSheet.crop_explosion(2, 0);
+        explosion_effect_image[3] = explosion_effect_SpriteSheet.crop_explosion(3, 0);
+        explosion_effect_image[4] = explosion_effect_SpriteSheet.crop_explosion(4, 0);
+        explosion_effect_image[5] = explosion_effect_SpriteSheet.crop_explosion(5, 0);
+        explosion_effect_image[6] = explosion_effect_SpriteSheet.crop_explosion(6, 0);
+        explosion_effect_image[7] = explosion_effect_SpriteSheet.crop_explosion(7, 0);
+        explosion_effect_image[8] = explosion_effect_SpriteSheet.crop_explosion(8, 0);
+        explosion_effect_image[9] = explosion_effect_SpriteSheet.crop_explosion(9, 0);
+        explosion_effect_image[10] = explosion_effect_SpriteSheet.crop_explosion(10, 0);
+        explosion_effect_image[11] = explosion_effect_SpriteSheet.crop_explosion(11, 0);
+        explosion_effect_image[12] = explosion_effect_SpriteSheet.crop_explosion(12, 0);
+        explosion_effect_image[13] = explosion_effect_SpriteSheet.crop_explosion(13, 0);
+        explosion_effect_image[14] = explosion_effect_SpriteSheet.crop_explosion(14, 0);
+        explosion_effect_image[15] = explosion_effect_SpriteSheet.crop_explosion(15, 0);
+        explosion_effect_image[16] = explosion_effect_SpriteSheet.crop_explosion(16, 0);
+        explosion_effect_image[17] = explosion_effect_SpriteSheet.crop_explosion(17, 0);
+        explosion_effect_image[18] = explosion_effect_SpriteSheet.crop_explosion(18, 0);
+        explosion_effect_image[19] = explosion_effect_SpriteSheet.crop_explosion(19, 0);
+        explosion_effect_image[20] = explosion_effect_SpriteSheet.crop_explosion(20, 0);
+        explosion_effect_image[21] = explosion_effect_SpriteSheet.crop_explosion(21, 0);
+        explosion_effect_image[22] = explosion_effect_SpriteSheet.crop_explosion(22, 0);
+        explosion_effect_image[23] = explosion_effect_SpriteSheet.crop_explosion(23, 0);
+        explosion_effect_image[24] = explosion_effect_SpriteSheet.crop_explosion(24, 0);
+        explosion_effect_image[25] = explosion_effect_SpriteSheet.crop_explosion(25, 0);
+        explosion_effect_image[26] = explosion_effect_SpriteSheet.crop_explosion(26, 0);
+        explosion_effect_image[27] = explosion_effect_SpriteSheet.crop_explosion(27, 0);
+
+
+
+
+    }
+
+
 }

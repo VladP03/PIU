@@ -48,4 +48,9 @@ public class SpriteSheet {
     public BufferedImage crop_monster(int x, int y){
         return spriteSheet.getSubimage(x * monsterWidth, y * monsterHeight, monsterWidth, monsterHeight);
     }
+
+    public BufferedImage crop_explosion(int x, int y){
+        return spriteSheet.getSubimage(x * 400, y * 300, 400, 300);
+    }
+
 }

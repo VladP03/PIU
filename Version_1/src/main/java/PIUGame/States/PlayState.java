@@ -30,6 +30,7 @@ public class PlayState extends State{
     public static String difficulty_level = "Easy";
     public static ReinitializeObjects reinitializeObjects;
     public List<Sord> sords = new ArrayList<Sord>();
+    public List<Explosion> explosions = new ArrayList<Explosion>();
 
     public static int minutes = 0;
     public static int seconds = 0;
@@ -95,12 +96,22 @@ public class PlayState extends State{
             hero.Update();
 
             if(!sords.isEmpty()){
-                for(Sord s: sords){
-                    s.Update();
+                for(int i=0; i<sords.size(); i++){
+                    sords.get(i).Update();
                     if(sords.isEmpty()){
                         break;
                     }
-                    System.out.println("update_sord");
+                    //System.out.println("update_sord");
+                }
+            }
+
+            if(!explosions.isEmpty()){
+                for(Explosion e: explosions){
+                    e.Update();
+                    if(explosions.isEmpty()){
+                        break;
+                    }
+                    //System.out.println("update_sord");
                 }
             }
 
@@ -108,8 +119,10 @@ public class PlayState extends State{
                 s.Update();
             }
 
-            for (Monster t : monster) {
-                //t.Update();
+            if(!monster.isEmpty()) {
+                for (Monster t : monster) {
+                    //t.Update();
+                }
             }
 
             for (Monster m : monster) {
@@ -185,6 +198,16 @@ public class PlayState extends State{
             if(!sords.isEmpty()){
                 for(Sord s: sords){
                     s.Draw(g);
+                }
+            }
+
+
+            if(!explosions.isEmpty()){
+                for(Explosion e: explosions){
+                    e.Draw(g);
+                    if(!explosions.isEmpty()){
+                        break;
+                    }
                 }
             }
 
@@ -271,5 +294,13 @@ public class PlayState extends State{
 
     public void setSords(List<Sord> sords) {
         this.sords = sords;
+    }
+
+    public List<Explosion> getExplosions() {
+        return explosions;
+    }
+
+    public void setExplosions(List<Explosion> explosions) {
+        this.explosions = explosions;
     }
 }

@@ -154,6 +154,9 @@ public class Sord extends Character{
 
         previous_x = x;
         previous_y = y;
+
+        collisionWithAllMonsters();
+
     }
 
     public void distroySord(){
@@ -162,39 +165,46 @@ public class Sord extends Character{
         {
             if(sords.get(i) == this){
                 sords.remove(this);
+                createExplosionEffect();
             }
         }
         refLink.GetGame().getPlayState().setSords(sords);
     }
 
-    public boolean hasKilledMonster(){
-        //if(PlayState.GetHero().normalBounds.contains(x, y)){
-        if(collisionWithMonster()){
-            //System.out.println("                                                                    false");
-            //System.out.println("x= " + PlayState.GetHero().x + "     y= " + PlayState.GetHero().y + "      xM= "+ x + "    yM= " + y);
-            return true;
-        }
-        else{
-            //System.out.println("                                                                    true");
-            return false;
-        }
-    }
 
-    public boolean collisionWithMonster() {
-
+    public void collisionWithAllMonsters(){
         List<Monster> monsters = refLink.GetGame().getPlayState().GetMonster();
 
+        for(int i=0; i< monsters.size(); i++){
+            if(collisionWithOneMonster(monsters.get(i))){
+                monsters.remove(monsters.get(i));
+                distroySord();
+            }
+        }
+        refLink.GetGame().getPlayState().setMonster(monsters);
+    }
 
-        if ((x + bounds.x + bounds.width) >= (PlayState.GetHero().x + PlayState.GetHero().bounds.x) &&
-                (x + bounds.x) <= (PlayState.GetHero().x + PlayState.GetHero().bounds.x + PlayState.GetHero().bounds.width) &&
-                (y + bounds.y) <= (PlayState.GetHero().y + PlayState.GetHero().bounds.y + PlayState.GetHero().bounds.height) &&
-                (y + bounds.y + bounds.height) >= (PlayState.GetHero().y + PlayState.GetHero().bounds.y))
+
+    public boolean collisionWithOneMonster(Monster monster) {
+        if ((x + bounds.x + bounds.width) >= (monster.x + monster.bounds.x) &&
+                (x + bounds.x) <= (monster.x + monster.bounds.x + monster.bounds.width) &&
+                (y + bounds.y) <= (monster.y + monster.bounds.y + monster.bounds.height) &&
+                (y + bounds.y + bounds.height) >= (monster.y + monster.bounds.y))
         {
             return true;
         } else {
             return false;
         }
     }
+
+
+    public void createExplosionEffect(){
+        List<Explosion> explosions = refLink.GetGame().getPlayState().getExplosions();
+        Explosion explosion = new Explosion(refLink, x, y);
+        explosions.add(explosion);
+        refLink.GetGame().getPlayState().setExplosions(explosions);
+    }
+
 
     // brief Randeaza/deseneaza eroul in noua pozitie.
     // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
