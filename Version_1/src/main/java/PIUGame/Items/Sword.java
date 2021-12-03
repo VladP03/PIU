@@ -1,15 +1,13 @@
 package PIUGame.Items;
 
-import PIUGame.Graphics.Animation;
 import PIUGame.Graphics.Assets;
 import PIUGame.RefLinks;
-import PIUGame.States.PlayState;
 
 import java.util.List;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Sord extends Character{
+public class Sword extends Character{
 
     //Animation
     private BufferedImage animDown;     //mod_3
@@ -25,7 +23,7 @@ public class Sord extends Character{
     private float previous_y = 0;
 
 
-    private ItemDirection sordDirection = ItemDirection.NONE;
+    private ItemDirection swordDirection = ItemDirection.NONE;
 
 
     //private float speed_moster = 2.0f;
@@ -38,39 +36,9 @@ public class Sord extends Character{
     // param refLink Referinta catre obiectul shortcut (obiect ce retine o serie de referinte din program).
     // param x Pozitia initiala pe axa X a eroului.
     // param y Pozitia initiala pe axa Y a eroului//
-    public Sord(RefLinks refLink, float x, float y)
-    {
-        ///Apel al constructorului clasei de baza
-        super(refLink, x,y, 20, 20);
-
-        ///Seteaza imaginea de start a eroului
-        //image = Assets.heroLeft;
-
-        ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
-        normalBounds.x = 20;
-        normalBounds.y = 20;
-        normalBounds.width = 26;
-        normalBounds.height = 36;
-
-        ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea de atac
-        attackBounds.x = 10;
-        attackBounds.y = 10;
-        attackBounds.width = 38;
-        attackBounds.height = 38;
-
-
-        //Animation
-        animDown = Assets.sord_down_image;
-        animUp = Assets.sord_up_image;
-        animLeft = Assets.sord_left_image;
-        animRight = Assets.sord_right_image;
-        noAnim = Assets.sord_right_image;
-
-    }
-
 
     // constructor pentru caracterele ce se misca pe o traiectorie fixa
-    public Sord(RefLinks refLink, float x, float y, ItemDirection sordDirection)
+    public Sword(RefLinks refLink, float x, float y, ItemDirection sordDirection)
     {
         ///Apel al constructorului clasei de baza
         super(refLink, x,y, 30, 30);
@@ -79,8 +47,8 @@ public class Sord extends Character{
         //image = Assets.heroLeft;
 
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
-        normalBounds.x = 20;
-        normalBounds.y = 20;
+        normalBounds.x = 0;
+        normalBounds.y = 0;
         normalBounds.width = 20;
         normalBounds.height = 20;
 
@@ -100,7 +68,7 @@ public class Sord extends Character{
 
 
         // seteaza atribute pentru traiectoria fixa
-        this.sordDirection = sordDirection;
+        this.swordDirection = sordDirection;
     }
 
     // brief Actualizeaza pozitia si imaginea eroului.
@@ -124,12 +92,12 @@ public class Sord extends Character{
         yMove = 0;
 
 
-        if(sordDirection == ItemDirection.NONE){        // player-ul sta pe loc si trage, am decis ca sageata sa se duca la dreapta
+        if(swordDirection == ItemDirection.NONE){        // player-ul sta pe loc si trage, am decis ca sageata sa se duca la dreapta
            xMove = sord_speed;
         }
         else
         {
-            switch(sordDirection){
+            switch(swordDirection){
                 case DOWN:
                     yMove = sord_speed;
                     break;
@@ -152,23 +120,26 @@ public class Sord extends Character{
             distroySord();
         }
 
+        // seteaza coordonatele pentru a le verifica la urmatorul update
         previous_x = x;
         previous_y = y;
 
+        // verifica daca sageata a intalnit vreun monstru in cale
         collisionWithAllMonsters();
 
     }
 
+
     public void distroySord(){
-        List<Sord> sords = refLink.GetGame().getPlayState().getSords();
-        for(int i=0; i<sords.size(); i++)
+        List<Sword> swords = refLink.GetGame().getPlayState().getSwords();
+        for(int i = 0; i< swords.size(); i++)
         {
-            if(sords.get(i) == this){
-                sords.remove(this);
+            if(swords.get(i) == this){
+                swords.remove(this);
                 createExplosionEffect();
             }
         }
-        refLink.GetGame().getPlayState().setSords(sords);
+        refLink.GetGame().getPlayState().setSwords(swords);
     }
 
 
@@ -206,8 +177,8 @@ public class Sord extends Character{
     }
 
 
-    // brief Randeaza/deseneaza eroul in noua pozitie.
-    // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
+    // Randeaza/deseneaza eroul in noua pozitie.
+    // g Contextul grafic in care trebuie efectuata desenarea eroului.
     @Override
     public void Draw(Graphics g)
     {
@@ -217,14 +188,12 @@ public class Sord extends Character{
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
         g.setColor(Color.red);
 //        g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
-        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
-
-
+//        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
 //        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
 
 
         // se decide directia in care se va deplasa sageata in functie de directia de mers a jucatorului
-        switch(sordDirection){
+        switch(swordDirection){
             case DOWN:
                 g.drawImage(animDown, (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), 15, 40, null);
                 break;
@@ -240,15 +209,14 @@ public class Sord extends Character{
             default:
                 break;
         }
-
     }
 
-    public ItemDirection getSordDirection() {
-        return sordDirection;
+    public ItemDirection getSwordDirection() {
+        return swordDirection;
     }
 
-    public void setSordDirection(ItemDirection sordDirection) {
-        this.sordDirection = sordDirection;
+    public void setSwordDirection(ItemDirection sordDirection) {
+        this.swordDirection = sordDirection;
     }
 
 }

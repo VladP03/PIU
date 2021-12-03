@@ -1,13 +1,13 @@
 package PIUGame.States;
 import PIUGame.GameObjects.UIImageButton;
 import PIUGame.GameObjects.UIManager;
-import PIUGame.GameObjects.UITextButton;
 import PIUGame.Graphics.Assets;
 import PIUGame.Input.ClickListener;
 import PIUGame.Maps.Map;
 import PIUGame.Maps.MapElements;
 import PIUGame.RefLinks;
 import PIUGame.Items.*;
+import PIUGame.States.Difficulty.LevelDifficulty;
 import PIUGame.States.PlayStateUpdates.ReinitializeObjects;
 
 import java.util.List;
@@ -17,32 +17,30 @@ import java.util.ArrayList;
 public class PlayState extends State{
 
 
-    private UIManager resumeManager;
-    private RefLinks refLink;
+    private UIManager resumeManager;                                        // Referinta catre obiectul care gestioneaza meniul de Resume(cand se apasa pe butonul MENU)
+    private RefLinks refLink;                                               // Referinta catre clasa ce are acces la celelalte obiecte
 
-    private static Hero hero;   // < Referinta catre obiectul animat erou (controlat de utilizator).
-    private Map map;        // < Referinta catre harta curenta.
+    private static Hero hero;                                               // < Referinta catre obiectul animat erou (controlat de utilizator).
+    private Map map;                                                        // < Referinta catre harta curenta.
 
-    private int index_level = 1;
-    public static List<Monster> monster;
-    public static Stone[] stone;
-    public static MapElements map_elements;
-    public static String difficulty_level = "Easy";
-    public static ReinitializeObjects reinitializeObjects;
-    public List<Sord> sords = new ArrayList<Sord>();
-    public List<Explosion> explosions = new ArrayList<Explosion>();
+    private int index_level = 1;                                            // Indexul nivelului
+    public static List<Monster> monster;                                    // Lista monstrilor
+    public static Stone[] stone;                                            // Lista pietrelor pe care trebuie sa le colecteze eroul
+    public static MapElements map_elements;                                 // Elementele de pe harta care sunt desenate peste tiles pe baza coordonatelor date
+    public static LevelDifficulty levelDifficulty = LevelDifficulty.EASY;   // Nivelul de dificultate al jocului
+    public static ReinitializeObjects reinitializeObjects;                  // La fiecare nivel o serie de obiecte trebuie reinitializate
+    public List<Sword> swords = new ArrayList<Sword>();                        // Lista sabiilor pe care eroul le creeaza cand ataca, apasand tasta space
+    public List<Explosion> explosions = new ArrayList<Explosion>();         // Lista animatiilor de explozii cand sabia intalneste un obstacol
 
+    // Retine timpul de cand s-a inceput jocul
     public static int minutes = 0;
     public static int seconds = 0;
-    public static int timer_count = 0;
+    public static int timer_count = 0;                                  // Tine evidenta update-urilor pentru a numara o secunda(Update-urile se realizeza de 60/s)
 
 
 
-    //monster.SetSpeed(32.3);
-
-
-        // brief Constructorul de initializare al clasei
-        // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
+    // brief Constructorul de initializare al clasei
+    // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
     public PlayState(RefLinks refLink)
     {
         ///Apel al constructorului clasei de baza
@@ -77,12 +75,10 @@ public class PlayState extends State{
         refLink.GetMouseManager().setUIManager(resumeManager);
 
         resumeManager.addObject(new UIImageButton( 1100, 28, 130, 44, Assets.menu_button_image, new ClickListener() {
-        //resumeManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, Assets.buttonStart_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
                 State.SetState(new ResumeState(refLink));
-                //State.SetState(new ChooseNameState(refLink));
             }
         }));
     }
@@ -95,13 +91,12 @@ public class PlayState extends State{
             map.Update();
             hero.Update();
 
-            if(!sords.isEmpty()){
-                for(int i=0; i<sords.size(); i++){
-                    sords.get(i).Update();
-                    if(sords.isEmpty()){
+            if(!swords.isEmpty()){
+                for(int i = 0; i< swords.size(); i++){
+                    swords.get(i).Update();
+                    if(swords.isEmpty()){
                         break;
                     }
-                    //System.out.println("update_sord");
                 }
             }
 
@@ -111,7 +106,6 @@ public class PlayState extends State{
                     if(explosions.isEmpty()){
                         break;
                     }
-                    //System.out.println("update_sord");
                 }
             }
 
@@ -121,7 +115,10 @@ public class PlayState extends State{
 
             if(!monster.isEmpty()) {
                 for (Monster t : monster) {
-                    //t.Update();
+                    t.Update();
+                    if(monster.isEmpty()){
+                        break;
+                    }
                 }
             }
 
@@ -151,9 +148,7 @@ public class PlayState extends State{
                 }else{
                     seconds++;
                 }
-
             }
-
         }
 
         if(hero.levelFinished()){
@@ -176,12 +171,12 @@ public class PlayState extends State{
 
             }
         }
-
         //resumeManager.Update();
     }
 
-        // brief Deseneaza (randeaza) pe ecran starea curenta a jocului.
-        // param g Contextul grafic in care trebuie sa deseneze starea jocului pe ecran.
+
+    // brief Deseneaza (randeaza) pe ecran starea curenta a jocului.
+    // param g Contextul grafic in care trebuie sa deseneze starea jocului pe ecran.
     @Override
     public void Draw(Graphics g)
     {
@@ -195,8 +190,8 @@ public class PlayState extends State{
             map_elements.Draw(g, index_level);
             hero.Draw(g);
 
-            if(!sords.isEmpty()){
-                for(Sord s: sords){
+            if(!swords.isEmpty()){
+                for(Sword s: swords){
                     s.Draw(g);
                 }
             }
@@ -234,6 +229,7 @@ public class PlayState extends State{
                 t.Draw(g);
             }
 
+            // afiseaza pe centru mesajul "PAUSE" cand jocul este pus pe pauza(a fost apasata tasta "P")
             Font font_pause = new Font("arial", 1, 50);
             g.setFont(font_pause);
             g.setColor(Color.WHITE);
@@ -253,7 +249,6 @@ public class PlayState extends State{
         // deseneaza butonul de resume
         resumeManager.Draw(g);
 
-
     }
 
     public static List<Monster> GetMonster(){
@@ -272,12 +267,12 @@ public class PlayState extends State{
         return index_level;
     }
 
-    public void setDifficulty_level(String difficulty_level){
-        this.difficulty_level = difficulty_level;
+    public static LevelDifficulty getLevelDifficulty() {
+        return levelDifficulty;
     }
 
-    public String getDifficulty_level(){
-        return difficulty_level;
+    public static void setLevelDifficulty(LevelDifficulty levelDifficulty) {
+        PlayState.levelDifficulty = levelDifficulty;
     }
 
     public static Stone[] getStone() {
@@ -288,12 +283,12 @@ public class PlayState extends State{
         PlayState.stone = stone;
     }
 
-    public List<Sord> getSords() {
-        return sords;
+    public List<Sword> getSwords() {
+        return swords;
     }
 
-    public void setSords(List<Sord> sords) {
-        this.sords = sords;
+    public void setSwords(List<Sword> swords) {
+        this.swords = swords;
     }
 
     public List<Explosion> getExplosions() {

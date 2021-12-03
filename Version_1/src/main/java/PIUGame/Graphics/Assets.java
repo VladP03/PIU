@@ -50,8 +50,14 @@ public class Assets {
     public static BufferedImage about_button_image;
     public static BufferedImage main_menu_button_image;
     public static BufferedImage exit_button_image;
+    public static BufferedImage new_game_button_image;
+    public static BufferedImage back_to_menu_button_image;
 
 
+    // Backgrounds image
+    public static BufferedImage menu_background_image;
+    public static BufferedImage resume_background_image;
+    public static BufferedImage setting_background_image;
 
 
 
@@ -73,7 +79,8 @@ public class Assets {
     public static BufferedImage life_image;
     public static BufferedImage stone_image;
     public static BufferedImage arrow_image;
-    public static BufferedImage background_image;
+
+
 
     /*
         \brief Functia initializaza referintele catre elementele grafice utilizate.
@@ -117,9 +124,6 @@ public class Assets {
 
 
 
-
-        //SpriteSheet bush_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Bush.jpg"));
-
         SpriteSheet wall_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Wall1.png"));
         SpriteSheet wall_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Wall2.png"));
         SpriteSheet water_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Water.png"));
@@ -127,20 +131,28 @@ public class Assets {
         SpriteSheet diamond_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Diamond.png"));
 
         // SpriteSheet pentru indicarea nivelului urmator
-        SpriteSheet arrow_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Arrow.png"));
+        SpriteSheet arrow_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Arrow.png"));        // TODO -- de sters plus tot ce contine --
         SpriteSheet finish_zone_level_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/finish_zone_level_1.png"));
 
         // SpriteSheet pentru viata
         SpriteSheet heart_life_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/heart_life.png"));
-        SpriteSheet life_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Life.png"));
+        SpriteSheet life_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Life.png"));  // TODO -- de sters plus tot ce contine --
 
 
 
         // SpriteSheet background
-        SpriteSheet background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/BackgroundImage.jpg"));
-        background_image = background_sheet.crop_precise(0, 0, 1350, 770);
+        SpriteSheet menu_background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/menu_background.jpg"));
+        SpriteSheet resume_background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/resume_background.jpg"));
+        SpriteSheet setting_background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/setting_background.png"));
 
 
+        // ------------------------------------------------------------------------------------------------------------------------
+
+
+        // Background image
+        menu_background_image = menu_background_sheet.crop_precise(0, 0, 1920, 1080);
+        resume_background_image = resume_background_sheet.crop_precise(0, 0, 1920, 1080);
+        setting_background_image = setting_background_sheet.crop_precise(0, 0, 4000, 2250);
 
 
         /// Se obtin subimaginile corespunzatoare elementelor necesare.
@@ -286,8 +298,6 @@ public class Assets {
         explosion_effect_image[25] = explosion_effect_SpriteSheet.crop_explosion(25, 0);
         explosion_effect_image[26] = explosion_effect_SpriteSheet.crop_explosion(26, 0);
         explosion_effect_image[27] = explosion_effect_SpriteSheet.crop_explosion(27, 0);
-
-
 
 
     }

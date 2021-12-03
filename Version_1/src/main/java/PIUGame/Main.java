@@ -1,8 +1,6 @@
 package PIUGame;
 
-import PIUGame.Database.Table.Record;
 import PIUGame.Database.Table.RecordDAO;
-import PIUGame.States.Difficulty.Difficulty;
 
 public class Main {
     public static void main(String [] args){

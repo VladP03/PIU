@@ -4,6 +4,7 @@ import PIUGame.Database.Table.Record;
 import PIUGame.Database.Table.RecordDAO;
 import PIUGame.GameObjects.UIManager;
 import PIUGame.GameObjects.UITextButton;
+import PIUGame.Graphics.Assets;
 import PIUGame.Input.ClickListener;
 import PIUGame.RefLinks;
 
@@ -43,6 +44,9 @@ public class ScoreState extends State {
 
     @Override
     public void Draw(Graphics g) {
+        // seteaza imagine de fundal
+        g.drawImage(Assets.setting_background_image, 0, 0, refLink.GetWidth(), refLink.GetHeight(), null);
+
         Font fontTitle = new Font("arial", 1, 50);
         g.setFont(fontTitle);
         g.setColor(Color.white);
@@ -65,7 +69,7 @@ public class ScoreState extends State {
         int k = 0;
         for (Record rec : recordList) {
             if (k<=9) {
-                g.drawString(String.valueOf(rec.getDifficulty()), refLink.GetGame().GetWidth() / 2 - 600, 130 + i);
+                g.drawString(String.valueOf(rec.getLevelDifficulty()), refLink.GetGame().GetWidth() / 2 - 600, 130 + i);
                 g.drawString(String.valueOf(rec.getName()), refLink.GetGame().GetWidth() / 2 - 400, 130 + i);
                 g.drawString(rec.getTime().toString(), refLink.GetGame().GetWidth() / 2, 130 + i);
                 i += 40;
@@ -80,9 +84,9 @@ public class ScoreState extends State {
 
     private void sort() {
         recordList.sort((first, second) -> {
-            if (first.getDifficulty().compareTo(second.getDifficulty()) == 0) {
+            if (first.getLevelDifficulty().compareTo(second.getLevelDifficulty()) == 0) {
                 return first.getTime().compareTo(second.getTime());
-            } else if (first.getDifficulty().compareTo(second.getDifficulty()) > 0) {
+            } else if (first.getLevelDifficulty().compareTo(second.getLevelDifficulty()) > 0) {
                 return -1;
             } else {
                 return 1;

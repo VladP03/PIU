@@ -9,16 +9,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 
-
-
 public class Monster extends Character{
 
     //Animation
-    private Animation animDown;     //mod_3
-    private Animation animUp;     //mod_3
-    private Animation animLeft;     //mod_3
-    private Animation animRight;     //mod_3
-    private Animation noAnim;     //mod_3
+    private Animation animDown;
+    private Animation animUp;
+    private Animation animLeft;
+    private Animation animRight;
+    private Animation noAnim;
 
     private int nr_of_cycles = 0;       // nr of cycles to check if the player has blocked somewere
     private float previous_x = 0;       // previous position
@@ -29,27 +27,24 @@ public class Monster extends Character{
 
     private int blocked = 0;
 
-    private ItemDirection itemDirection = ItemDirection.NONE;
+    private ItemDirection monsterDirection = ItemDirection.NONE;
     private int distance_to_walk = 0;
     private int distance_contor = 0;
 
     //private float speed_moster = 2.0f;
 
-
     private BufferedImage image;    // < Referinta catre imaginea curenta a eroului.*/
 
-        // brief Constructorul de initializare al clasei Hero.
 
-        // param refLink Referinta catre obiectul shortcut (obiect ce retine o serie de referinte din program).
-        // param x Pozitia initiala pe axa X a eroului.
-        // param y Pozitia initiala pe axa Y a eroului//
+    // brief Constructorul de initializare al clasei Hero.
+    // param refLink Referinta catre obiectul shortcut (obiect ce retine o serie de referinte din program).
+    // param x Pozitia initiala pe axa X a eroului.
+    // param y Pozitia initiala pe axa Y a eroului//
     public Monster(RefLinks refLink, float x, float y)
     {
         ///Apel al constructorului clasei de baza
         super(refLink, x,y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
 
-        ///Seteaza imaginea de start a eroului
-        //image = Assets.heroLeft;
 
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
         normalBounds.x = 20;
@@ -65,10 +60,10 @@ public class Monster extends Character{
 
 
         //Animation
-        animDown = new Animation(100, Assets.monster_down);      //mod_3
-        animUp = new Animation(100, Assets.monster_up);      //mod_3
-        animLeft = new Animation(100, Assets.monster_left);      //mod_3
-        animRight = new Animation(100, Assets.monster_right);      //mod_3
+        animDown = new Animation(100, Assets.monster_down);
+        animUp = new Animation(100, Assets.monster_up);
+        animLeft = new Animation(100, Assets.monster_left);
+        animRight = new Animation(100, Assets.monster_right);
         noAnim = new Animation(0, Assets.monster_noAnimation);
 
         // Initial state
@@ -83,9 +78,6 @@ public class Monster extends Character{
         ///Apel al constructorului clasei de baza
         super(refLink, x,y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
 
-        ///Seteaza imaginea de start a eroului
-        //image = Assets.heroLeft;
-
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
         normalBounds.x = 20;
         normalBounds.y = 20;
@@ -100,23 +92,23 @@ public class Monster extends Character{
 
 
         //Animation
-        animDown = new Animation(100, Assets.monster_down);      //mod_3
-        animUp = new Animation(100, Assets.monster_up);      //mod_3
-        animLeft = new Animation(100, Assets.monster_left);      //mod_3
-        animRight = new Animation(100, Assets.monster_right);      //mod_3
+        animDown = new Animation(100, Assets.monster_down);
+        animUp = new Animation(100, Assets.monster_up);
+        animLeft = new Animation(100, Assets.monster_left);
+        animRight = new Animation(100, Assets.monster_right);
         noAnim = new Animation(0, Assets.monster_noAnimation);
 
         // Initial state
         previous_x = x;
         previous_y = y;
 
-        // seteaza atribute pentru traiectoria fixa
-        this.itemDirection = itemDirection;
+        // seteaza atribute pentru traiectoria fixa ( acei monstrii care se misca pe o linie)
+        this.monsterDirection = itemDirection;
         this.distance_to_walk = distance_to_walk;
     }
 
-        // brief Actualizeaza pozitia si imaginea eroului.
 
+    //  Actualizeaza pozitia si imaginea eroului.
     @Override
     public void Update()
     {
@@ -127,28 +119,10 @@ public class Monster extends Character{
         animRight.Update();
         noAnim.Update();
 
-
         ///Verifica daca a fost apasata o tasta
         GetInput();
         ///Actualizeaza pozitia
         Move();
-        ///Actualizeaza imaginea
-
-        //System.out.println("                                               new_m_x: " + x + " --- new_m_y: " + y +  "\n");
-
-
-
-
-//        refLink.getGameCamera().centerOnEntity(this);       //mod_2
-//
-//        if(refLink.GetKeyManager().left == true)
-//        {
-//            image = Assets.heroLeft;
-//        }
-//        if(refLink.GetKeyManager().right == true) {
-//            image = Assets.heroRight;
-//        }
-
 
 
     }
@@ -205,7 +179,7 @@ public class Monster extends Character{
         previous_x = x;
         previous_y = y;
 
-        if(itemDirection == ItemDirection.NONE){
+        if(monsterDirection == ItemDirection.NONE){
             //if(refLink.GetGame().playState.GetHero())
             if(x > target_to_follow_x){
                 xMove = -speed;
@@ -224,14 +198,14 @@ public class Monster extends Character{
         }
         else
         {
-            switch(itemDirection){
+            switch(monsterDirection){
                 case DOWN:
                     if( distance_contor < distance_to_walk){
                         yMove = speed;
                         distance_contor++;
                     }
                     else{
-                        itemDirection = ItemDirection.UP;
+                        monsterDirection = ItemDirection.UP;
                         distance_contor = 0;
                     }
                     break;
@@ -241,7 +215,7 @@ public class Monster extends Character{
                         distance_contor++;
                     }
                     else{
-                        itemDirection = ItemDirection.DOWN;
+                        monsterDirection = ItemDirection.DOWN;
                         distance_contor = 0;
                     }
                     break;
@@ -251,7 +225,7 @@ public class Monster extends Character{
                         distance_contor++;
                     }
                     else{
-                        itemDirection = ItemDirection.RIGHT;
+                        monsterDirection = ItemDirection.RIGHT;
                         distance_contor = 0;
                     }
                     break;
@@ -261,7 +235,7 @@ public class Monster extends Character{
                         distance_contor++;
                     }
                     else{
-                        itemDirection = ItemDirection.LEFT;
+                        monsterDirection = ItemDirection.LEFT;
                         distance_contor = 0;
                     }
                     break;
@@ -370,12 +344,12 @@ public class Monster extends Character{
     }
 
 
-    public ItemDirection getItemDirection() {
-        return itemDirection;
+    public ItemDirection getMonsterDirection() {
+        return monsterDirection;
     }
 
-    public void setItemDirection(ItemDirection itemDirection) {
-        this.itemDirection = itemDirection;
+    public void setMonsterDirection(ItemDirection itemDirection) {
+        this.monsterDirection = itemDirection;
     }
 
     public int getDistance_to_walk() {

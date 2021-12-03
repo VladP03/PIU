@@ -78,7 +78,8 @@ public class MenuState extends State{
         //refLink.GetMouseManager().setUIManager(null);
     }
 
-        // brief Actualizeaza starea curenta a meniului.
+
+    // brief Actualizeaza starea curenta a meniului.
     @Override
     public void Update()
     {
@@ -94,31 +95,21 @@ public class MenuState extends State{
     @Override
     public void Draw(Graphics g)
     {
-        //g.setColor(Color.white);
-        //g.drawString("Menu", 100, 100);
+        // add a background image
+        g.drawImage(Assets.menu_background_image, 0, 0, refLink.GetWidth(), refLink.GetHeight(), null);
+
+        // afiseaza un mesaj intr-un chenar
+//        g.setColor(Color.GRAY);
+//        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 100, 20, 220, 60, 30, 30);
 
         Font font1 = new Font("arial", 1, 50);
-        Font font2 = new Font("arial", 1, 30);
+        g.setFont(font1);
+        g.setColor(Color.white);
+//        g.drawString("Menu", refLink.GetGame().GetWidth() / 2 - 70, 70);
+
 
         g.setFont(font1);
         g.setColor(Color.white);
-        g.drawString("Menu", refLink.GetGame().GetWidth() / 2 - 70, 70);
-
-        // add a background image
-        g.drawImage(Assets.background_image, 0, 0, 1350, 780, null);
-
-
-//        g.setFont(font2);
-//        g.drawRect(410, 150, 200, 64);
-//        g.drawString("Play", 470, 190);
-//
-//        g.drawRect(410, 250, 200, 64);
-//        g.drawString("Setting", 470, 290);
-//
-//        g.drawRect(410, 350, 200, 64);
-//        g.drawString("Quit", 470, 390);
-
-
         menuManager.Draw(g);
 
     }

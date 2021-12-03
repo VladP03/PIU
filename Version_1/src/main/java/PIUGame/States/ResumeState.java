@@ -77,7 +77,16 @@ public class ResumeState extends State{
     @Override
     public void Draw(Graphics g)
     {
-        Font font1 = new Font("arial", 1, 50);
+
+        // add a background image
+        g.drawImage(Assets.resume_background_image, 0, 0, refLink.GetWidth(), refLink.GetHeight(), null);
+
+
+        // afiseaza un mesaj intr-un chenar
+        g.setColor(Color.GRAY);
+        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 180, 20, 420, 75, 50, 50);
+
+        Font font1 = new Font("arial", 1, 40);
         g.setFont(font1);
         g.setColor(Color.white);
         g.drawString("Resume Game", refLink.GetGame().GetWidth() / 2 - 150, 70);

@@ -189,7 +189,6 @@ public class Hero extends Character
             ///Verificare apasare tasta "space" pentru tragere
             if(refLink.GetKeyManager().space && key_already_pressed == false)
             {
-                System.out.println("space apasat");
                 key_already_pressed = true;
                 createSord(heroDirection);
             }
@@ -310,15 +309,12 @@ public class Hero extends Character
 
     public void createSord(ItemDirection heroDirection){
         // creez un obiect de tip sabie
-        Sord sord = new Sord(refLink, x + 20, y + 20, heroDirection);
+        Sword sword = new Sword(refLink, x + 20, y + 20, heroDirection);
 
         // adaug obiectul in lista de sabii pentru a putea fi actualizat atat timp cat exista
-        List<Sord> sords = refLink.GetGame().getPlayState().getSords();
-        sords.add(sord);
-        refLink.GetGame().getPlayState().setSords(sords);
-
-        System.out.println("sord setted");
-
+        List<Sword> swords = refLink.GetGame().getPlayState().getSwords();
+        swords.add(sword);
+        refLink.GetGame().getPlayState().setSwords(swords);
     }
 
 

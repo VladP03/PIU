@@ -1,6 +1,6 @@
 package PIUGame.States.Difficulty;
 
-public enum Difficulty {
+public enum LevelDifficulty {
     EASY,
     MEDIUM,
     HARD
