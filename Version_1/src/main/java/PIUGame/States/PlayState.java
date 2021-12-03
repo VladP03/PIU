@@ -125,14 +125,23 @@ public class PlayState extends State{
             for (Monster m : monster) {
                 if (m.hasKilledPlayer()) {
                     System.out.println("mort");
+
+                    hero.createExplosionEffect();
+
                     hero.resetPosition();
                     hero.SetLife(hero.GetLife() - 1);
                     for (Monster t : monster) {
                         t.resetPosition();
                     }
-                    if (hero.GetLife() == 0) {
-//                        refLink.GetGame().getDatabaseConnection().update();
+                    if (hero.GetLife() == 0 ) {
+                        //hero.setIsAlive(false);
+
+                        //waitForExplosionEffect();
+//                        if(explosion_effect_finished == true){
+//                            State.SetState(new LoseState(refLink));
+//                        }
                         State.SetState(new LoseState(refLink));
+//                        refLink.GetGame().getDatabaseConnection().update();
                     }
                 }
             }

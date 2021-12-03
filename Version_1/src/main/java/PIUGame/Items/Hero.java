@@ -198,8 +198,9 @@ public class Hero extends Character
         //System.out.println("x= "+ x + "    y= " + y);
     }
 
-        // brief Randeaza/deseneaza eroul in noua pozitie.
-        // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
+
+    // brief Randeaza/deseneaza eroul in noua pozitie.
+    // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
     @Override
     public void Draw(Graphics g)
     {
@@ -315,6 +316,13 @@ public class Hero extends Character
         List<Sword> swords = refLink.GetGame().getPlayState().getSwords();
         swords.add(sword);
         refLink.GetGame().getPlayState().setSwords(swords);
+    }
+
+    public void createExplosionEffect(){
+        List<Explosion> explosions = refLink.GetGame().getPlayState().getExplosions();
+        Explosion explosion = new Explosion(refLink, x, y);
+        explosions.add(explosion);
+        refLink.GetGame().getPlayState().setExplosions(explosions);
     }
 
 

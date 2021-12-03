@@ -277,33 +277,21 @@ public class Monster extends Character{
 //    }
 
     public boolean hasKilledPlayer(){
-        //if(PlayState.GetHero().normalBounds.contains(x, y)){
         if(collisionWithPlayer()){
             //System.out.println("                                                                    false");
             //System.out.println("x= " + PlayState.GetHero().x + "     y= " + PlayState.GetHero().y + "      xM= "+ x + "    yM= " + y);
             return true;
         }
         else{
-            //System.out.println("                                                                    true");
             return false;
         }
     }
 
     public boolean collisionWithPlayer() {
-//        float temp_x = PlayState.GetHero().x  + PlayState.GetHero().bounds.x + PlayState.GetHero().bounds.width;
-//        float temp_m_x = x + bounds.x + bounds.width;
-//        System.out.println("temp_x: " + temp_x + "\n");
-//        System.out.println("temp_m_x: " + temp_m_x + "\n");
-//        System.out.println("sx = " + x + "  bounds_x: " + bounds.x + " --- p_x: " + PlayState.GetHero().x + " p_bounds_x: " + PlayState.GetHero().bounds.width + "\n");
-//        System.out.println("sy = " + y + "  bounds_y: " + bounds.y + " --- p_y: " + PlayState.GetHero().y + " p_bounds_y: " + PlayState.GetHero().bounds.height + "\n");
         if ((x + bounds.x + bounds.width) >= (PlayState.GetHero().x + PlayState.GetHero().bounds.x) &&
                 (x + bounds.x) <= (PlayState.GetHero().x + PlayState.GetHero().bounds.x + PlayState.GetHero().bounds.width) &&
                 (y + bounds.y) <= (PlayState.GetHero().y + PlayState.GetHero().bounds.y + PlayState.GetHero().bounds.height) &&
                 (y + bounds.y + bounds.height) >= (PlayState.GetHero().y + PlayState.GetHero().bounds.y))
-//        if(x + width >= PlayState.GetHero().x  &&
-//                x <= PlayState.GetHero().x + PlayState.GetHero().width &&
-//                y <= PlayState.GetHero().y + PlayState.GetHero().height &&
-//                y + height >= PlayState.GetHero().y)
         {
             return true;
         } else {

@@ -23,7 +23,7 @@ public class ResumeState extends State{
         refLink.GetMouseManager().setUIManager(resumeManager);
 
 
-        resumeManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, Assets.start_button_image, new ClickListener() {
+        resumeManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 300, 90, Assets.continue_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
@@ -33,15 +33,7 @@ public class ResumeState extends State{
         }));
 
 
-//        menuManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 200, 80, "Start", new ClickListener() {
-//            @Override
-//            public void onClick() {
-//                refLink.GetMouseManager().setUIManager(null);
-//                State.SetState(refLink.GetGame().playState);
-//            }
-//        }));
-
-        resumeManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 240, 200, 80, "Main Menu", new ClickListener() {
+        resumeManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 240, 300, 90, Assets.main_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
@@ -51,7 +43,7 @@ public class ResumeState extends State{
         }));
 
 
-        resumeManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 340, 200, 80, "Exit Game", new ClickListener() {
+        resumeManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 440, 300, 90, Assets.exit_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
@@ -83,16 +75,16 @@ public class ResumeState extends State{
 
 
         // afiseaza un mesaj intr-un chenar
-        g.setColor(Color.GRAY);
-        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 180, 20, 420, 75, 50, 50);
+//        g.setColor(Color.GRAY);
+//        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 180, 20, 420, 75, 50, 50);
+//
+//        Font font1 = new Font("arial", 1, 40);
+//        g.setFont(font1);
+//        g.setColor(Color.white);
+//        g.drawString("Resume Game", refLink.GetGame().GetWidth() / 2 - 150, 70);
 
-        Font font1 = new Font("arial", 1, 40);
-        g.setFont(font1);
-        g.setColor(Color.white);
-        g.drawString("Resume Game", refLink.GetGame().GetWidth() / 2 - 150, 70);
-
-        font1 = new Font("arial", 1, 50);
-        g.setFont(font1);
+        Font font2 = new Font("arial", 1, 40);
+        g.setFont(font2);
 
         resumeManager.Draw(g);
     }

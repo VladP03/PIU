@@ -52,12 +52,17 @@ public class Assets {
     public static BufferedImage exit_button_image;
     public static BufferedImage new_game_button_image;
     public static BufferedImage back_to_menu_button_image;
+    public static BufferedImage easy_button_image;
+    public static BufferedImage medium_button_image;
+    public static BufferedImage hard_button_image;
 
 
     // Backgrounds image
     public static BufferedImage menu_background_image;
     public static BufferedImage resume_background_image;
     public static BufferedImage setting_background_image;
+    public static BufferedImage lose_background_image;
+    public static BufferedImage win_background_image;
 
 
 
@@ -121,12 +126,23 @@ public class Assets {
 
         // Buttons
         SpriteSheet start_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/start_button.png"));
+        SpriteSheet settings_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/settings_button.png"));
+        SpriteSheet about_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/about_button.png"));
+        SpriteSheet score_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/score_button.png"));
+        SpriteSheet exit_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/exit_button.png"));
+        SpriteSheet new_game_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/new_game_button.png"));
+        SpriteSheet continue_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/continue_button.png"));
+        SpriteSheet main_menu_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/main_menu_button.png"));
+        SpriteSheet back_to_menu_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/back_to_menu_button.png"));
+        SpriteSheet easy_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/easy_button.png"));
+        SpriteSheet medium_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/medium_button.png"));
+        SpriteSheet hard_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Buttons/hard_button.png"));
+
 
 
 
         SpriteSheet wall_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Wall1.png"));
         SpriteSheet wall_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Wall2.png"));
-        SpriteSheet water_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/Water.png"));
 
         SpriteSheet diamond_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Diamond.png"));
 
@@ -144,6 +160,8 @@ public class Assets {
         SpriteSheet menu_background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/menu_background.jpg"));
         SpriteSheet resume_background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/resume_background.jpg"));
         SpriteSheet setting_background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/setting_background.png"));
+        SpriteSheet lose_background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/lose_background.jpg"));
+        SpriteSheet win_background_sheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Background/win_background.jpg"));
 
 
         // ------------------------------------------------------------------------------------------------------------------------
@@ -153,10 +171,11 @@ public class Assets {
         menu_background_image = menu_background_sheet.crop_precise(0, 0, 1920, 1080);
         resume_background_image = resume_background_sheet.crop_precise(0, 0, 1920, 1080);
         setting_background_image = setting_background_sheet.crop_precise(0, 0, 4000, 2250);
+        lose_background_image = lose_background_sheet.crop_precise(0, 0, 2880, 1800);
+        win_background_image = win_background_sheet.crop_precise(0, 0, 3440, 1920);
 
 
         /// Se obtin subimaginile corespunzatoare elementelor necesare.
-        water_image = water_SpriteSheet.crop_precise(0, 0, 400, 350);
         stone_image = diamond_SpriteSheet.crop_precise(0, 0, 1300, 1300);
         tree_type_1_image = tree_type_1_SpriteSheet.crop_precise(0,0, 800, 1000);
         tree_type_2_image = tree_type_2_SpriteSheet.crop_precise(0,0, 310, 520);
@@ -179,10 +198,19 @@ public class Assets {
         sord_left_image = sord_left_SpriteSheet.crop_precise(0,0, 300, 60);
 
 
-
-
         // Buttons
-        start_button_image = start_button_SpriteSheet.crop_precise(0,0, 250, 100);
+        start_button_image = start_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        settings_button_image = settings_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        about_button_image = about_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        score_button_image = score_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        exit_button_image = exit_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        new_game_button_image = new_game_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        continue_button_image = continue_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        main_menu_button_image = main_menu_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        back_to_menu_button_image = back_to_menu_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        easy_button_image = easy_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        medium_button_image = medium_button_SpriteSheet.crop_precise(0,0, 336, 85);
+        hard_button_image = hard_button_SpriteSheet.crop_precise(0,0, 336, 85);
 
 
         //tree_image = bush_SpriteSheet.crop_precise(0,0, 500, 305);

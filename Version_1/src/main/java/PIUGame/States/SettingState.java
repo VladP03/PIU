@@ -25,8 +25,7 @@ public class SettingState extends State{
         refLink.GetMouseManager().setUIManager(settingManager);
 
         // set difficulty to EASY
-        settingManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 160, 200, 80, Assets.start_button_image, new ClickListener() {
-        //settingManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 160, 200, 80, "Easy", new ClickListener() {
+        settingManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 160, 300, 90, Assets.easy_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 levelDifficulty = LevelDifficulty.EASY;
@@ -45,8 +44,7 @@ public class SettingState extends State{
 
 
         // set difficulty to MEDIUM
-        settingManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 260, 200, 80, Assets.start_button_image, new ClickListener() {
-//        settingManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 260, 200, 80, "Medium", new ClickListener() {
+        settingManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 260, 300, 90, Assets.medium_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 levelDifficulty = LevelDifficulty.MEDIUM;
@@ -63,8 +61,7 @@ public class SettingState extends State{
 
 
         // set difficulty to HARD
-        settingManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 360, 200, 80, Assets.start_button_image, new ClickListener() {
-//        settingManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 360, 200, 80, "Hard", new ClickListener() {
+        settingManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 360, 300, 90, Assets.hard_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 levelDifficulty = LevelDifficulty.HARD;
@@ -81,7 +78,7 @@ public class SettingState extends State{
 
 
         // BUTTON for going back to main menu
-        settingManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 460, 200, 80, "<- Back to meniu", new ClickListener() {
+        settingManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 560, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
@@ -109,13 +106,14 @@ public class SettingState extends State{
 
 
         // afiseaza un mesaj intr-un chenar
-        g.setColor(Color.GRAY);
-        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 120, 20, 220, 75, 50, 50);
+        Color rectangle_color = new Color(255, 255, 100, 40);
+        g.setColor(rectangle_color);
+        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 70, 20, 220, 75, 50, 50);
 
         Font font1 = new Font("arial", 1, 40);
         g.setFont(font1);
         g.setColor(Color.white);
-        g.drawString("Settings", refLink.GetGame().GetWidth() / 2 - 100, 70);
+        g.drawString("Settings", refLink.GetGame().GetWidth() / 2 - 50, 70);
 
         settingManager.Draw(g);
     }

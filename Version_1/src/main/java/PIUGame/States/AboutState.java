@@ -1,4 +1,5 @@
 package PIUGame.States;
+import PIUGame.GameObjects.UIImageButton;
 import PIUGame.GameObjects.UIManager;
 import PIUGame.GameObjects.UITextButton;
 import PIUGame.Graphics.Assets;
@@ -21,7 +22,7 @@ public class AboutState extends State{
         refLink.GetMouseManager().setUIManager(aboutManager);
 
 
-        aboutManager.addObject(new UITextButton((int)(refLink.GetGame().GetWidth() / 2) - 200, 600, 200, 80, "Back to meniu", new ClickListener() {
+        aboutManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 600, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
@@ -51,15 +52,25 @@ public class AboutState extends State{
         // seteaza imagine de fundal
         g.drawImage(Assets.setting_background_image, 0, 0, refLink.GetWidth(), refLink.GetHeight(), null);
 
+        // afiseaza un mesaj intr-un chenar pentru titlu
+        Color rectangle_color = new Color(255, 255, 150, 50);
+        g.setColor(rectangle_color);
+        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 180, 20, 400, 70, 50, 50);
+
         Font font1 = new Font("arial", 1, 50);
         g.setFont(font1);
         g.setColor(Color.white);
         g.drawString("About Game", refLink.GetGame().GetWidth() / 2 - 150, 70);
 
 
+        // afiseaza un mesaj intr-un chenar pentru descriere
+        rectangle_color = new Color(255, 255, 150, 50);
+        g.setColor(rectangle_color);
+        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 650, 95, 1300, 400, 50, 50);
 
         font1 = new Font("arial", 1, 30);
         g.setFont(font1);
+        g.setColor(Color.white);
         g.drawString("Controls: W, A, S, D", refLink.GetGame().GetWidth() / 2 - 600, 130);
         g.drawString("P - Pause", refLink.GetGame().GetWidth() / 2 - 600, 180);
         g.drawString("SPACE - Fire a sord which will kill the monster.", refLink.GetGame().GetWidth() / 2 - 600, 230);
