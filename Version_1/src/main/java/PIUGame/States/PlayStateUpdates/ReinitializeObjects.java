@@ -45,10 +45,17 @@ public class ReinitializeObjects {
         refLink.GetGame().getPlayState().GetHero().setFinish_zone_x(1750);
         refLink.GetGame().getPlayState().GetHero().setFinish_zone_y(770);
 
+        // zona in care se trece efectic la nivelul urmator
         refLink.GetGame().getPlayState().GetHero().setTarget_to_follow_x(1825);
         refLink.GetGame().getPlayState().GetHero().setTarget_to_follow_y(770);
 
 
+        // se reseteaza variabila care ne spune ca suntem in zona de final (ultima verificare ce ne permite trece la nivelul urmator)
+        refLink.GetGame().getPlayState().GetHero().setIs_arrive_at_gate(false);
+
+        // resetez timpul
+        refLink.GetGame().getPlayState().setMinutes(0);
+        refLink.GetGame().getPlayState().setSeconds(0);
 
         //stabilesc pozitiile pietrelor
         Stone[] stone = new Stone[5];
@@ -67,10 +74,6 @@ public class ReinitializeObjects {
         monster.add(new Monster(refLink,150, 300, ItemDirection.DOWN, 400));
         monster.add(new Monster(refLink,1100, 800, ItemDirection.RIGHT, 500));
 
-        // seteaza viteza monstrului
-        for(Monster m: monster){
-            m.SetSpeed(0.6f);
-        }
 
 
         // reinitializez obiectele din PlayState
@@ -84,9 +87,24 @@ public class ReinitializeObjects {
         refLink.GetGame().getPlayState().GetHero().SetX(140);
         refLink.GetGame().getPlayState().GetHero().SetY(180);
 
+        refLink.GetGame().getPlayState().GetHero().SetX(2500);
+        refLink.GetGame().getPlayState().GetHero().SetY(3400);
+
         refLink.GetGame().getPlayState().GetHero().setInitialX(140);
         refLink.GetGame().getPlayState().GetHero().setInitialY(180);
 
+
+        // stabilesc zona in care player-ul va trece la nivelul urmator
+        refLink.GetGame().getPlayState().GetHero().setFinish_zone_x(2680);
+        refLink.GetGame().getPlayState().GetHero().setFinish_zone_y(3500);
+
+        // zona in care se trece efectic la nivelul urmator
+        refLink.GetGame().getPlayState().GetHero().setTarget_to_follow_x(2793);
+        refLink.GetGame().getPlayState().GetHero().setTarget_to_follow_y(3500);
+
+
+        // se reseteaza variabila care ne spune ca suntem in zona de final (ultima verificare ce ne permite trece la nivelul urmator)
+        refLink.GetGame().getPlayState().GetHero().setIs_arrive_at_gate(false);
 
         //stabilesc pozitiile pietrelor
         Stone[] stone = new Stone[5];
@@ -103,12 +121,6 @@ public class ReinitializeObjects {
         monster.add(new Monster(refLink,1820, 560, ItemDirection.RIGHT, 400));
         monster.add(new Monster(refLink,2193, 980, ItemDirection.DOWN, 300));
         monster.add(new Monster(refLink,80, 300, ItemDirection.DOWN, 400));
-
-
-        // seteaza viteza monstrului
-        for(Monster m: monster){
-            m.SetSpeed(0.6f);
-        }
 
 
         // reinitializez obiectele din PlayState

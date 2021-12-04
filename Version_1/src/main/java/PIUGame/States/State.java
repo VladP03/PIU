@@ -25,6 +25,10 @@ public abstract class State {
         return currentState;
     }
 
+    public static State GetPreviousState(){
+        return previousState;
+    }
+
     ///Metoda abstracta destinata actualizarii starii curente
     public abstract void Update();
     ///Metoda abstracta destinata desenarii starii curente

@@ -27,7 +27,9 @@ public class ResumeState extends State{
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
-                State.SetState(refLink.GetGame().playState);
+                //State.SetState(refLink.GetGame().playState);
+                State.SetState(State.GetPreviousState());
+
                 refLink.GetGame().getPlayState().updateObjectWithListener();
             }
         }));
@@ -37,7 +39,7 @@ public class ResumeState extends State{
             @Override
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
-                State.SetState(new PlayState(refLink));     // se creaza din nou starea de play, altfel vor ramane salvate datele existente
+                //State.SetState(new PlayState(refLink));     // se creaza din nou starea de play, altfel vor ramane salvate datele existente
                 State.SetState(new MenuState(refLink));
             }
         }));

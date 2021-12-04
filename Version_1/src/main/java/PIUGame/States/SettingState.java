@@ -33,10 +33,10 @@ public class SettingState extends State{
 
                 refLink.GetMouseManager().setUIManager(null);
 
-                settingMonster = PlayState.GetMonster();
-                for(Monster m: settingMonster){
-                    m.SetSpeed(0.4f);
-                }
+//                settingMonster = PlayState.GetMonster();
+//                for(Monster m: settingMonster){
+//                    m.SetSpeed(0.4f);
+//                }
 
                 State.SetState(new MenuState(refLink));
             }
@@ -51,10 +51,6 @@ public class SettingState extends State{
                 refLink.GetGame().getPlayState().setLevelDifficulty(levelDifficulty);
                 refLink.GetMouseManager().setUIManager(null);
 
-                settingMonster = PlayState.GetMonster();
-                for(Monster m: settingMonster){
-                    m.SetSpeed(0.6f);
-                }
                 State.SetState(new MenuState(refLink));
             }
         }));
@@ -68,10 +64,6 @@ public class SettingState extends State{
                 refLink.GetGame().getPlayState().setLevelDifficulty(levelDifficulty);
                 refLink.GetMouseManager().setUIManager(null);
 
-                settingMonster = PlayState.GetMonster();
-                for(Monster m: settingMonster){
-                    m.SetSpeed(1.0f);
-                }
                 State.SetState(new MenuState(refLink));
             }
         }));

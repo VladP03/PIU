@@ -142,7 +142,7 @@ public class Hero extends Character
         }
 
         if(in_finish_zone == true && stonesAreCollected()) {             // player-ul se afla in zona de trecere catre urmatorul nivel
-            // se verifica daca player-ul a ajuns in zona de trecere catre urmatorul nivel si astfel tranzitia este terminata
+            // se verifica daca player-ul a ajuns in zona de trecere catre urmatorul nivel si astfel tranzitia este terminata (se considera o eroare de +-10 pixeli)
             if(x > target_to_follow_x - 10 && y < target_to_follow_y + 10){
                 is_arrive_at_gate = true;
             }else{
@@ -189,8 +189,10 @@ public class Hero extends Character
             ///Verificare apasare tasta "space" pentru tragere
             if(refLink.GetKeyManager().space && key_already_pressed == false)
             {
+                System.out.println("space pressed");
                 key_already_pressed = true;
                 createSord(heroDirection);
+
             }
 
         }
@@ -290,7 +292,7 @@ public class Hero extends Character
     }
 
     public boolean stonesAreCollected(){
-        if(nr_stone >= 1){
+        if(nr_stone >= 0){
             //System.out.println("collected-->>>");
             return true;
         }
@@ -360,6 +362,14 @@ public class Hero extends Character
 
     public void setTarget_to_follow_y(float target_to_follow_y) {
         this.target_to_follow_y = target_to_follow_y;
+    }
+
+    public boolean isIs_arrive_at_gate() {
+        return is_arrive_at_gate;
+    }
+
+    public void setIs_arrive_at_gate(boolean is_arrive_at_gate) {
+        this.is_arrive_at_gate = is_arrive_at_gate;
     }
 }
 

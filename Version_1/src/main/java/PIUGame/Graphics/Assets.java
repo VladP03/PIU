@@ -29,6 +29,7 @@ public class Assets {
     public static BufferedImage water_type_1_image;
     public static BufferedImage map_level_2_image;
     public static BufferedImage finish_zone_level_1_image;
+    public static BufferedImage finish_zone_level_2_image;
     public static BufferedImage menu_button_image;
     public static BufferedImage heart_life_image;
 
@@ -112,6 +113,7 @@ public class Assets {
         SpriteSheet water_type_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/water.png"));
         SpriteSheet menu_button_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/menu-button.png"));
 
+
         // Sord
         SpriteSheet sord_up_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/sord_up.png"));
         SpriteSheet sord_down_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Effects/sord_down.png"));
@@ -149,6 +151,7 @@ public class Assets {
         // SpriteSheet pentru indicarea nivelului urmator
         SpriteSheet arrow_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Arrow.png"));        // TODO -- de sters plus tot ce contine --
         SpriteSheet finish_zone_level_1_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/finish_zone_level_1.png"));
+        SpriteSheet finish_zone_level_2_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/finish_zone_level_2.png"));
 
         // SpriteSheet pentru viata
         SpriteSheet heart_life_SpriteSheet = new SpriteSheet(ImageLoader.LoadImage("/textures/Tiles/Resources/heart_life.png"));
@@ -181,13 +184,13 @@ public class Assets {
         tree_type_2_image = tree_type_2_SpriteSheet.crop_precise(0,0, 310, 520);
         ground_path_horizontal_image = ground_path_horizontal_SpriteSheet.crop_precise(0,0, 150, 178);
         ground_path_vertical_image = ground_path_vertical_SpriteSheet.crop_precise(0,0, 178, 150);
-        //forest_image = forest_SpriteSheet.crop_precise(0,0, 350, 280);
         forest_image = forest_SpriteSheet.crop_precise(0,0, 780, 670);
         house_image = house_SpriteSheet.crop_precise(0,0, 490, 550);
         house_type_2_image = house_type_2_SpriteSheet.crop_precise(0,0, 725, 570);
         water_type_1_image = water_type_1_SpriteSheet.crop_precise(0,0, 565, 260);
         map_level_2_image = map_level_2_SpriteSheet.crop_precise(0,0, 1488, 1872);
         finish_zone_level_1_image = finish_zone_level_1_SpriteSheet.crop_precise(0,0, 124, 162);
+        finish_zone_level_2_image = finish_zone_level_2_SpriteSheet.crop_precise(0,0, 50, 50);
         menu_button_image = menu_button_SpriteSheet.crop_precise(0,0, 460, 160);
         heart_life_image = heart_life_SpriteSheet.crop_precise(0,0, 635, 355);
 

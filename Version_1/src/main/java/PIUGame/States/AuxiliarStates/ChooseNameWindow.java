@@ -1,6 +1,7 @@
 package PIUGame.States.AuxiliarStates;
 
 import PIUGame.RefLinks;
+import PIUGame.States.PlayState;
 import PIUGame.States.State;
 
 import javax.swing.*;
@@ -85,7 +86,9 @@ public class ChooseNameWindow implements ActionListener {
         if(event.getSource() == playButton){
             //System.out.println("Button pressed");
             newNameFrame.dispose();
+            refLink.GetGame().setPlayState(new PlayState(refLink));
             State.SetState(refLink.GetGame().playState);
+            //State.SetState(new PlayState(refLink));
             refLink.GetGame().getPlayState().updateObjectWithListener();
 
         }

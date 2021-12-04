@@ -25,7 +25,10 @@ public class LoseState extends State{
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
 
-                State.SetState(new PlayState(refLink));
+                // se reinitializeaza starea de playState
+                refLink.GetGame().setPlayState(new PlayState(refLink));
+                State.SetState(refLink.GetGame().playState);
+                refLink.GetGame().getPlayState().updateObjectWithListener();
 
             }
         }));
@@ -52,15 +55,17 @@ public class LoseState extends State{
         }));
 
     }
+
+
     @Override
     public void Update()
     {
-        //settingManager.Update();
         settingManager.Update();
     }
 
-        // brief Deseneaza (randeaza) pe ecran setarile.
-        // param g Contextul grafic in care trebuie sa deseneze starea setarilor pe ecran.
+
+    // brief Deseneaza (randeaza) pe ecran setarile.
+    // param g Contextul grafic in care trebuie sa deseneze starea setarilor pe ecran.
     @Override
     public void Draw(Graphics g)
     {

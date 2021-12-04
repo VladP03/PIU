@@ -252,6 +252,10 @@ public class Game implements Runnable{
         return (PlayState) playState;
     }
 
+    public void setPlayState(PlayState playState){
+        this.playState = playState;
+    }
+
     public RefLinks getRefLink(){
         return refLink;
     }

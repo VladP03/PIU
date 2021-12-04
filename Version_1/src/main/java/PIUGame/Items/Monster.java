@@ -3,10 +3,12 @@ package PIUGame.Items;
 import PIUGame.Graphics.Animation;
 import PIUGame.Graphics.Assets;
 import PIUGame.RefLinks;
+import PIUGame.States.Difficulty.LevelDifficulty;
 import PIUGame.States.PlayState;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.logging.Level;
 
 
 public class Monster extends Character{
@@ -69,6 +71,10 @@ public class Monster extends Character{
         // Initial state
         previous_x = x;
         previous_y = y;
+
+        // seteaza viteza monstrilor in functie de nivelul de dificultate
+        setMonsterSpeed();
+
     }
 
 
@@ -105,6 +111,9 @@ public class Monster extends Character{
         // seteaza atribute pentru traiectoria fixa ( acei monstrii care se misca pe o linie)
         this.monsterDirection = itemDirection;
         this.distance_to_walk = distance_to_walk;
+
+        // seteaza viteza monstrilor in functie de nivelul de dificultate
+        setMonsterSpeed();
     }
 
 
@@ -268,24 +277,18 @@ public class Monster extends Character{
 
         //System.out.println("                                   xM= "+ x + "    yM= " + y);
 
-        //verifica daca a ajuns pe erou
-
     }
 
-//    private boolean isCollidingBound(){
-//        if(x > PlayState.GetHero().x && x < (PlayState.GetHero().x +PlayState.GetHero().width) && y > PlayState.GetHero().y && y < (PlayState.GetHero().y +PlayState.GetHero().height))
-//    }
 
     public boolean hasKilledPlayer(){
         if(collisionWithPlayer()){
-            //System.out.println("                                                                    false");
-            //System.out.println("x= " + PlayState.GetHero().x + "     y= " + PlayState.GetHero().y + "      xM= "+ x + "    yM= " + y);
             return true;
         }
         else{
             return false;
         }
     }
+
 
     public boolean collisionWithPlayer() {
         if ((x + bounds.x + bounds.width) >= (PlayState.GetHero().x + PlayState.GetHero().bounds.x) &&
@@ -329,6 +332,25 @@ public class Monster extends Character{
             return animDown.getCurrentFrame();
         }
         return noAnim.getCurrentFrame();
+    }
+
+    public void setMonsterSpeed(){
+        switch(refLink.GetGame().getPlayState().getLevelDifficulty()){
+            case EASY:
+                speed = 0.4f;
+                break;
+            case MEDIUM:
+                speed = 0.6f;
+                break;
+            case HARD:
+                speed = 1.0f;
+                break;
+            default:
+                speed = 0.4f;
+                break;
+        }
+
+
     }
 
 

@@ -47,7 +47,9 @@ public class MenuState extends State{
             public void onClick() {
                 refLink.GetMouseManager().setUIManager(null);
                 //State.SetState(refLink.GetGame().settingState);
-                State.SetState(new ScoreState(refLink));
+
+                //State.SetState(new ScoreState(refLink));
+                State.SetState(new MenuState(refLink));
             }
         }));
 

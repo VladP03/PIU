@@ -162,18 +162,15 @@ public class PlayState extends State{
 
         if(hero.levelFinished()){
             if(index_level == 2){
+                //System.out.println("done");
 //                refLink.GetGame().getDatabaseConnection().update();
                 State.SetState(new FinishedGame(refLink));
             }else {
+                //System.out.println("not yet");
                 index_level++;
-                hero.resetPosition();
-                //hero.resetStone();
 
+                // se reinitializeaza obiectele din joc la trecerea catre un nivel nou
                 reinitializeObjects.reorganizeObject(index_level);
-
-                for (Monster t : monster) {
-                    t.resetPosition();
-                }
 
                 map = new Map(refLink, index_level);
                 refLink.SetMap(map);
@@ -306,5 +303,21 @@ public class PlayState extends State{
 
     public void setExplosions(List<Explosion> explosions) {
         this.explosions = explosions;
+    }
+
+    public static int getMinutes() {
+        return minutes;
+    }
+
+    public static void setMinutes(int minutes) {
+        PlayState.minutes = minutes;
+    }
+
+    public static int getSeconds() {
+        return seconds;
+    }
+
+    public static void setSeconds(int seconds) {
+        PlayState.seconds = seconds;
     }
 }

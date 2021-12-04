@@ -120,7 +120,13 @@ public class MapElements {
 
                 break;
             case 2:
+
+                // se deseneaza harta
                 g.drawImage(Assets.map_level_2_image, (int)(0 - refLink.getGameCamera().getxOffset()),(int)(0 - refLink.getGameCamera().getyOffset()),2*1488, 2*1872, null);
+
+                // zona finala in care player-ul trece la nivelul urmator
+                g.drawImage(Assets.finish_zone_level_2_image, (int) (2765 - refLink.getGameCamera().getxOffset()), (int) (3380 - refLink.getGameCamera().getyOffset()), 120, 150, null);
+
                 break;
             case 3:
                 break;

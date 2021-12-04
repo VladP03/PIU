@@ -11,7 +11,7 @@ public class SpriteSheet {
     private static final int    playerHeight = 63;   // inaltimea playerului
 
     private static final int    monsterWidth = 41;   // latimea playerului
-    private static final int    monsterHeight = 54;   // inaltimea playerului
+    private static final int    monsterHeight = 52;   // inaltimea playerului
 
     /*
         \brief Constructor, initializeaza spriteSheet.

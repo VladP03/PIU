@@ -11,7 +11,7 @@ import PIUGame.Tiles.Tile;
 public abstract class Character extends Item
 {
     public static final int DEFAULT_LIFE            = 3;   /*!< Valoarea implicita a vietii unui caracter.*/
-    public static final float DEFAULT_SPEED         = 5.0f; /*!< Viteza implicita a unu caracter.*/
+    public static final float DEFAULT_SPEED         = 9.0f; /*!< Viteza implicita a unu caracter.*/
     public static final int DEFAULT_CREATURE_WIDTH  = 64;   /*!< Latimea implicita a imaginii caracterului.*/
     public static final int DEFAULT_CREATURE_HEIGHT = 64;   /*!< Inaltimea implicita a imaginii caracterului.*/
 
