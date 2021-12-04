@@ -22,11 +22,11 @@ import static java.lang.Thread.sleep;
 public class Hero extends Character
 {
     //Animation
-    private Animation animDown;     //mod_3
-    private Animation animUp;     //mod_3
-    private Animation animLeft;     //mod_3
-    private Animation animRight;     //mod_3
-    private Animation noAnim;     //mod_3
+    private Animation animDown;
+    private Animation animUp;
+    private Animation animLeft;
+    private Animation animRight;
+    private Animation noAnim;
 
     private BufferedImage lifeImage;
     private BufferedImage stoneImage;
@@ -85,7 +85,7 @@ public class Hero extends Character
         animRight = new Animation(100, Assets.hero_right);      //mod_3
         noAnim = new Animation(0, Assets.hero_noAnimation);
 
-        lifeImage = Assets.life_image;
+        lifeImage = Assets.heart_life_image;
         stoneImage = Assets.stone_image;
     }
 

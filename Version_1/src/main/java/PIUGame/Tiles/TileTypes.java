@@ -5,11 +5,5 @@ package PIUGame.Tiles;
  */
 public enum TileTypes {
     GRASS,
-    MOUNTAIN,
-    SOIL,
     SOLIDGRASS,
-    TREE,
-    WALL,
-    WALL2,
-    WATER
 }

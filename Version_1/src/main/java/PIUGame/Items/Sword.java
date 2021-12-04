@@ -60,11 +60,11 @@ public class Sword extends Character{
 
 
         //Animation
-        animDown = Assets.sord_down_image;
-        animUp = Assets.sord_up_image;
-        animLeft = Assets.sord_left_image;
-        animRight = Assets.sord_right_image;
-        noAnim = Assets.sord_right_image;
+        animDown = Assets.sword_down_image;
+        animUp = Assets.sword_up_image;
+        animLeft = Assets.sword_left_image;
+        animRight = Assets.sword_right_image;
+        noAnim = Assets.sword_right_image;
 
 
         // seteaza atribute pentru traiectoria fixa

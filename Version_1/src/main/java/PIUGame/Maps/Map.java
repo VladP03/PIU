@@ -59,7 +59,7 @@ public class Map {
         Tile t = Tile.tiles[tiles[x][y]];
         if(t == null)
         {
-            return Tile.mountainTile;
+            return Tile.grassTile;
         }
         return t;
     }

@@ -36,7 +36,7 @@ public class MapElements {
                     g.drawImage(Assets.ground_path_vertical_image, (int) (770 - refLink.getGameCamera().getxOffset()), (int) (220 + i*70 - refLink.getGameCamera().getyOffset()), 50, 70, null);
                 }
 
-                // datre finalul jocului
+                // catre finalul jocului
                 for(int i=0; i<7; i++)
                 {
                     g.drawImage(Assets.ground_path_vertical_image, (int) (1600 - refLink.getGameCamera().getxOffset()), (int) (500 + i*70 - refLink.getGameCamera().getyOffset()), 50, 70, null);
@@ -62,9 +62,9 @@ public class MapElements {
                 }
 
                 // house image
-                g.drawImage(Assets.house_image, (int) (100 - refLink.getGameCamera().getxOffset()), (int) (40 - refLink.getGameCamera().getyOffset()), 170, 150, null);
+                g.drawImage(Assets.house_type_1_image, (int) (100 - refLink.getGameCamera().getxOffset()), (int) (40 - refLink.getGameCamera().getyOffset()), 170, 150, null);
                 g.drawImage(Assets.house_type_2_image, (int) (500 - refLink.getGameCamera().getxOffset()), (int) (500 - refLink.getGameCamera().getyOffset()), 170, 150, null);
-                g.drawImage(Assets.house_image, (int) (1500 - refLink.getGameCamera().getxOffset()), (int) (5 - refLink.getGameCamera().getyOffset()), 170, 150, null);
+                g.drawImage(Assets.house_type_1_image, (int) (1500 - refLink.getGameCamera().getxOffset()), (int) (5 - refLink.getGameCamera().getyOffset()), 170, 150, null);
 
 
                 // forest image
