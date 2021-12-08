@@ -87,8 +87,8 @@ public class ReinitializeObjects {
         refLink.GetGame().getPlayState().GetHero().SetX(140);
         refLink.GetGame().getPlayState().GetHero().SetY(180);
 
-        refLink.GetGame().getPlayState().GetHero().SetX(2500);
-        refLink.GetGame().getPlayState().GetHero().SetY(3400);
+//        refLink.GetGame().getPlayState().GetHero().SetX(2500);
+//        refLink.GetGame().getPlayState().GetHero().SetY(3400);
 
         refLink.GetGame().getPlayState().GetHero().setInitialX(140);
         refLink.GetGame().getPlayState().GetHero().setInitialY(180);

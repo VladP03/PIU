@@ -101,11 +101,8 @@ public class PlayState extends State{
             }
 
             if(!explosions.isEmpty()){
-                for(Explosion e: explosions){
-                    e.Update();
-                    if(explosions.isEmpty()){
-                        break;
-                    }
+                for(int j=0; j<explosions.size(); j++){
+                    explosions.get(j).Update();
                 }
             }
 
