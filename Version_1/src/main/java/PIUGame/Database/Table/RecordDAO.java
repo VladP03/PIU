@@ -5,12 +5,12 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecordDAO {
 
     public void startSession() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            HibernateUtil.getSessionFactory().openSession();
         } catch (Exception e) {
             e.printStackTrace();
         }

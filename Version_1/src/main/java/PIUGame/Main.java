@@ -1,28 +1,31 @@
 package PIUGame;
 
+import PIUGame.Database.Table.Record;
 import PIUGame.Database.Table.RecordDAO;
+import PIUGame.States.Difficulty.LevelDifficulty;
 
 public class Main {
     public static void main(String [] args){
         RecordDAO recordDAO = new RecordDAO();
-        //recordDAO.startSession();
+
+        recordDAO.startSession();
 
 //        Record record = Record.builder()
-//                .difficulty(Difficulty.EASY)
+//                .levelDifficulty(LevelDifficulty.EASY)
 //                .name("Iuli")
-//                .time(150.50)
+//                .time(30.50)
 //                .build();
 //        recordDAO.saveRecord(record);
 //        Record record2 = Record.builder()
-//                .difficulty(Difficulty.HARD)
+//                .levelDifficulty(LevelDifficulty.HARD)
 //                .name("Razvan")
-//                .time(90.50)
+//                .time(150.50)
 //                .build();
 //        recordDAO.saveRecord(record2);
 //        Record record3 = Record.builder()
-//                .difficulty(Difficulty.MEDIUM)
+//                .levelDifficulty(LevelDifficulty.MEDIUM)
 //                .name("Silviu")
-//                .time(90.50)
+//                .time(40.50)
 //                .build();
 //        recordDAO.saveRecord(record3);
 

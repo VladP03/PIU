@@ -5,9 +5,11 @@ services:
     image: postgres:14
     container_name: PIU_VanatoareaDeDiamante
     restart: always
+    command:
+      -p 5433
     environment:
       POSTGRES_DB: piu_project
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - 5432:5432
+      - 5433:5433

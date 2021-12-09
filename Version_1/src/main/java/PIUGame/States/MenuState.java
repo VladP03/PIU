@@ -48,8 +48,8 @@ public class MenuState extends State{
                 refLink.GetMouseManager().setUIManager(null);
                 //State.SetState(refLink.GetGame().settingState);
 
-                //State.SetState(new ScoreState(refLink));
-                State.SetState(new MenuState(refLink));
+                State.SetState(new ScoreState(refLink));
+                //State.SetState(new MenuState(refLink));
             }
         }));
 
