@@ -1,34 +1,34 @@
 package PIUGame.GameWindow;
 
-
-
+import lombok.Getter;
+import lombok.Setter;
 import javax.swing.*;
 import java.awt.*;
 
+@Getter
+@Setter
 public class GameWindow {
 
-    private JFrame  wndFrame;       // < fereastra principala a jocului
-    private String  wndTitle;       // < titlul ferestrei
-    private int     wndWidth;       // < latimea ferestrei in pixeli
-    private int     wndHeight;      // < inaltimea ferestrei in pixeli
+    private final String wndTitle;          // < titlul ferestrei
+    private final int wndWidth;             // < latimea ferestrei in pixeli
+    private final int wndHeight;            // < inaltimea ferestrei in pixeli
+    private JFrame wndFrame;                // < fereastra principala a jocului
+    private Canvas canvas;                  // < "panza/tablou" in care se poate desena
 
-    private Canvas  canvas;             // < "panza/tablou" in care se poate desena
-
-    public GameWindow(String title, int width, int height){
-        wndTitle    = title;        // < Retine titlul ferestrei.
-        wndWidth    = width;        // < Retine latimea ferestrei.
-        wndHeight   = height;       // < Retine inaltimea ferestrei.
-        wndFrame    = null;         // < Fereastra nu este construita.
+    public GameWindow(String title, int width, int height) {
+        wndTitle = title;
+        wndWidth = width;
+        wndHeight = height;
+        wndFrame = null;         // < Fereastra nu este construita.
     }
 
-    public void BuildGameWindow()
-    {
+    public void BuildGameWindow() {
         /// Daca fereastra a mai fost construita intr-un apel anterior
         /// se renunta la apel
-        if(wndFrame != null)
-        {
+        if (wndFrame != null) {
             return;
         }
+
         /// Aloca memorie pentru obiectul de tip fereastra si seteaza denumirea
         /// ce apare in bara de titlu
         wndFrame = new JFrame(wndTitle);
@@ -75,31 +75,5 @@ public class GameWindow {
         /// Urmatorul apel de functie are ca scop eventuala redimensionare a ferestrei
         /// ca tot ce contine sa poate fi afisat complet
         wndFrame.pack();
-    }
-
-    public int GetWndWidth()
-    {
-        return wndWidth;
-    }
-
-
-        // brief Returneaza inaltimea ferestrei.
-    public int GetWndHeight()
-    {
-        return wndHeight;
-    }
-
-
-        // brief Returneaza referinta catre canvas-ul din fereastra pe care se poate desena.
-    public Canvas GetCanvas()
-    {
-        return canvas;
-    }
-
-
-        // brief Returneaza referinta catre canvas-ul din fereastra pe care se poate desena.
-    public JFrame GetWndFrame()
-    {
-        return wndFrame;
     }
 }
