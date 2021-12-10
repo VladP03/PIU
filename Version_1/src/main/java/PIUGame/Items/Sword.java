@@ -132,7 +132,7 @@ public class Sword extends Character {
 
 
     public void collisionWithAllMonsters() {
-        List<Monster> monsters = refLink.getGame().getPlayState().GetMonster();
+        List<Monster> monsters = refLink.getGame().getPlayState().getMonster();
 
         for (int i = 0; i < monsters.size(); i++) {
             if (collisionWithOneMonster(monsters.get(i))) {

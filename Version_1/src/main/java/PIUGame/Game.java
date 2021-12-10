@@ -46,11 +46,11 @@ public class Game implements Runnable{
     private void InitGame(){
         wnd.BuildGameWindow();
 
-        wnd.GetWndFrame().addKeyListener(keyManager);
-        wnd.GetWndFrame().addMouseListener(mouseManager);       //mod_1
-        wnd.GetWndFrame().addMouseMotionListener(mouseManager);       //mod_1
-        wnd.GetCanvas().addMouseListener(mouseManager);         //mod_1
-        wnd.GetCanvas().addMouseMotionListener(mouseManager);     //mod_1
+        wnd.getWndFrame().addKeyListener(keyManager);
+        wnd.getWndFrame().addMouseListener(mouseManager);       //mod_1
+        wnd.getWndFrame().addMouseMotionListener(mouseManager);       //mod_1
+        wnd.getCanvas().addMouseListener(mouseManager);         //mod_1
+        wnd.getCanvas().addMouseMotionListener(mouseManager);     //mod_1
 
 
 
@@ -71,7 +71,7 @@ public class Game implements Runnable{
         //aboutState = new AboutState(refLink);
 
         //State.SetState(playState);
-        State.SetState(menuState);
+        State.setState(menuState);
         //State.SetState(finishedGame);
         //State.SetState(settingState);
 
@@ -163,17 +163,17 @@ public class Game implements Runnable{
         keyManager.Update();
         //mouseManager.Update();      //mod_1
         ///Trebuie obtinuta starea curenta pentru care urmeaza a se actualiza starea, atentie trebuie sa fie diferita de null.
-        if(State.GetState() != null)
+        if(State.getState() != null)
         {
             ///Actualizez starea curenta a jocului daca exista.
-            State.GetState().Update();
+            State.getState().Update();
         }
     }
 
     private void Draw()
     {
         /// Returnez bufferStrategy pentru canvasul existent
-        bs = wnd.GetCanvas().getBufferStrategy();
+        bs = wnd.getCanvas().getBufferStrategy();
         /// Verific daca buffer strategy a fost construit sau nu
         if(bs == null)
         {
@@ -181,7 +181,7 @@ public class Game implements Runnable{
             try
             {
                 /// Se construieste tripul buffer
-                wnd.GetCanvas().createBufferStrategy(3);
+                wnd.getCanvas().createBufferStrategy(3);
                 return;
             }
             catch (Exception e)
@@ -193,14 +193,14 @@ public class Game implements Runnable{
         /// Se obtine contextul grafic curent in care se poate desena.
         g = bs.getDrawGraphics();
         /// Se sterge ce era
-        g.clearRect(0, 0, wnd.GetWndWidth(), wnd.GetWndHeight());
+        g.clearRect(0, 0, wnd.getWndWidth(), wnd.getWndHeight());
 
         /// operatie de desenare
         ///Trebuie obtinuta starea curenta pentru care urmeaza a se actualiza starea, atentie trebuie sa fie diferita de null.
-        if(State.GetState() != null)
+        if(State.getState() != null)
         {
             ///Actualizez starea curenta a jocului daca exista.
-            State.GetState().Draw(g);
+            State.getState().Draw(g);
         }
         /// end operatie de desenare
 
@@ -213,7 +213,7 @@ public class Game implements Runnable{
     }
     public int GetWidth()
     {
-        return wnd.GetWndWidth();
+        return wnd.getWndWidth();
     }
 
     /*! \fn public int GetHeight()
@@ -221,7 +221,7 @@ public class Game implements Runnable{
      */
     public int GetHeight()
     {
-        return wnd.GetWndHeight();
+        return wnd.getWndHeight();
     }
 
     /*! \fn public KeyManager GetKeyManager()

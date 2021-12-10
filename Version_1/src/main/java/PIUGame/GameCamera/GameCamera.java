@@ -13,8 +13,8 @@ public class GameCamera {
     private float xOffset, yOffset;
 
     public void centerOnEntity(Item e) {
-        xOffset = e.GetX() - (float) (refLink.getWidth() / 2.) + (float) (e.GetWidth() / 2.);
-        yOffset = e.GetY() - (float) (refLink.getHeight() / 2.) + (float) (e.GetHeight() / 2.);
+        xOffset = e.getX() - (float) (refLink.getWidth() / 2.) + (float) (e.getWidth() / 2.);
+        yOffset = e.getY() - (float) (refLink.getHeight() / 2.) + (float) (e.getHeight() / 2.);
 
         checkForBlankSpace();
     }

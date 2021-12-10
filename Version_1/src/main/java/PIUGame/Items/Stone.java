@@ -75,10 +75,10 @@ public class Stone extends Item {
     }
 
     public boolean collisionWithPlayer() {
-        return (x + bounds.x + bounds.width) >= (PlayState.GetHero().x + PlayState.GetHero().bounds.x) &&
-                (x + bounds.x) <= (PlayState.GetHero().x + PlayState.GetHero().bounds.x + PlayState.GetHero().bounds.width) &&
-                (y + bounds.y) <= (PlayState.GetHero().y + PlayState.GetHero().bounds.y + PlayState.GetHero().bounds.height) &&
-                (y + bounds.y + bounds.height) >= (PlayState.GetHero().y + PlayState.GetHero().bounds.y);
+        return (x + bounds.x + bounds.width) >= (PlayState.getHero().x + PlayState.getHero().bounds.x) &&
+                (x + bounds.x) <= (PlayState.getHero().x + PlayState.getHero().bounds.x + PlayState.getHero().bounds.width) &&
+                (y + bounds.y) <= (PlayState.getHero().y + PlayState.getHero().bounds.y + PlayState.getHero().bounds.height) &&
+                (y + bounds.y + bounds.height) >= (PlayState.getHero().y + PlayState.getHero().bounds.y);
     }
 
 

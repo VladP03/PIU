@@ -94,6 +94,14 @@ public class PlayState extends State {
         PlayState.seconds = seconds;
     }
 
+    public static LevelDifficulty getLevelDifficulty() {
+        return levelDifficulty;
+    }
+
+    public static List<Monster> getMonster(){
+        return monster;
+    }
+
     // se actualizeaza obiectele cand starea de playState este resetata deoarece se pierde focusul
     public void updateObjectWithListener() {
         // Seteaza un buton de resume
@@ -270,9 +278,5 @@ public class PlayState extends State {
 
         // deseneaza butonul de resume
         resumeManager.Draw(g);
-    }
-
-    public static LevelDifficulty getLevelDifficulty() {
-        return levelDifficulty;
     }
 }

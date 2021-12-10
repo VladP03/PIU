@@ -178,8 +178,8 @@ public class Monster extends Character {
 //        }
 
 
-        target_to_follow_x = PlayState.GetHero().x;
-        target_to_follow_y = PlayState.GetHero().y;
+        target_to_follow_x = PlayState.getHero().x;
+        target_to_follow_y = PlayState.getHero().y;
 
         previous_x = x;
         previous_y = y;
@@ -270,10 +270,10 @@ public class Monster extends Character {
 
 
     public boolean collisionWithPlayer() {
-        return (x + bounds.x + bounds.width) >= (PlayState.GetHero().x + PlayState.GetHero().bounds.x) &&
-                (x + bounds.x) <= (PlayState.GetHero().x + PlayState.GetHero().bounds.x + PlayState.GetHero().bounds.width) &&
-                (y + bounds.y) <= (PlayState.GetHero().y + PlayState.GetHero().bounds.y + PlayState.GetHero().bounds.height) &&
-                (y + bounds.y + bounds.height) >= (PlayState.GetHero().y + PlayState.GetHero().bounds.y);
+        return (x + bounds.x + bounds.width) >= (PlayState.getHero().x + PlayState.getHero().bounds.x) &&
+                (x + bounds.x) <= (PlayState.getHero().x + PlayState.getHero().bounds.x + PlayState.getHero().bounds.width) &&
+                (y + bounds.y) <= (PlayState.getHero().y + PlayState.getHero().bounds.y + PlayState.getHero().bounds.height) &&
+                (y + bounds.y + bounds.height) >= (PlayState.getHero().y + PlayState.getHero().bounds.y);
     }
 
     // brief Randeaza/deseneaza eroul in noua pozitie.
