@@ -22,5 +22,5 @@ public class Record {
 
     private String name;
     private LevelDifficulty levelDifficulty;
-    private Double time;
+    private String time;
 }

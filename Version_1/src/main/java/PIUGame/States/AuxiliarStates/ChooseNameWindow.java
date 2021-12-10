@@ -3,6 +3,7 @@ package PIUGame.States.AuxiliarStates;
 import PIUGame.RefLinks;
 import PIUGame.States.PlayState;
 import PIUGame.States.State;
+import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,9 @@ public class ChooseNameWindow implements ActionListener {
     private Font playButtonFont;
     private Font labelNameFont;
     private JLabel nameLabel;
-    private String playerName;
+
+    @Getter
+    private static String playerName;
 
 
     public ChooseNameWindow(RefLinks refLink) {

@@ -1,10 +1,13 @@
 package PIUGame.States;
 
+import PIUGame.Database.Table.Record;
+import PIUGame.Database.Table.RecordDAO;
 import PIUGame.GameObjects.UIImageButton;
 import PIUGame.GameObjects.UIManager;
 import PIUGame.Graphics.Assets;
 import PIUGame.Input.ClickListener;
 import PIUGame.RefLinks;
+import PIUGame.States.AuxiliarStates.ChooseNameWindow;
 
 import java.awt.*;
 
@@ -40,6 +43,14 @@ public class FinishedGame extends State {
             }
         }));
 
+        RecordDAO recordDAO = new RecordDAO();
+        Record record = Record.builder()
+                .name(ChooseNameWindow.getPlayerName())
+                .time(PlayState.getMinutes() + ":" + PlayState.getSeconds())
+                .levelDifficulty(PlayState.levelDifficulty)
+                .build();
+
+        recordDAO.saveRecord(record);
     }
 
     @Override
@@ -66,7 +77,7 @@ public class FinishedGame extends State {
         Color font_color = new Color(55, 80, 80, 250);
         g.setFont(font1);
         g.setColor(font_color);
-        g.drawString("You win the game, Congratulation !!!", refLink.getGame().getWidth() / 2 - 250, 70);
+        g.drawString(String.format("%s, You win the game, Congratulations !!!", ChooseNameWindow.getPlayerName()), refLink.getGame().getWidth() / 2 - 250, 70);
 
         font1 = new Font("arial", 1, 50);
         g.setFont(font1);
