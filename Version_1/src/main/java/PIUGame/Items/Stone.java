@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 
-public class Stone extends Item{
+public class Stone extends Item {
 
     public BufferedImage stone_image;
 
@@ -16,7 +16,7 @@ public class Stone extends Item{
 
     public boolean visited = false;
 
-    public Stone(RefLinks refLink, int x, int y){
+    public Stone(RefLinks refLink, int x, int y) {
         super(refLink, x, y, 50, 50);
 
 //        normalBounds.x = 0;
@@ -28,17 +28,17 @@ public class Stone extends Item{
     }
 
     @Override
-    public void Update(){
+    public void Update() {
 
-        if(!stone_collected){
+        if (!stone_collected) {
             stoneCollected();
         }
         //System.out.println(stone_collected);
     }
 
     @Override
-    public void Draw(Graphics g){
-        if(!stone_collected) {
+    public void Draw(Graphics g) {
+        if (!stone_collected) {
             //g.drawImage(stone_image, (int)x, (int)y, 50, 50, null);
             //g.drawImage(stone_image, (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
 
@@ -50,23 +50,22 @@ public class Stone extends Item{
             //g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
 
             // draw the actual image
-            g.drawImage(stone_image, (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
+            g.drawImage(stone_image, (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
 
             //System.out.println("            exista");
-        }else{
+        } else {
             //System.out.println("nu mai e");
         }
     }
 
-    public boolean stoneCollected(){
-        if(collisionWithPlayer()){
+    public boolean stoneCollected() {
+        if (collisionWithPlayer()) {
             //System.out.println("                                                                    false");
             //System.out.println("x= " + PlayState.GetHero().x + "     y= " + PlayState.GetHero().y + "      xS= "+ x + "    yS= " + y);
             stone_collected = true;
 
             return true;
-        }
-        else{
+        } else {
             //System.out.println("                                                                    false");
             //System.out.println("x= " + PlayState.GetHero().x + "     y= " + PlayState.GetHero().y + "      xS= "+ x + "    yS= " + y);
             //System.out.println("                                                                    true");
@@ -75,31 +74,20 @@ public class Stone extends Item{
         }
     }
 
-    public boolean collisionWithPlayer(){
-        if((x + bounds.x + bounds.width) >= (PlayState.GetHero().x  + PlayState.GetHero().bounds.x) &&
+    public boolean collisionWithPlayer() {
+        return (x + bounds.x + bounds.width) >= (PlayState.GetHero().x + PlayState.GetHero().bounds.x) &&
                 (x + bounds.x) <= (PlayState.GetHero().x + PlayState.GetHero().bounds.x + PlayState.GetHero().bounds.width) &&
                 (y + bounds.y) <= (PlayState.GetHero().y + PlayState.GetHero().bounds.y + PlayState.GetHero().bounds.height) &&
-                (y + bounds.y + bounds.height) >= (PlayState.GetHero().y + PlayState.GetHero().bounds.y))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+                (y + bounds.y + bounds.height) >= (PlayState.GetHero().y + PlayState.GetHero().bounds.y);
     }
 
 
-
-    public boolean getStoneStatus(){
+    public boolean getStoneStatus() {
         return stone_collected;
     }
 
-    public void resetStoneStatus(){
+    public void resetStoneStatus() {
         stone_collected = false;
         visited = false;
     }
-
-
-
 }

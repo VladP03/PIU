@@ -1,14 +1,15 @@
 package PIUGame.Items;
 
 import PIUGame.RefLinks;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 
-
-
-    // brief. Implementeaza notiunea abstracta de entitate activa din joc, "element cu care se poate interactiona: monstru, turn etc.".
-public abstract class Item
-{
+// brief. Implementeaza notiunea abstracta de entitate activa din joc, "element cu care se poate interactiona: monstru, turn etc.".
+@Getter
+@Setter
+public abstract class Item {
     ///asa cum s-a mai precizat, coordonatele x si y sunt de tip float pentru a se elimina erorile de rotunjire
     ///ce pot sa apara in urma calculelor, urmand a se converti la intreg doar in momentul desenarii.
     protected float x;                  /*!< Pozitia pe axa X a "tablei" de joc a imaginii entitatii.*/
@@ -24,14 +25,13 @@ public abstract class Item
     protected float initialY;
 
 
-        // brief Constructor de initializare al clasei
-        // param  reflink Referinte "shortcut" catre alte referinte
-        // param  x   Pozitia pe axa X a "tablei" de joc a imaginii entitatii.
-        // param  y   Pozitia pe axa Y a "tablei" de joc a imaginii entitatii.
-        // param  width   Latimea imaginii entitatii.
-        // param  height  Inaltimea imaginii entitatii.
-    public Item(RefLinks refLink, float x, float y, int width, int height)
-    {
+    // brief Constructor de initializare al clasei
+    // param  reflink Referinte "shortcut" catre alte referinte
+    // param  x   Pozitia pe axa X a "tablei" de joc a imaginii entitatii.
+    // param  y   Pozitia pe axa Y a "tablei" de joc a imaginii entitatii.
+    // param  width   Latimea imaginii entitatii.
+    // param  height  Inaltimea imaginii entitatii.
+    public Item(RefLinks refLink, float x, float y, int width, int height) {
         this.x = x;                 // < Retine coordonata pe axa X.
         this.y = y;                 // < Retine coordonata pe axa X.
         this.width = width;         // < Retine latimea imaginii.
@@ -49,99 +49,14 @@ public abstract class Item
         bounds = normalBounds;
     }
 
-    public void resetPosition(){
+    public void resetPosition() {
         this.x = initialX;
         this.y = initialY;
     }
 
     ///Metoda abstracta destinata actualizarii starii curente
     public abstract void Update();
+
     ///Metoda abstracta destinata desenarii starii curente
     public abstract void Draw(Graphics g);
-
-
-        // brief Returneaza coordonata pe axa X.
-    public float GetX()
-    {
-        return x;
-    }
-
-
-        // brief Returneaza coordonata pe axa Y.
-    public float GetY()
-    {
-        return y;
-    }
-
-
-        // brief Returneaza latimea entitatii.
-    public int GetWidth()
-    {
-        return width;
-    }
-
-
-        // brief Returneaza inaltimea entitatii.
-    public int GetHeight()
-    {
-        return height;
-    }
-
-
-        // brief Seteaza coordonata pe axa X.
-    public void SetX(float x)
-    {
-        this.x = x;
-    }
-
-
-        // brief Seteaza coordonata pe axa Y.
-    public void SetY(float y)
-    {
-        this.y = y;
-    }
-
-
-        // brief Seteaza latimea imaginii entitatii.
-    public void SetWidth(int width)
-    {
-        this.width = width;
-    }
-
-
-        // brief Seteaza inaltimea imaginii entitatii.
-    public void SetHeight(int height)
-    {
-        this.height = height;
-    }
-
-
-        // brief Seteaza modul normal de interactiune
-    public void SetNormalMode()
-    {
-        bounds = normalBounds;
-    }
-
-
-        // brief Seteaza modul de atac de interactiune
-    public void SetAttackMode()
-    {
-        bounds = attackBounds;
-    }
-
-    public float getInitialX() {
-        return initialX;
-    }
-
-    public void setInitialX(float initialX) {
-        this.initialX = initialX;
-    }
-
-    public float getInitialY() {
-        return initialY;
-    }
-
-    public void setInitialY(float initialY) {
-        this.initialY = initialY;
-    }
 }

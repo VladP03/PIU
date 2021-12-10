@@ -1,15 +1,15 @@
 package PIUGame.Items;
 
-import java.util.List;
+import PIUGame.Graphics.Animation;
+import PIUGame.Graphics.Assets;
+import PIUGame.RefLinks;
+import PIUGame.States.PlayState;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
-import PIUGame.Graphics.Animation;
-import PIUGame.RefLinks;
-import PIUGame.Graphics.Assets;
-import PIUGame.States.PlayState;
-
-import static java.lang.Thread.sleep;
+import java.util.List;
 
 /*
     brief Implementeaza notiunea de erou/player (caracterul controlat de jucator).
@@ -19,37 +19,30 @@ import static java.lang.Thread.sleep;
         atacul (nu este implementat momentan)
         dreptunghiul de coliziune
  */
-public class Hero extends Character
-{
+@Getter
+@Setter
+public class Hero extends Character {
+    public int nr_stone = 0;
     //Animation
-    private Animation animDown;
-    private Animation animUp;
-    private Animation animLeft;
-    private Animation animRight;
-    private Animation noAnim;
-
-    private BufferedImage lifeImage;
-    private BufferedImage stoneImage;
-
+    private final Animation animDown;
+    private final Animation animUp;
+    private final Animation animLeft;
+    private final Animation animRight;
+    private final Animation noAnim;
+    private final BufferedImage lifeImage;
+    private final BufferedImage stoneImage;
     private int finish_zone_x = 0;
     private int finish_zone_y = 0;
-
     private float target_to_follow_x;
     private float target_to_follow_y;
-    private boolean  is_arrive_at_gate = false;
+    private boolean is_arrive_at_gate = false;
     private boolean in_finish_zone = false;
-
     private ItemDirection heroDirection = ItemDirection.NONE;
-
     // deoarece update-urile la taste sunt foarte rapide, o singura apasare va fi considerata ca mai multe apasari;
     // se folosesc pentru tasta space, pentru a nu lansa mai multe sulite la o singura apasare
     private boolean key_already_pressed = false;
     private int number_key_pressed = 0;
-
-
     private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
-
-    public int nr_stone = 0;
 
     /*
         \brief Constructorul de initializare al clasei Hero.
@@ -57,10 +50,9 @@ public class Hero extends Character
         \param x Pozitia initiala pe axa X a eroului.
         \param y Pozitia initiala pe axa Y a eroului.
      */
-    public Hero(RefLinks refLink, float x, float y)
-    {
+    public Hero(RefLinks refLink, float x, float y) {
         ///Apel al constructorului clasei de baza
-        super(refLink, x,y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
+        super(refLink, x, y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
 
         ///Seteaza imaginea de start a eroului
         //image = Assets.heroLeft;
@@ -89,10 +81,9 @@ public class Hero extends Character
         stoneImage = Assets.stone_image;
     }
 
-        // brief Actualizeaza pozitia si imaginea eroului.
+    // brief Actualizeaza pozitia si imaginea eroului.
     @Override
-    public void Update()
-    {
+    public void Update() {
         //Animation
         animDown.Update();
         animUp.Update();
@@ -103,16 +94,15 @@ public class Hero extends Character
         //System.out.println(nr_stone);
 
 
+        for (Stone s : PlayState.stone) {
+            if (s.stone_collected && !s.visited) {
+                nr_stone++;
+                s.visited = true;
+                //s.stone_collected = true;
+                //System.out.println(s.stone_collected);
+                break;
 
-        for(Stone s: PlayState.stone){
-           if(s.stone_collected && !s.visited){
-               nr_stone++;
-               s.visited = true;
-               //s.stone_collected = true;
-               //System.out.println(s.stone_collected);
-               break;
-
-           }
+            }
         }
 
         ///Verifica daca a fost apasata o tasta
@@ -125,73 +115,62 @@ public class Hero extends Character
 
     }
 
-        // brief Verifica daca a fost apasata o tasta din cele stabilite pentru controlul eroului.
-    private void GetInput()
-    {
+    // brief Verifica daca a fost apasata o tasta din cele stabilite pentru controlul eroului.
+    private void GetInput() {
         ///Implicit eroul nu trebuie sa se deplaseze daca nu este apasata o tasta
         xMove = 0;
         yMove = 0;
 
-        if(key_already_pressed == true && number_key_pressed < 100){
+        if (key_already_pressed == true && number_key_pressed < 100) {
             number_key_pressed++;
-        }
-        else
-        {
+        } else {
             number_key_pressed = 0;
             key_already_pressed = false;
         }
 
-        if(in_finish_zone == true && stonesAreCollected()) {             // player-ul se afla in zona de trecere catre urmatorul nivel
+        if (in_finish_zone == true && stonesAreCollected()) {             // player-ul se afla in zona de trecere catre urmatorul nivel
             // se verifica daca player-ul a ajuns in zona de trecere catre urmatorul nivel si astfel tranzitia este terminata (se considera o eroare de +-10 pixeli)
-            if(x > target_to_follow_x - 10 && y < target_to_follow_y + 10){
+            if (x > target_to_follow_x - 10 && y < target_to_follow_y + 10) {
                 is_arrive_at_gate = true;
-            }else{
+            } else {
                 // daca player-ul este in apropierea zonei de final se realizeaza o tranzitie care duce caracterul catre portal
-                if(x < target_to_follow_x){
+                if (x < target_to_follow_x) {
                     xMove = speed / 8;
-                }
-                else{
+                } else {
                     xMove = -speed / 8;
                 }
-                if(y > target_to_follow_y){
+                if (y > target_to_follow_y) {
                     yMove = -speed / 8;
-                }
-                else{
+                } else {
                     yMove = speed / 8;
                 }
             }
-        }
-        else{                               // player-ul se deplaseaza normal
+        } else {                               // player-ul se deplaseaza normal
             ///Verificare apasare tasta "sus"
-            if(refLink.GetKeyManager().up)
-            {
+            if (refLink.getKeyManager().up) {
                 yMove = -speed;
                 heroDirection = ItemDirection.UP;
             }
             ///Verificare apasare tasta "jos"
-            if(refLink.GetKeyManager().down)
-            {
+            if (refLink.getKeyManager().down) {
                 yMove = speed;
                 heroDirection = ItemDirection.DOWN;
             }
             ///Verificare apasare tasta "left"
-            if(refLink.GetKeyManager().left)
-            {
+            if (refLink.getKeyManager().left) {
                 xMove = -speed;
                 heroDirection = ItemDirection.LEFT;
             }
             ///Verificare apasare tasta "dreapta"
-            if(refLink.GetKeyManager().right)
-            {
+            if (refLink.getKeyManager().right) {
                 xMove = speed;
                 heroDirection = ItemDirection.RIGHT;
             }
             ///Verificare apasare tasta "space" pentru tragere
-            if(refLink.GetKeyManager().space && key_already_pressed == false)
-            {
+            if (refLink.getKeyManager().space && key_already_pressed == false) {
                 System.out.println("space pressed");
                 key_already_pressed = true;
-                createSord(heroDirection);
+                createSword(heroDirection);
 
             }
 
@@ -204,8 +183,7 @@ public class Hero extends Character
     // brief Randeaza/deseneaza eroul in noua pozitie.
     // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
     @Override
-    public void Draw(Graphics g)
-    {
+    public void Draw(Graphics g) {
         // g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
 
         //g.fillRect(20, 20, 200, 60);
@@ -218,7 +196,7 @@ public class Hero extends Character
         // afiseaza numarul de vieti ale player-ului
         g.setColor(Color.GREEN);
         g.fillRoundRect(20, 20, 170, 60, 20, 20);
-        for(int i=0; i < life; i++){
+        for (int i = 0; i < life; i++) {
             g.drawImage(Assets.heart_life_image, 30 + i * 50, 30, 60, 40, null);
         }
         //g.setColor(Color.black);
@@ -241,7 +219,6 @@ public class Hero extends Character
         // ---------------------------------------------------------------
 
 
-
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
         g.setColor(Color.blue);
         //g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
@@ -251,125 +228,61 @@ public class Hero extends Character
 
         //System.out.println("player_x: " + x + " ---  player_y: " + y);
 
-        g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(), (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
     }
 
-    private BufferedImage getCurrentAnimationFrame(){
-        if(xMove < 0){      //moving to the left
+    private BufferedImage getCurrentAnimationFrame() {
+        if (xMove < 0) {      //moving to the left
             return animLeft.getCurrentFrame();
-        }else if(xMove > 0){        //moving to the right
+        } else if (xMove > 0) {        //moving to the right
             return animRight.getCurrentFrame();
-        }else if(yMove < 0){        //moving up
+        } else if (yMove < 0) {        //moving up
             return animUp.getCurrentFrame();
-        }else if(yMove > 0){        //moving down
+        } else if (yMove > 0) {        //moving down
             return animDown.getCurrentFrame();
         }
         return noAnim.getCurrentFrame();
     }
 
-    public boolean levelFinished(){
-        if(playerInFinishZone() && stonesAreCollected() && is_arrive_at_gate){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public boolean levelFinished() {
+        return playerInFinishZone() && stonesAreCollected() && is_arrive_at_gate;
     }
 
-    public boolean playerInFinishZone(){
+    public boolean playerInFinishZone() {
         //if(x > refLink.GetWidth() + refLink.getGameCamera().getxOffset()-200 && y > refLink.GetHeight() +refLink.getGameCamera().getyOffset() -200){
-        if(x > finish_zone_x && y > finish_zone_y){
+        if (x > finish_zone_x && y > finish_zone_y) {
             in_finish_zone = true;
             return true;
-        }
-        else{
+        } else {
             // pentru a nu se activa, in mod eronat, tranzitia care duce player-ul catre poarta cand pietrele au fost colectate, se foloseste o variabila de verificare in plus (in_finish_zone)
-            if(x < finish_zone_x-80 && y < finish_zone_y - 80) {
+            if (x < finish_zone_x - 80 && y < finish_zone_y - 80) {
                 in_finish_zone = false;
             }
             return false;
         }
     }
 
-    public boolean stonesAreCollected(){
-        if(nr_stone >= 0){
-            //System.out.println("collected-->>>");
-            return true;
-        }
-        else{
-            //System.out.println("NOTT   collected");
-            return false;
-        }
+    public boolean stonesAreCollected() {
+        //System.out.println("collected-->>>");
+        //System.out.println("NOTT   collected");
+        return nr_stone >= 0;
     }
 
-    public void resetStone(){
-        for(Stone s: PlayState.stone){
-            s.resetStoneStatus();
-        }
-        nr_stone =0;
-    }
-
-
-    public void createSord(ItemDirection heroDirection){
+    public void createSword(ItemDirection heroDirection) {
         // creez un obiect de tip sabie
         Sword sword = new Sword(refLink, x + 20, y + 20, heroDirection);
 
         // adaug obiectul in lista de sabii pentru a putea fi actualizat atat timp cat exista
-        List<Sword> swords = refLink.GetGame().getPlayState().getSwords();
+        List<Sword> swords = refLink.getGame().getPlayState().getSwords();
         swords.add(sword);
-        refLink.GetGame().getPlayState().setSwords(swords);
+        refLink.getGame().getPlayState().setSwords(swords);
     }
 
-    public void createExplosionEffect(){
-        List<Explosion> explosions = refLink.GetGame().getPlayState().getExplosions();
+    public void createExplosionEffect() {
+        List<Explosion> explosions = refLink.getGame().getPlayState().getExplosions();
         Explosion explosion = new Explosion(refLink, x, y);
         explosions.add(explosion);
-        refLink.GetGame().getPlayState().setExplosions(explosions);
-    }
-
-
-    public int getNr_stone(){
-        return nr_stone;
-    }
-
-    public int getFinish_zone_x() {
-        return finish_zone_x;
-    }
-
-    public void setFinish_zone_x(int finish_zone_x) {
-        this.finish_zone_x = finish_zone_x;
-    }
-
-    public int getFinish_zone_y() {
-        return finish_zone_y;
-    }
-
-    public void setFinish_zone_y(int finish_zone_y) {
-        this.finish_zone_y = finish_zone_y;
-    }
-
-    public float getTarget_to_follow_x() {
-        return target_to_follow_x;
-    }
-
-    public void setTarget_to_follow_x(float target_to_follow_x) {
-        this.target_to_follow_x = target_to_follow_x;
-    }
-
-    public float getTarget_to_follow_y() {
-        return target_to_follow_y;
-    }
-
-    public void setTarget_to_follow_y(float target_to_follow_y) {
-        this.target_to_follow_y = target_to_follow_y;
-    }
-
-    public boolean isIs_arrive_at_gate() {
-        return is_arrive_at_gate;
-    }
-
-    public void setIs_arrive_at_gate(boolean is_arrive_at_gate) {
-        this.is_arrive_at_gate = is_arrive_at_gate;
+        refLink.getGame().getPlayState().setExplosions(explosions);
     }
 }
 
