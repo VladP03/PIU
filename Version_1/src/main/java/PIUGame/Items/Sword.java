@@ -132,7 +132,7 @@ public class Sword extends Character {
 
 
     public void collisionWithAllMonsters() {
-        List<Monster> monsters = refLink.getGame().getPlayState().getMonster();
+        List<Monster> monsters = refLink.getGame().getPlayState().getMonsterList();
 
         for (int i = 0; i < monsters.size(); i++) {
             if (collisionWithOneMonster(monsters.get(i))) {
@@ -140,7 +140,7 @@ public class Sword extends Character {
                 distroySord();
             }
         }
-        refLink.getGame().getPlayState().setMonster(monsters);
+        refLink.getGame().getPlayState().setMonsterList(monsters);
     }
 
 

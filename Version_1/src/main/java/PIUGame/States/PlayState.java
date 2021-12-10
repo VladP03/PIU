@@ -29,9 +29,10 @@ public class PlayState extends State {
     @Getter @Setter
     private static Hero hero;                                                   // < Referinta catre obiectul animat erou (controlat de utilizator).
     @Getter @Setter
-    public static List<Monster> monster;                                        // Lista monstrilor
+    public static List<Monster> monsterList;                                        // Lista monstrilor
     @Getter @Setter
-    public static Stone[] stone;                                                // Lista pietrelor pe care trebuie sa le colecteze eroul
+    public static List<Stone> stoneList;                                                // Lista pietrelor pe care trebuie sa le colecteze eroul
+
     public static MapElements map_elements;                                     // Elementele de pe harta care sunt desenate peste tiles pe baza coordonatelor date
 
     public static ReinitializeObjects reinitializeObjects;                      // La fiecare nivel o serie de obiecte trebuie reinitializate
@@ -111,20 +112,20 @@ public class PlayState extends State {
                 }
             }
 
-            for (Stone s : stone) {
+            for (Stone s : stoneList) {
                 s.Update();
             }
 
-            if (!monster.isEmpty()) {
-                for (Monster t : monster) {
+            if (!monsterList.isEmpty()) {
+                for (Monster t : monsterList) {
                     t.Update();
-                    if (monster.isEmpty()) {
+                    if (monsterList.isEmpty()) {
                         break;
                     }
                 }
             }
 
-            for (Monster m : monster) {
+            for (Monster m : monsterList) {
                 if (m.hasKilledPlayer()) {
                     System.out.println("mort");
 
@@ -132,7 +133,7 @@ public class PlayState extends State {
 
                     hero.resetPosition();
                     hero.setLife(hero.getLife() - 1);
-                    for (Monster t : monster) {
+                    for (Monster t : monsterList) {
                         t.resetPosition();
                     }
                     if (hero.getLife() == 0) {
@@ -211,11 +212,11 @@ public class PlayState extends State {
                 }
             }
 
-            for (Stone s : stone) {
+            for (Stone s : stoneList) {
                 s.Draw(g);
             }
 
-            for (Monster t : monster) {
+            for (Monster t : monsterList) {
                 t.Draw(g);
             }
 
@@ -225,11 +226,11 @@ public class PlayState extends State {
             map_elements.Draw(g, index_level);
             hero.Draw(g);
 
-            for (Stone s : stone) {
+            for (Stone s : stoneList) {
                 s.Draw(g);
             }
 
-            for (Monster t : monster) {
+            for (Monster t : monsterList) {
                 t.Draw(g);
             }
 

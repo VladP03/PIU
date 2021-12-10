@@ -59,12 +59,12 @@ public class ReinitializeObjects {
         refLink.getGame().getPlayState().setSeconds(0);
 
         //stabilesc pozitiile pietrelor
-        Stone[] stone = new Stone[5];
-        stone[0] = new Stone(refLink, 620, 144);
-        stone[1] = new Stone(refLink, 1340, 96);
-        stone[2] = new Stone(refLink, 576, 864);
-        stone[3] = new Stone(refLink, 1050, 576);
-        stone[4] = new Stone(refLink, 1728, 336);
+        List<Stone> stoneList = new ArrayList<>();
+        stoneList.add(new Stone(refLink, 620, 144));
+        stoneList.add(new Stone(refLink, 1340, 96));
+        stoneList.add(new Stone(refLink, 576, 864));
+        stoneList.add(new Stone(refLink, 1050, 576));
+        stoneList.add(new Stone(refLink, 1728, 336));
 
 
         // stabilesc pozitiile inamicilor
@@ -77,22 +77,17 @@ public class ReinitializeObjects {
 
 
         // reinitializez obiectele din PlayState
-        refLink.getGame().getPlayState().setStone(stone);
-        refLink.getGame().getPlayState().setMonster(monster);
+        refLink.getGame().getPlayState().setStoneList(stoneList);
+        refLink.getGame().getPlayState().setMonsterList(monster);
     }
 
     public void createObjectLevel_2() {
-
         // restabilesc pozitia player-ului (chiar daca a fost setata)
         refLink.getGame().getPlayState().getHero().setX(140);
         refLink.getGame().getPlayState().getHero().setY(180);
 
-//        refLink.GetGame().getPlayState().GetHero().SetX(2500);
-//        refLink.GetGame().getPlayState().GetHero().SetY(3400);
-
         refLink.getGame().getPlayState().getHero().setInitialX(140);
         refLink.getGame().getPlayState().getHero().setInitialY(180);
-
 
         // stabilesc zona in care player-ul va trece la nivelul urmator
         refLink.getGame().getPlayState().getHero().setFinish_zone_x(2680);
@@ -107,24 +102,40 @@ public class ReinitializeObjects {
         refLink.getGame().getPlayState().getHero().set_arrive_at_gate(false);
 
         //stabilesc pozitiile pietrelor
-        Stone[] stone = new Stone[5];
-        stone[0] = new Stone(refLink, 620, 144);
-        stone[1] = new Stone(refLink, 1340, 96);
-        stone[2] = new Stone(refLink, 576, 864);
-        stone[3] = new Stone(refLink, 1050, 576);
-        stone[4] = new Stone(refLink, 1728, 336);
+        List<Stone> stoneList = new ArrayList<>();
+         stoneList.add(new Stone(refLink, 2*314, 2*703));
+        stoneList.add(new Stone(refLink, 2*71, 2*839));
+        stoneList.add(new Stone(refLink, 2*118, 2*1660));
+        stoneList.add(new Stone(refLink, 2*1417, 2*1557));
+        stoneList.add(new Stone(refLink, 2*786, 2*71));
+        stoneList.add(new Stone(refLink, 2*1407, 2*557));
 
 
         // stabilesc pozitiile inamicilor
         List<Monster> monster = new ArrayList<Monster>();
-        monster.add(new Monster(refLink, 680, 367, ItemDirection.RIGHT, 500));
-        monster.add(new Monster(refLink, 1820, 560, ItemDirection.RIGHT, 400));
-        monster.add(new Monster(refLink, 2193, 980, ItemDirection.DOWN, 300));
-        monster.add(new Monster(refLink, 80, 300, ItemDirection.DOWN, 400));
-
-
+        monster.add(new Monster(refLink, 2*342, 2*65, ItemDirection.RIGHT, 2*1286 - 2*342));
+        monster.add(new Monster(refLink, 2*1286, 2*65, ItemDirection.LEFT, 2*1286 - 2*342));
+        monster.add(new Monster(refLink, 2*64, 2*445, ItemDirection.RIGHT, 2*450 - 2*64));
+        monster.add(new Monster(refLink, 2*70, 2*354, ItemDirection.DOWN, 2*1250 - 2*354));
+        monster.add(new Monster(refLink, 64, 445));
+        monster.add(new Monster(refLink, 1913, 639));
+        monster.add(new Monster(refLink, 1328, 711));
+        monster.add(new Monster(refLink, 2804, 1665));
+        monster.add(new Monster(refLink, 1148, 1125));
+        monster.add(new Monster(refLink, 1679, 1332));
+        monster.add(new Monster(refLink, 2300, 1755));
+        monster.add(new Monster(refLink, 2813, 2934));
+        monster.add(new Monster(refLink, 1958, 2394));
+        monster.add(new Monster(refLink, 2183, 3087));
+        monster.add(new Monster(refLink, 1499, 3555));
+        monster.add(new Monster(refLink, 1166, 3096));
+        monster.add(new Monster(refLink, 383, 3285));
+        monster.add(new Monster(refLink, 833, 1755));
+        monster.add(new Monster(refLink, 122, 2511));
+        monster.add(new Monster(refLink, 572, 2799));
+        monster.add(new Monster(refLink, 743, 2430));
         // reinitializez obiectele din PlayState
-        refLink.getGame().getPlayState().setStone(stone);
-        refLink.getGame().getPlayState().setMonster(monster);
+        refLink.getGame().getPlayState().setStoneList(stoneList);
+        refLink.getGame().getPlayState().setMonsterList(monster);
     }
 }

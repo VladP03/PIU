@@ -94,7 +94,7 @@ public class Hero extends Character {
         //System.out.println(nr_stone);
 
 
-        for (Stone s : PlayState.stone) {
+        for (Stone s : PlayState.stoneList) {
             if (s.stone_collected && !s.visited) {
                 nr_stone++;
                 s.visited = true;
