@@ -1,59 +1,42 @@
 package PIUGame.GameCamera;
 
-import PIUGame.Game;
 import PIUGame.Items.Item;
 import PIUGame.RefLinks;
 import PIUGame.Tiles.Tile;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-public class GameCamera {           //mod_2
-
-    private RefLinks refLink;
-    private Game game;
+@Getter
+@AllArgsConstructor
+public class GameCamera {
+    private final RefLinks refLink;
     private float xOffset, yOffset;
 
-    public GameCamera(RefLinks refLink, float xOffset, float yOffset){
-        this.refLink = refLink;
-        this.xOffset = xOffset;
-        this.yOffset = yOffset;
+    public void centerOnEntity(Item e) {
+        xOffset = e.GetX() - (float) (refLink.getWidth() / 2.) + (float) (e.GetWidth() / 2.);
+        yOffset = e.GetY() - (float) (refLink.getHeight() / 2.) + (float) (e.GetHeight() / 2.);
+
+        checkForBlankSpace();
     }
 
-    public void checkBlanckSpace(){
-        if(xOffset < 0){
+    private void checkForBlankSpace() {
+        checkForBlankSpaceOnWidth();
+        checkForBlankSpaceOnHeight();
+    }
+
+    private void checkForBlankSpaceOnWidth() {
+        if (xOffset < 0) {
             xOffset = 0;
-        }else if(xOffset > refLink.GetMap().getWidth() * Tile.TILE_WIDTH - refLink.GetWidth()){
-            xOffset = refLink.GetMap().getWidth() * Tile.TILE_WIDTH - refLink.GetWidth();
+        } else if (xOffset > refLink.getMap().getWidth() * Tile.TILE_WIDTH - refLink.getWidth()) {
+            xOffset = refLink.getMap().getWidth() * Tile.TILE_WIDTH - refLink.getWidth();
         }
+    }
 
-
-        if(yOffset < 0){
+    private void checkForBlankSpaceOnHeight() {
+        if (yOffset < 0) {
             yOffset = 0;
-        }else if(yOffset > refLink.GetMap().getHeight() * Tile.TILE_HEIGHT - refLink.GetHeight()){
-            yOffset = refLink.GetMap().getHeight() * Tile.TILE_HEIGHT - refLink.GetHeight();
+        } else if (yOffset > refLink.getMap().getHeight() * Tile.TILE_HEIGHT - refLink.getHeight()) {
+            yOffset = refLink.getMap().getHeight() * Tile.TILE_HEIGHT - refLink.getHeight();
         }
-    }
-
-    public void centerOnEntity(Item e){
-        xOffset = e.GetX() - (float)(refLink.GetWidth() / 2.) + (float)(e.GetWidth() / 2.);
-        yOffset = e.GetY() - (float)(refLink.GetHeight() / 2.) + (float)(e.GetHeight() / 2.);
-        checkBlanckSpace();
-    }
-
-    public void move(float xAmt, float yAmt){
-        xOffset += xAmt;
-        yOffset += yAmt;
-        checkBlanckSpace();
-    }
-
-    public float getxOffset(){
-        return xOffset;
-    }
-    public float getyOffset(){
-        return yOffset;
-    }
-    public void setxOffset(float xOffset){
-        this.xOffset = xOffset;
-    }
-    public void setyOffset(float yOffset){
-        this.yOffset = yOffset;
     }
 }
