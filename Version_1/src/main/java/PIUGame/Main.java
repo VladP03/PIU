@@ -1,37 +1,13 @@
 package PIUGame;
 
-import PIUGame.Database.Table.Record;
-import PIUGame.Database.Table.RecordDAO;
-import PIUGame.States.Difficulty.LevelDifficulty;
+import PIUGame.Database.HibernateUtil;
 
 public class Main {
     public static void main(String [] args){
-        RecordDAO recordDAO = new RecordDAO();
+        // start session to DB
+        HibernateUtil.startSession();
 
-        recordDAO.startSession();
-
-//        Record record = Record.builder()
-//                .levelDifficulty(LevelDifficulty.EASY)
-//                .name("Iuli")
-//                .time(30.50)
-//                .build();
-//        recordDAO.saveRecord(record);
-//        Record record2 = Record.builder()
-//                .levelDifficulty(LevelDifficulty.HARD)
-//                .name("Razvan")
-//                .time(150.50)
-//                .build();
-//        recordDAO.saveRecord(record2);
-//        Record record3 = Record.builder()
-//                .levelDifficulty(LevelDifficulty.MEDIUM)
-//                .name("Silviu")
-//                .time(40.50)
-//                .build();
-//        recordDAO.saveRecord(record3);
-
-
-        createGame game1 = createGame.getInstance();
-        game1.startGame();
-        createGame.reset();
+        // start the game
+        StartGame.startGame();
     }
 }

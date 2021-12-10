@@ -1,10 +1,11 @@
 package PIUGame.Database;
 
+import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class HibernateUtil {
-
+@UtilityClass
+public final class HibernateUtil {
     private static SessionFactory sessionFactory = null;
 
     public static SessionFactory getSessionFactory() {
@@ -18,5 +19,13 @@ public class HibernateUtil {
             }
         }
         return sessionFactory;
+    }
+
+    public static void startSession() {
+        try {
+            getSessionFactory().openSession();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

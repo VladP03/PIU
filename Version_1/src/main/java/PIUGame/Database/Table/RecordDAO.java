@@ -8,16 +8,7 @@ import java.util.ArrayList;
 
 public class RecordDAO {
 
-    public void startSession() {
-        try {
-            HibernateUtil.getSessionFactory().openSession();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void saveRecord(Record record) {
-
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
