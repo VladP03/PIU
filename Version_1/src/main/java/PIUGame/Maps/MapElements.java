@@ -121,10 +121,9 @@ public class MapElements {
                 g.drawImage(Assets.finish_zone_level_2_image, (int) (2765 - refLink.getGameCamera().getXOffset()), (int) (3380 - refLink.getGameCamera().getYOffset()), 120, 150, null);
 
                 break;
-            case 3:
-                break;
             default:
                 System.out.println("level not found");
+                System.exit(-1);
         }
     }
 }

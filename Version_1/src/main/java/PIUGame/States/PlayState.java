@@ -20,24 +20,35 @@ import java.util.List;
 @Getter
 @Setter
 public class PlayState extends State {
-
-    public static List<Monster> monster;                                        // Lista monstrilor
-    public static Stone[] stone;                                                // Lista pietrelor pe care trebuie sa le colecteze eroul
-    public static MapElements map_elements;                                     // Elementele de pe harta care sunt desenate peste tiles pe baza coordonatelor date
+    @Getter @Setter
     public static LevelDifficulty levelDifficulty = LevelDifficulty.EASY;       // Nivelul de dificultate al jocului
-    public static ReinitializeObjects reinitializeObjects;                      // La fiecare nivel o serie de obiecte trebuie reinitializate
-    // Retine timpul de cand s-a inceput jocul
-    public static int minutes = 0;
-    public static int seconds = 0;
-    public static int timer_count = 0;                                          // Tine evidenta update-urilor pentru a numara o secunda(Update-urile se realizeza de 60/s)
-    private static Hero hero;                                                   // < Referinta catre obiectul animat erou (controlat de utilizator).
-    private final RefLinks refLink;                                             // Referinta catre clasa ce are acces la celelalte obiecte
+
     public List<Sword> swords = new ArrayList<Sword>();                             // Lista sabiilor pe care eroul le creeaza cand ataca, apasand tasta space
     public List<Explosion> explosions = new ArrayList<Explosion>();                     // Lista animatiilor de explozii cand sabia intalneste un obstacol
+
+    @Getter @Setter
+    private static Hero hero;                                                   // < Referinta catre obiectul animat erou (controlat de utilizator).
+    @Getter @Setter
+    public static List<Monster> monster;                                        // Lista monstrilor
+    @Getter @Setter
+    public static Stone[] stone;                                                // Lista pietrelor pe care trebuie sa le colecteze eroul
+    public static MapElements map_elements;                                     // Elementele de pe harta care sunt desenate peste tiles pe baza coordonatelor date
+
+    public static ReinitializeObjects reinitializeObjects;                      // La fiecare nivel o serie de obiecte trebuie reinitializate
+
+    // Retine timpul de cand s-a inceput jocul
+    @Getter @Setter
+    private static int minutes = 0;
+    @Getter @Setter
+    private static int seconds = 0;
+    private static int timer_count = 0;                                          // Tine evidenta update-urilor pentru a numara o secunda(Update-urile se realizeza de 60/s)
+
+    private final RefLinks refLink;                                             // Referinta catre clasa ce are acces la celelalte obiecte
+
     private UIManager resumeManager;                                            // Referinta catre obiectul care gestioneaza meniul de Resume(cand se apasa pe butonul MENU)
     private Map map;                                                            // < Referinta catre harta curenta.
-    private int index_level = 1;                                                // Indexul nivelului
 
+    private int index_level = 1;                                                // Indexul nivelului
 
     // brief Constructorul de initializare al clasei
     // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
@@ -58,48 +69,11 @@ public class PlayState extends State {
         ///Construieste eroul
         hero = new Hero(refLink, 150, 200);
 
-
         // creez obiect care imi va gestiona obiectele in diferite niveluri
         reinitializeObjects = new ReinitializeObjects(refLink);
         reinitializeObjects.reorganizeObject(index_level);
 
         map_elements = new MapElements(refLink, index_level);
-    }
-
-    public static void setLevelDifficulty(LevelDifficulty levelDifficulty) {
-        PlayState.levelDifficulty = levelDifficulty;
-    }
-
-    public static void setStone(Stone[] stone) {
-        PlayState.stone = stone;
-    }
-
-    public static void setMonster(List<Monster> monster) {
-        PlayState.monster = monster;
-    }
-
-    public static Hero getHero() {
-        return hero;
-    }
-
-    public static void setMinutes(int minutes) {
-        PlayState.minutes = minutes;
-    }
-
-    public static int getSeconds() {
-        return seconds;
-    }
-
-    public static void setSeconds(int seconds) {
-        PlayState.seconds = seconds;
-    }
-
-    public static LevelDifficulty getLevelDifficulty() {
-        return levelDifficulty;
-    }
-
-    public static List<Monster> getMonster(){
-        return monster;
     }
 
     // se actualizeaza obiectele cand starea de playState este resetata deoarece se pierde focusul
