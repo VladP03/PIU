@@ -6,23 +6,20 @@ import PIUGame.States.AuxiliarStates.ChooseNameWindow;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class ChooseNameState extends State {
 
-    private UIManager chooseNameManager;
-
+    private static ChooseNameWindow chooseNameWindow;
+    private final UIManager chooseNameManager;
     private RefLinks refLink;
     private JFrame wndFrame;
     private Graphics g;
 
-    private static ChooseNameWindow chooseNameWindow;
 
-
-    public ChooseNameState(RefLinks refLink){
+    public ChooseNameState(RefLinks refLink) {
         super(refLink);
         chooseNameManager = new UIManager(refLink);
-        refLink.GetMouseManager().setUIManager(chooseNameManager);
+        refLink.getMouseManager().setUIManager(chooseNameManager);
 
         // se creeaza o noua fereastra in care se va introduce numele
         chooseNameWindow = new ChooseNameWindow(refLink);
@@ -30,15 +27,13 @@ public class ChooseNameState extends State {
     }
 
     @Override
-    public void Update(){
+    public void Update() {
         chooseNameManager.Update();
     }
 
 
     @Override
-    public void Draw(Graphics g){
+    public void Draw(Graphics g) {
         chooseNameManager.Draw(g);
     }
-
-
 }

@@ -1,38 +1,41 @@
 package PIUGame.States;
 
+import PIUGame.RefLinks;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.*;
 
-import PIUGame.RefLinks;
-
+@Getter
+@Setter
 public abstract class State {
 
-    private static State previousState  = null;     // < Referinta catre starea anterioara a jocului.
-    private static State currentState   = null;     // < Referinta catre starea curenta a jocului: game, meniu, settings, about etc.
+    private static State previousState = null;     // < Referinta catre starea anterioara a jocului.
+    private static State currentState = null;     // < Referinta catre starea curenta a jocului: game, meniu, settings, about etc.
     protected RefLinks refLink;
-    public State(RefLinks refLink)
-    {
+
+    public State(RefLinks refLink) {
         this.refLink = refLink;
     }
 
-    public static void SetState(State state)
+    public static void setState(State state)
     {
         previousState = currentState;
         currentState = state;
     }
 
-    public static State GetState()
+    public static State getPreviousState() {
+        return previousState;
+    }
+
+    public static State getState()
     {
         return currentState;
     }
 
-    public static State GetPreviousState(){
-        return previousState;
-    }
+    ///Metoda destinata actualizarii starii curente
+    public void Update(){};
 
-    ///Metoda abstracta destinata actualizarii starii curente
-    public abstract void Update();
-    ///Metoda abstracta destinata desenarii starii curente
-    public abstract void Draw(Graphics g);
-
-
+    ///Metoda destinata desenarii starii curente
+    public void Draw(Graphics g){};
 }

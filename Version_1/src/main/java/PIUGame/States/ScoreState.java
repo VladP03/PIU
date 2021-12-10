@@ -20,17 +20,17 @@ public class ScoreState extends State {
 
         super(refLink);
         settingManager = new UIManager(refLink);
-        refLink.GetMouseManager().setUIManager(settingManager);
+        refLink.getMouseManager().setUIManager(settingManager);
 
         RecordDAO recordDAO = new RecordDAO();
         recordList = recordDAO.getRecords();
         sort();
 
-        settingManager.addObject(new UITextButton((refLink.GetGame().GetWidth() / 2) - 100, 560, 200, 80, "<- Back to meniu", new ClickListener() {
+        settingManager.addObject(new UITextButton((refLink.getGame().GetWidth() / 2) - 100, 560, 200, 80, "<- Back to meniu", new ClickListener() {
             @Override
             public void onClick() {
-                refLink.GetMouseManager().setUIManager(null);
-                State.SetState(new MenuState(refLink));
+                refLink.getMouseManager().setUIManager(null);
+                State.setState(new MenuState(refLink));
             }
         }));
     }
@@ -45,20 +45,20 @@ public class ScoreState extends State {
     @Override
     public void Draw(Graphics g) {
         // seteaza imagine de fundal
-        g.drawImage(Assets.setting_background_image, 0, 0, refLink.GetWidth(), refLink.GetHeight(), null);
+        g.drawImage(Assets.setting_background_image, 0, 0, refLink.getWidth(), refLink.getHeight(), null);
 
         Font fontTitle = new Font("arial", 1, 50);
         g.setFont(fontTitle);
         g.setColor(Color.white);
-        g.drawString("Best Score", refLink.GetGame().GetWidth() / 2 - 100, 70);
+        g.drawString("Best Score", refLink.getGame().GetWidth() / 2 - 100, 70);
 
         Font fontTable = new Font("arial", 1, 30);
         g.setFont(fontTable);
         g.setColor(Color.white);
 
-        g.drawString("Difficulty", refLink.GetGame().GetWidth() / 2 - 600, 130);
-        g.drawString("Name", refLink.GetGame().GetWidth() / 2 - 400, 130);
-        g.drawString("Time", refLink.GetGame().GetWidth() / 2, 130);
+        g.drawString("Difficulty", refLink.getGame().GetWidth() / 2 - 600, 130);
+        g.drawString("Name", refLink.getGame().GetWidth() / 2 - 400, 130);
+        g.drawString("Time", refLink.getGame().GetWidth() / 2, 130);
 
         Font fontRow = new Font("arial", 1, 30);
         g.setFont(fontRow);
@@ -68,10 +68,10 @@ public class ScoreState extends State {
         int i = 40;
         int k = 0;
         for (Record rec : recordList) {
-            if (k<=9) {
-                g.drawString(String.valueOf(rec.getLevelDifficulty()), refLink.GetGame().GetWidth() / 2 - 600, 130 + i);
-                g.drawString(String.valueOf(rec.getName()), refLink.GetGame().GetWidth() / 2 - 400, 130 + i);
-                g.drawString(rec.getTime().toString(), refLink.GetGame().GetWidth() / 2, 130 + i);
+            if (k <= 9) {
+                g.drawString(String.valueOf(rec.getLevelDifficulty()), refLink.getGame().GetWidth() / 2 - 600, 130 + i);
+                g.drawString(String.valueOf(rec.getName()), refLink.getGame().GetWidth() / 2 - 400, 130 + i);
+                g.drawString(rec.getTime().toString(), refLink.getGame().GetWidth() / 2, 130 + i);
                 i += 40;
                 k++;
             } else {

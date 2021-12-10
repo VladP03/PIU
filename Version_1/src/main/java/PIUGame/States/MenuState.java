@@ -1,71 +1,70 @@
 package PIUGame.States;
+
 import PIUGame.GameObjects.UIImageButton;
 import PIUGame.GameObjects.UIManager;
-import PIUGame.GameObjects.UITextButton;
 import PIUGame.Graphics.Assets;
 import PIUGame.Input.ClickListener;
 import PIUGame.RefLinks;
 
 import java.awt.*;
 
-public class MenuState extends State{
+public class MenuState extends State {
 
-    private UIManager menuManager;
+    private final UIManager menuManager;
 
 
-    public MenuState(RefLinks refLink)
-    {
+    public MenuState(RefLinks refLink) {
         ///Apel al constructorului clasei de baza.
         super(refLink);
         menuManager = new UIManager(refLink);
-        refLink.GetMouseManager().setUIManager(menuManager);
+        refLink.getMouseManager().setUIManager(menuManager);
         //refLink.GetMouseManager().setUIManager(null);
         //refLink.GetMouseManager().setUIManager(menuManager);
 
 
-        menuManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 140, 300, 90, Assets.start_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 140, 300, 90, Assets.start_button_image, new ClickListener() {
             @Override
             public void onClick() {
-                refLink.GetMouseManager().setUIManager(null);
+                refLink.getMouseManager().setUIManager(null);
                 //State.SetState(refLink.GetGame().playState);
-                State.SetState(new ChooseNameState(refLink));
+                State.setState(new ChooseNameState(refLink));
             }
         }));
 
 
-        menuManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 240, 300, 90, Assets.settings_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 240, 300, 90, Assets.settings_button_image, new ClickListener() {
             @Override
             public void onClick() {
-                refLink.GetMouseManager().setUIManager(null);
+                refLink.getMouseManager().setUIManager(null);
                 //State.SetState(refLink.GetGame().settingState);
-                State.SetState(new SettingState(refLink));
+                State.setState(new SettingState(refLink));
             }
         }));
 
-        menuManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 340, 300, 90, Assets.score_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 340, 300, 90, Assets.score_button_image, new ClickListener() {
             @Override
             public void onClick() {
-                refLink.GetMouseManager().setUIManager(null);
+                refLink.getMouseManager().setUIManager(null);
                 //State.SetState(refLink.GetGame().settingState);
 
-                State.SetState(new ScoreState(refLink));
+                State.setState(new ScoreState(refLink));
                 //State.SetState(new MenuState(refLink));
             }
         }));
 
-        menuManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 440, 300, 90, Assets.about_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 440, 300, 90, Assets.about_button_image, new ClickListener() {
             @Override
             public void onClick() {
-                refLink.GetMouseManager().setUIManager(null);
+                refLink.getMouseManager().setUIManager(null);
                 //State.SetState(refLink.GetGame().settingState);
-                State.SetState(new AboutState(refLink));
+                State.setState(new AboutState(refLink));
             }
         }));
 
-        menuManager.addObject(new UIImageButton((int)(refLink.GetGame().GetWidth() / 2) - 100, 540, 300, 90, Assets.exit_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 540, 300, 90, Assets.exit_button_image, new ClickListener() {
             @Override
             public void onClick() {
-                refLink.GetMouseManager().setUIManager(null);
+                refLink.getMouseManager().setUIManager(null);
                 //State.SetState(refLink.GetGame().settingState);
                 System.exit(1);
                 //refLink.GetGame().StopGame();
@@ -77,8 +76,7 @@ public class MenuState extends State{
 
     // brief Actualizeaza starea curenta a meniului.
     @Override
-    public void Update()
-    {
+    public void Update() {
 //        if(refLink.GetMouseManager().isLeftPressed()){
 //            State.SetState(refLink.GetGame().playState);
 //        }
@@ -86,13 +84,12 @@ public class MenuState extends State{
         //System.out.println("mouse");
     }
 
-        // brief Deseneaza (randeaza) pe ecran starea curenta a meniului.
-        // param g Contextul grafic in care trebuie sa deseneze starea jocului pe ecran.
+    // brief Deseneaza (randeaza) pe ecran starea curenta a meniului.
+    // param g Contextul grafic in care trebuie sa deseneze starea jocului pe ecran.
     @Override
-    public void Draw(Graphics g)
-    {
+    public void Draw(Graphics g) {
         // add a background image
-        g.drawImage(Assets.menu_background_image, 0, 0, refLink.GetWidth(), refLink.GetHeight(), null);
+        g.drawImage(Assets.menu_background_image, 0, 0, refLink.getWidth(), refLink.getHeight(), null);
 
         // afiseaza un mesaj intr-un chenar
 //        g.setColor(Color.GRAY);
@@ -107,6 +104,5 @@ public class MenuState extends State{
         g.setFont(font1);
         g.setColor(Color.white);
         menuManager.Draw(g);
-
     }
 }

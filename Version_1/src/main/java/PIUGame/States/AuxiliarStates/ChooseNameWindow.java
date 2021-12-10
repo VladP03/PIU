@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class ChooseNameWindow implements ActionListener {
 
-    private RefLinks refLink;
+    private final RefLinks refLink;
     private JTextField nameTextField;
     private JFrame newNameFrame;
     private JButton playButton;
@@ -22,7 +22,7 @@ public class ChooseNameWindow implements ActionListener {
     private String playerName;
 
 
-    public ChooseNameWindow(RefLinks refLink){
+    public ChooseNameWindow(RefLinks refLink) {
 
         this.refLink = refLink;
 
@@ -31,7 +31,7 @@ public class ChooseNameWindow implements ActionListener {
         initWindow();
     }
 
-    public void initWindow(){
+    public void initWindow() {
 
         // create a new window(frame)
         newNameFrame = new JFrame("nameFrame");
@@ -83,17 +83,14 @@ public class ChooseNameWindow implements ActionListener {
 
         //System.out.println("name is: " + playerName);
 
-        if(event.getSource() == playButton){
+        if (event.getSource() == playButton) {
             //System.out.println("Button pressed");
             newNameFrame.dispose();
-            refLink.GetGame().setPlayState(new PlayState(refLink));
-            State.SetState(refLink.GetGame().playState);
+            refLink.getGame().setPlayState(new PlayState(refLink));
+            State.setState(refLink.getGame().playState);
             //State.SetState(new PlayState(refLink));
-            refLink.GetGame().getPlayState().updateObjectWithListener();
+            refLink.getGame().getPlayState().updateObjectWithListener();
 
         }
     }
-
-
-
 }
