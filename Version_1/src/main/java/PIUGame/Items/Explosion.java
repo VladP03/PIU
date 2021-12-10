@@ -27,7 +27,7 @@ public class Explosion extends Item {
         repeated_times++;
         explosion_animation.Update();
         if (animationDone()) {
-            distroyAnimation();
+            destroyAnimation();
         }
     }
 
@@ -60,7 +60,7 @@ public class Explosion extends Item {
         return repeated_times > number_of_animations;
     }
 
-    public void distroyAnimation() {
+    public void destroyAnimation() {
         List<Explosion> explosions = refLink.getGame().getPlayState().getExplosions();
         for (int i = 0; i < explosions.size(); i++) {
             if (explosions.get(i) == this) {

@@ -20,15 +20,12 @@ public class RefLinks {
     }
 
     public KeyManager getKeyManager() {
-        return game.GetKeyManager();
+        return game.getKeyManager();
     }
 
     public MouseManager getMouseManager() {
-        return game.GetMouseManager();
+        return game.getMouseManager();
     }
-    /*! \fn public int GetWidth()
-        \brief Returneaza latimea ferestrei jocului.
-     */
 
     public Graphics getGraphics() {
         return game.getGraphics();
@@ -38,14 +35,12 @@ public class RefLinks {
         setGraphics(g);
     }
 
-    // Returneaza latimea ferestrei jocului.
     public int getWidth() {
-        return game.GetWidth();
+        return game.getWidth();
     }
 
-    // Returneaza inaltimea ferestrei jocului.
     public int getHeight() {
-        return game.GetHeight();
+        return game.getHeight();
     }
 
     public GameCamera getGameCamera() {

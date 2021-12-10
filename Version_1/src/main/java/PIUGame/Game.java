@@ -5,97 +5,57 @@ import PIUGame.GameWindow.GameWindow;
 import PIUGame.Graphics.Assets;
 import PIUGame.Input.KeyManager;
 import PIUGame.Input.MouseManager;
-import PIUGame.States.*;
-import PIUGame.Tiles.Tile;
-
+import PIUGame.States.MenuState;
+import PIUGame.States.PlayState;
+import PIUGame.States.State;
+import lombok.Getter;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-public class Game implements Runnable{
+@Getter
+public class Game implements Runnable {
+    private final GameWindow wnd;
+    private GameCamera gameCamera;
+    public KeyManager keyManager;
+    public MouseManager mouseManager;
 
-    private GameWindow wnd;
-    private boolean runState;
-    private Thread gameThread;
-    private BufferStrategy bs;
-
-    private Graphics g;
-
-    private GameCamera gameCamera;      //mod_2
+    private RefLinks refLink;
 
     public State playState;
     public State menuState;
-    public State finishedGame;
-    public State settingState;
-    public State aboutState;
-    public KeyManager keyManager;
-    public MouseManager mouseManager;      //mod_1
-    private RefLinks refLink;
+
+    private Thread gameThread;
+
+    private BufferStrategy bs;
+    private Graphics graphics;
+
+    private boolean runState;
 
 
-    private Tile tile;
-
-    public Game(String title, int width, int height){
+    public Game(String title, int width, int height) {
         wnd = new GameWindow(title, width, height);
-        runState = false;
         keyManager = new KeyManager();
-        mouseManager = new MouseManager();      //mod_1
+        mouseManager = new MouseManager();
 
+        runState = false;
     }
 
-    private void InitGame(){
-        wnd.BuildGameWindow();
-
-        wnd.getWndFrame().addKeyListener(keyManager);
-        wnd.getWndFrame().addMouseListener(mouseManager);       //mod_1
-        wnd.getWndFrame().addMouseMotionListener(mouseManager);       //mod_1
-        wnd.getCanvas().addMouseListener(mouseManager);         //mod_1
-        wnd.getCanvas().addMouseMotionListener(mouseManager);     //mod_1
-
-
-
-        Assets.Init();          // initializam toate elementele de pe harta(tiles, player_frames, diferite obiecte)
-
-
-
-        refLink = new RefLinks(this);
-        gameCamera = new GameCamera(refLink, 0,0);         //mod_2
-
-        playState = new PlayState(refLink);
-
-
-        //settingState = new SettingState(refLink);
-        menuState = new MenuState(refLink);
-        //finishedGame = new FinishedGame(refLink);
-        //finishedGame = new AboutState(refLink);
-        //aboutState = new AboutState(refLink);
-
-        //State.SetState(playState);
-        State.setState(menuState);
-        //State.SetState(finishedGame);
-        //State.SetState(settingState);
-
-    }
-
-
-
-    public void run(){
+    public void run() {
         InitGame();
 
         long oldTime = System.nanoTime();
         long curentTime;
 
-        final int framesPerSecond   = 60; /*!< Constanta intreaga initializata cu numarul de frame-uri pe secunda.*/
-        final double timeFrame      = 1000000000 / framesPerSecond; /*!< Durata unui frame in nanosecunde.  = 16.666.666ns =~ 16.6ms =~0.016s */
+        final int framesPerSecond = 60;                             /*!< Constanta intreaga initializata cu numarul de frame-uri pe secunda.*/
+        final double timeFrame = 1000000000 / framesPerSecond;      /*!< Durata unui frame in nanosecunde.  = 16.666.666ns =~ 16.6ms =~0.016s */
 
         /// Atat timp timp cat threadul este pornit Update() & Draw()
-        while (runState == true)
-        {
+        while (runState == true) {
             /// Se obtine timpul curent
             curentTime = System.nanoTime();
             /// Daca diferenta de timp dintre curentTime si oldTime mai mare decat 16.6 ms
-            if((curentTime - oldTime) > timeFrame)
-            {
+            if ((curentTime - oldTime) > timeFrame) {
                 /// Actualizeaza pozitiile elementelor
                 try {
                     Update();
@@ -108,13 +68,10 @@ public class Game implements Runnable{
                 //System.out.println("frame: " + (curentTime - oldTime)*600000000);
             }
         }
-
     }
 
-    public synchronized void StartGame()
-    {
-        if(runState == false)
-        {
+    public synchronized void StartGame() {
+        if (runState == false) {
             /// Se actualizeaza flagul de stare a threadului
             runState = true;
             /// Se construieste threadul avand ca parametru obiectul Game. De retinut faptul ca Game class
@@ -122,85 +79,86 @@ public class Game implements Runnable{
             gameThread = new Thread(this);
             /// Threadul creat este lansat in executie (va executa metoda run())
             gameThread.start();
-        }
-        else
-        {
+        } else {
             /// Thread-ul este creat si pornit deja
             return;
         }
     }
 
-    public synchronized void StopGame()
-    {
-        if(runState == true)
-        {
+    public synchronized void StopGame() {
+        if (runState == true) {
             /// Actualizare stare thread
             runState = false;
             /// Metoda join() arunca exceptii motiv pentru care trebuie incadrata intr-un block try - catch.
-            try
-            {
+            try {
                 /// Metoda join() pune un thread in asteptare panca cand un altul isi termina executie.
                 /// Totusi, in situatia de fata efectul apelului este de oprire a threadului.
                 gameThread.join();
                 //System.out.println("oprit_1");
-            }
-            catch(InterruptedException ex)
-            {
+            } catch (InterruptedException ex) {
                 /// In situatia in care apare o exceptie pe ecran vor fi afisate informatii utile pentru depanare.
                 ex.printStackTrace();
             }
-        }
-        else
-        {
+        } else {
             /// Thread-ul este oprit deja.
             return;
         }
     }
 
+    private void InitGame() {
+        wnd.BuildGameWindow();
+
+        wnd.getWndFrame().addKeyListener(keyManager);
+        wnd.getWndFrame().addMouseListener(mouseManager);
+        wnd.getWndFrame().addMouseMotionListener(mouseManager);
+        wnd.getCanvas().addMouseListener(mouseManager);
+        wnd.getCanvas().addMouseMotionListener(mouseManager);
+
+        Assets.Init();          // initializam toate elementele de pe harta(tiles, player_frames, diferite obiecte)
+
+        refLink = new RefLinks(this);
+        gameCamera = new GameCamera(refLink, 0, 0);
+
+        menuState = new MenuState(refLink);
+        State.setState(menuState);
+    }
 
     private void Update() throws InterruptedException {
         ///Determina starea tastelor
         keyManager.Update();
         //mouseManager.Update();      //mod_1
         ///Trebuie obtinuta starea curenta pentru care urmeaza a se actualiza starea, atentie trebuie sa fie diferita de null.
-        if(State.getState() != null)
-        {
+        if (State.getCurrentState() != null) {
             ///Actualizez starea curenta a jocului daca exista.
-            State.getState().Update();
+            State.getCurrentState().Update();
         }
     }
 
-    private void Draw()
-    {
+    private void Draw() {
         /// Returnez bufferStrategy pentru canvasul existent
         bs = wnd.getCanvas().getBufferStrategy();
         /// Verific daca buffer strategy a fost construit sau nu
-        if(bs == null)
-        {
+        if (bs == null) {
             /// Se executa doar la primul apel al metodei Draw()
-            try
-            {
+            try {
                 /// Se construieste tripul buffer
                 wnd.getCanvas().createBufferStrategy(3);
                 return;
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 /// Afisez informatii despre problema aparuta pentru depanare.
                 e.printStackTrace();
             }
         }
         /// Se obtine contextul grafic curent in care se poate desena.
-        g = bs.getDrawGraphics();
+        graphics = bs.getDrawGraphics();
         /// Se sterge ce era
-        g.clearRect(0, 0, wnd.getWndWidth(), wnd.getWndHeight());
+        graphics.clearRect(0, 0, wnd.getWndWidth(), wnd.getWndHeight());
 
         /// operatie de desenare
         ///Trebuie obtinuta starea curenta pentru care urmeaza a se actualiza starea, atentie trebuie sa fie diferita de null.
-        if(State.getState() != null)
-        {
+        if (State.getCurrentState() != null) {
             ///Actualizez starea curenta a jocului daca exista.
-            State.getState().Draw(g);
+            State.getCurrentState().Draw(graphics);
         }
         /// end operatie de desenare
 
@@ -209,59 +167,23 @@ public class Game implements Runnable{
 
         /// Elibereaza resursele de memorie aferente contextului grafic curent (zonele de memorie ocupate de
         /// elementele grafice ce au fost desenate pe canvas).
-        g.dispose();
+        graphics.dispose();
     }
-    public int GetWidth()
-    {
+
+    public int getWidth() {
         return wnd.getWndWidth();
     }
 
-    /*! \fn public int GetHeight()
-        \brief Returneaza inaltimea ferestrei
-     */
-    public int GetHeight()
-    {
+    public int getHeight() {
         return wnd.getWndHeight();
     }
 
-    /*! \fn public KeyManager GetKeyManager()
-        \brief Returneaza obiectul care gestioneaza tastatura.
-     */
-    public KeyManager GetKeyManager()
-    {
-        return keyManager;
-    }
-    public MouseManager GetMouseManager()
-    {
-        return mouseManager;
-    }
-
-    public GameCamera getGameCamera(){
-        return gameCamera;
-    }
-
-    public Graphics getGraphics(){
-        return g;
-    }
-
-    public void setGraphics(Graphics g){
-        this.g = g;
-    }
-
-    public PlayState getPlayState(){
+    public PlayState getPlayState() {
         return (PlayState) playState;
     }
 
-    public void setPlayState(PlayState playState){
+    public Game setPlayState(State playState) {
         this.playState = playState;
+        return this;
     }
-
-    public RefLinks getRefLink(){
-        return refLink;
-    }
-
-    public GameWindow getWnd(){
-        return this.wnd;
-    }
-
 }

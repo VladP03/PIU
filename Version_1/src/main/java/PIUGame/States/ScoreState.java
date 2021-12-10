@@ -26,7 +26,7 @@ public class ScoreState extends State {
         recordList = recordDAO.getRecords();
         sort();
 
-        settingManager.addObject(new UITextButton((refLink.getGame().GetWidth() / 2) - 100, 560, 200, 80, "<- Back to meniu", new ClickListener() {
+        settingManager.addObject(new UITextButton((refLink.getGame().getWidth() / 2) - 100, 560, 200, 80, "<- Back to meniu", new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -50,15 +50,15 @@ public class ScoreState extends State {
         Font fontTitle = new Font("arial", 1, 50);
         g.setFont(fontTitle);
         g.setColor(Color.white);
-        g.drawString("Best Score", refLink.getGame().GetWidth() / 2 - 100, 70);
+        g.drawString("Best Score", refLink.getGame().getWidth() / 2 - 100, 70);
 
         Font fontTable = new Font("arial", 1, 30);
         g.setFont(fontTable);
         g.setColor(Color.white);
 
-        g.drawString("Difficulty", refLink.getGame().GetWidth() / 2 - 600, 130);
-        g.drawString("Name", refLink.getGame().GetWidth() / 2 - 400, 130);
-        g.drawString("Time", refLink.getGame().GetWidth() / 2, 130);
+        g.drawString("Difficulty", refLink.getGame().getWidth() / 2 - 600, 130);
+        g.drawString("Name", refLink.getGame().getWidth() / 2 - 400, 130);
+        g.drawString("Time", refLink.getGame().getWidth() / 2, 130);
 
         Font fontRow = new Font("arial", 1, 30);
         g.setFont(fontRow);
@@ -69,9 +69,9 @@ public class ScoreState extends State {
         int k = 0;
         for (Record rec : recordList) {
             if (k <= 9) {
-                g.drawString(String.valueOf(rec.getLevelDifficulty()), refLink.getGame().GetWidth() / 2 - 600, 130 + i);
-                g.drawString(String.valueOf(rec.getName()), refLink.getGame().GetWidth() / 2 - 400, 130 + i);
-                g.drawString(rec.getTime().toString(), refLink.getGame().GetWidth() / 2, 130 + i);
+                g.drawString(String.valueOf(rec.getLevelDifficulty()), refLink.getGame().getWidth() / 2 - 600, 130 + i);
+                g.drawString(String.valueOf(rec.getName()), refLink.getGame().getWidth() / 2 - 400, 130 + i);
+                g.drawString(rec.getTime().toString(), refLink.getGame().getWidth() / 2, 130 + i);
                 i += 40;
                 k++;
             } else {

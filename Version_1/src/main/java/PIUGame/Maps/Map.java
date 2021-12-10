@@ -27,9 +27,9 @@ public class Map {
     // param g Contextl grafi in care se realizeaza desenarea.
     public void Draw(Graphics g) {
         int xStart = (int) Math.max(0, refLink.getGame().getGameCamera().getXOffset() / Tile.TILE_WIDTH);
-        int xEnd = (int) Math.min(width, (refLink.getGame().getGameCamera().getXOffset() + refLink.getGame().GetWidth()) / Tile.TILE_WIDTH + 1);
+        int xEnd = (int) Math.min(width, (refLink.getGame().getGameCamera().getXOffset() + refLink.getGame().getWidth()) / Tile.TILE_WIDTH + 1);
         int yStart = (int) Math.max(0, refLink.getGame().getGameCamera().getYOffset() / Tile.TILE_HEIGHT);
-        int yEnd = (int) Math.min(height, (refLink.getGame().getGameCamera().getYOffset() + refLink.getGame().GetHeight()) / Tile.TILE_HEIGHT + 1);
+        int yEnd = (int) Math.min(height, (refLink.getGame().getGameCamera().getYOffset() + refLink.getGame().getHeight()) / Tile.TILE_HEIGHT + 1);
 
         ///Se parcurge matricea de dale (codurile aferente) si se deseneaza harta respectiva
         //for(int y = 0; y < refLink.GetGame().GetHeight()/Tile.TILE_HEIGHT; y++)

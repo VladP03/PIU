@@ -24,7 +24,7 @@ public class SettingState extends State {
         refLink.getMouseManager().setUIManager(settingManager);
 
         // set difficulty to EASY
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 160, 300, 90, Assets.easy_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 160, 300, 90, Assets.easy_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 levelDifficulty = LevelDifficulty.EASY;
@@ -43,7 +43,7 @@ public class SettingState extends State {
 
 
         // set difficulty to MEDIUM
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 260, 300, 90, Assets.medium_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 260, 300, 90, Assets.medium_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 levelDifficulty = LevelDifficulty.MEDIUM;
@@ -56,7 +56,7 @@ public class SettingState extends State {
 
 
         // set difficulty to HARD
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 360, 300, 90, Assets.hard_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 360, 300, 90, Assets.hard_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 levelDifficulty = LevelDifficulty.HARD;
@@ -69,7 +69,7 @@ public class SettingState extends State {
 
 
         // BUTTON for going back to main menu
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 560, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 560, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -103,12 +103,12 @@ public class SettingState extends State {
         // afiseaza un mesaj intr-un chenar
         Color rectangle_color = new Color(255, 255, 100, 40);
         g.setColor(rectangle_color);
-        g.fillRoundRect(refLink.getGame().GetWidth() / 2 - 70, 20, 220, 75, 50, 50);
+        g.fillRoundRect(refLink.getGame().getWidth() / 2 - 70, 20, 220, 75, 50, 50);
 
         Font font1 = new Font("arial", 1, 40);
         g.setFont(font1);
         g.setColor(Color.white);
-        g.drawString("Settings", refLink.getGame().GetWidth() / 2 - 50, 70);
+        g.drawString("Settings", refLink.getGame().getWidth() / 2 - 50, 70);
 
         settingManager.Draw(g);
     }

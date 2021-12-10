@@ -22,7 +22,7 @@ public class MenuState extends State {
         //refLink.GetMouseManager().setUIManager(menuManager);
 
 
-        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 140, 300, 90, Assets.start_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 140, 300, 90, Assets.start_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -32,7 +32,7 @@ public class MenuState extends State {
         }));
 
 
-        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 240, 300, 90, Assets.settings_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 240, 300, 90, Assets.settings_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -41,7 +41,7 @@ public class MenuState extends State {
             }
         }));
 
-        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 340, 300, 90, Assets.score_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 340, 300, 90, Assets.score_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -52,7 +52,7 @@ public class MenuState extends State {
             }
         }));
 
-        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 440, 300, 90, Assets.about_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 440, 300, 90, Assets.about_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -61,7 +61,7 @@ public class MenuState extends State {
             }
         }));
 
-        menuManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 540, 300, 90, Assets.exit_button_image, new ClickListener() {
+        menuManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 540, 300, 90, Assets.exit_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);

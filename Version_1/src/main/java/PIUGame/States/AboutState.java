@@ -21,7 +21,7 @@ public class AboutState extends State {
         refLink.getMouseManager().setUIManager(aboutManager);
 
 
-        aboutManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 600, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
+        aboutManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 600, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -42,28 +42,28 @@ public class AboutState extends State {
         // afiseaza un mesaj intr-un chenar pentru titlu
         Color rectangle_color = new Color(255, 255, 150, 50);
         g.setColor(rectangle_color);
-        g.fillRoundRect(refLink.getGame().GetWidth() / 2 - 180, 20, 400, 70, 50, 50);
+        g.fillRoundRect(refLink.getGame().getWidth() / 2 - 180, 20, 400, 70, 50, 50);
 
         Font font1 = new Font("arial", 1, 50);
         g.setFont(font1);
         g.setColor(Color.white);
-        g.drawString("About Game", refLink.getGame().GetWidth() / 2 - 150, 70);
+        g.drawString("About Game", refLink.getGame().getWidth() / 2 - 150, 70);
 
 
         // afiseaza un mesaj intr-un chenar pentru descriere
         rectangle_color = new Color(255, 255, 150, 50);
         g.setColor(rectangle_color);
-        g.fillRoundRect(refLink.getGame().GetWidth() / 2 - 650, 95, 1300, 400, 50, 50);
+        g.fillRoundRect(refLink.getGame().getWidth() / 2 - 650, 95, 1300, 400, 50, 50);
 
         font1 = new Font("arial", 1, 30);
         g.setFont(font1);
         g.setColor(Color.white);
-        g.drawString("Controls: W, A, S, D", refLink.getGame().GetWidth() / 2 - 600, 130);
-        g.drawString("P - Pause", refLink.getGame().GetWidth() / 2 - 600, 180);
-        g.drawString("SPACE - Fire a sord which will kill the monster.", refLink.getGame().GetWidth() / 2 - 600, 230);
-        g.drawString("You have to collect all the diamonds to move on to the next level.", refLink.getGame().GetWidth() / 2 - 600, 300);
-        g.drawString("Once you collect them you will have access to the next round.", refLink.getGame().GetWidth() / 2 - 600, 350);
-        g.drawString("Good Luck!", refLink.getGame().GetWidth() / 2 - 600, 400);
+        g.drawString("Controls: W, A, S, D", refLink.getGame().getWidth() / 2 - 600, 130);
+        g.drawString("P - Pause", refLink.getGame().getWidth() / 2 - 600, 180);
+        g.drawString("SPACE - Fire a sord which will kill the monster.", refLink.getGame().getWidth() / 2 - 600, 230);
+        g.drawString("You have to collect all the diamonds to move on to the next level.", refLink.getGame().getWidth() / 2 - 600, 300);
+        g.drawString("Once you collect them you will have access to the next round.", refLink.getGame().getWidth() / 2 - 600, 350);
+        g.drawString("Good Luck!", refLink.getGame().getWidth() / 2 - 600, 400);
 
 
         font1 = new Font("arial", 1, 50);

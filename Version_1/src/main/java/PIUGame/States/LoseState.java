@@ -19,7 +19,7 @@ public class LoseState extends State {
         refLink.getMouseManager().setUIManager(settingManager);
 
 
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 160, 300, 90, Assets.new_game_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 160, 300, 90, Assets.new_game_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -32,7 +32,7 @@ public class LoseState extends State {
             }
         }));
 
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 260, 300, 90, Assets.settings_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 260, 300, 90, Assets.settings_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -43,7 +43,7 @@ public class LoseState extends State {
         }));
 
 
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 360, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 360, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -72,12 +72,12 @@ public class LoseState extends State {
         // afiseaza un mesaj intr-un chenar
         Color rectangle_color = new Color(255, 255, 150, 50);
         g.setColor(rectangle_color);
-        g.fillRoundRect(refLink.getGame().GetWidth() / 2 - 120, 20, 370, 75, 50, 50);
+        g.fillRoundRect(refLink.getGame().getWidth() / 2 - 120, 20, 370, 75, 50, 50);
 
         Font font1 = new Font("arial", 1, 50);
         g.setFont(font1);
         g.setColor(Color.black);
-        g.drawString("You lose !!!", refLink.getGame().GetWidth() / 2 - 100, 70);
+        g.drawString("You lose !!!", refLink.getGame().getWidth() / 2 - 100, 70);
 
         settingManager.Draw(g);
     }

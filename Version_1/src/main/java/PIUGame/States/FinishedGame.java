@@ -18,7 +18,7 @@ public class FinishedGame extends State {
         settingManager = new UIManager(refLink);
         refLink.getMouseManager().setUIManager(settingManager);
 
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 220, 300, 90, Assets.new_game_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 220, 300, 90, Assets.new_game_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -32,7 +32,7 @@ public class FinishedGame extends State {
         }));
 
 
-        settingManager.addObject(new UIImageButton((refLink.getGame().GetWidth() / 2) - 100, 320, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 320, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -59,14 +59,14 @@ public class FinishedGame extends State {
         // afiseaza un mesaj intr-un chenar
         Color rectangle_color = new Color(20, 140, 120, 50);
         g.setColor(rectangle_color);
-        g.fillRoundRect(refLink.getGame().GetWidth() / 2 - 270, 20, 700, 75, 50, 50);
+        g.fillRoundRect(refLink.getGame().getWidth() / 2 - 270, 20, 700, 75, 50, 50);
 
 
         Font font1 = new Font("arial", 1, 30);
         Color font_color = new Color(55, 80, 80, 250);
         g.setFont(font1);
         g.setColor(font_color);
-        g.drawString("You win the game, Congratulation !!!", refLink.getGame().GetWidth() / 2 - 250, 70);
+        g.drawString("You win the game, Congratulation !!!", refLink.getGame().getWidth() / 2 - 250, 70);
 
         font1 = new Font("arial", 1, 50);
         g.setFont(font1);
