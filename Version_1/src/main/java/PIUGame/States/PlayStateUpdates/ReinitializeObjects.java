@@ -38,15 +38,15 @@ public class ReinitializeObjects {
 //        refLink.GetGame().getPlayState().GetHero().SetX(1700);
 //        refLink.GetGame().getPlayState().GetHero().SetY(800);
 
+        // salvez pozitia initiala pentru situatia in care player-ul moare dar inca mai are vieti si va trebui readus in pozitia din care a plecat
         refLink.getGame().getPlayState().getHero().setInitialX(150);
         refLink.getGame().getPlayState().getHero().setInitialY(200);
-
 
         // stabilesc zona in care player-ul va trece la nivelul urmator
         refLink.getGame().getPlayState().getHero().setFinish_zone_x(1750);
         refLink.getGame().getPlayState().getHero().setFinish_zone_y(770);
 
-        // zona in care se trece efectic la nivelul urmator
+        // zona in care se trece la nivelul urmator
         refLink.getGame().getPlayState().getHero().setTarget_to_follow_x(1825);
         refLink.getGame().getPlayState().getHero().setTarget_to_follow_y(770);
 
@@ -65,6 +65,7 @@ public class ReinitializeObjects {
         stoneList.add(new Stone(refLink, 576, 864));
         stoneList.add(new Stone(refLink, 1050, 576));
         stoneList.add(new Stone(refLink, 1728, 336));
+        stoneList.add(new Stone(refLink, 1490, 650));
 
 
         // stabilesc pozitiile inamicilor
@@ -86,6 +87,10 @@ public class ReinitializeObjects {
         refLink.getGame().getPlayState().getHero().setX(140);
         refLink.getGame().getPlayState().getHero().setY(180);
 
+        refLink.getGame().getPlayState().getHero().setX(2500);
+        refLink.getGame().getPlayState().getHero().setY(2540);
+
+        // salvez pozitia initiala pentru situatia in care player-ul moare dar inca mai are vieti si va trebui readus in pozitia din care a plecat
         refLink.getGame().getPlayState().getHero().setInitialX(140);
         refLink.getGame().getPlayState().getHero().setInitialY(180);
 
@@ -103,7 +108,7 @@ public class ReinitializeObjects {
 
         //stabilesc pozitiile pietrelor
         List<Stone> stoneList = new ArrayList<>();
-         stoneList.add(new Stone(refLink, 2*314, 2*703));
+        stoneList.add(new Stone(refLink, 2*314, 2*703));
         stoneList.add(new Stone(refLink, 2*71, 2*839));
         stoneList.add(new Stone(refLink, 2*118, 2*1660));
         stoneList.add(new Stone(refLink, 2*1417, 2*1557));

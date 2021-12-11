@@ -40,11 +40,13 @@ public class ChooseNameWindow implements ActionListener {
         newNameFrame = new JFrame("nameFrame");
         newNameFrame.setSize(400, 300);
         newNameFrame.setResizable(false);
-        newNameFrame.setLocationRelativeTo(null);
+//        newNameFrame.setBackground(Color.blue);
+        newNameFrame.setLocationRelativeTo(null);           // setez fereastra pe centru
         newNameFrame.setLayout(null);
+        newNameFrame.setUndecorated(true);
         newNameFrame.setVisible(true);
 
-//        newNameFrame.setBackground(Color.blue);
+
 
         // definesc fontul textului afisat in textField
         playerNameFont = new Font("arial", 1, 20);
@@ -59,21 +61,28 @@ public class ChooseNameWindow implements ActionListener {
 
 
         // create a textField in which you will specify the player name
+        Color boxNameColor = new Color(39, 116, 118, 200);
+        Color fontNameColor = new Color(174, 245, 202, 200);
         nameTextField = new JTextField("Player");
         nameTextField.setBounds(50, 80, 300, 40);
-        nameTextField.setBackground(Color.red);
+        nameTextField.setBackground(boxNameColor);
+        nameTextField.setForeground(fontNameColor);
         nameTextField.setHorizontalAlignment(JTextField.CENTER);
         nameTextField.setFont(playerNameFont);
 
 
         // create the button which will start the game
+        Color buttonColor = new Color(34, 3, 85, 200);
+        Color fontButtonColor = new Color(246, 245, 248, 200);
         playButton = new JButton("Play");
         playButton.setBounds(125, 200, 150, 50);
         playButton.setFont(playButtonFont);
+        playButton.setBackground(buttonColor);
+        playButton.setForeground(fontButtonColor);
         playButton.addActionListener(this);
 
 
-        // add the textField and the button to the window
+        // add the textFields and the button to the window
         newNameFrame.add(nameLabel);
         newNameFrame.add(nameTextField);
         newNameFrame.add(playButton);

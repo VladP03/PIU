@@ -19,11 +19,6 @@ public class Stone extends Item {
     public Stone(RefLinks refLink, int x, int y) {
         super(refLink, x, y, 50, 50);
 
-//        normalBounds.x = 0;
-//        normalBounds.y = 0;
-//        normalBounds.width = 50;
-//        normalBounds.height = 50;
-
         stone_image = Assets.stone_image;
     }
 
@@ -60,16 +55,9 @@ public class Stone extends Item {
 
     public boolean stoneCollected() {
         if (collisionWithPlayer()) {
-            //System.out.println("                                                                    false");
-            //System.out.println("x= " + PlayState.GetHero().x + "     y= " + PlayState.GetHero().y + "      xS= "+ x + "    yS= " + y);
             stone_collected = true;
-
             return true;
         } else {
-            //System.out.println("                                                                    false");
-            //System.out.println("x= " + PlayState.GetHero().x + "     y= " + PlayState.GetHero().y + "      xS= "+ x + "    yS= " + y);
-            //System.out.println("                                                                    true");
-            //stone_collected = true;
             return false;
         }
     }

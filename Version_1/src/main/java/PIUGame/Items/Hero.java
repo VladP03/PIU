@@ -38,11 +38,12 @@ public class Hero extends Character {
     private boolean is_arrive_at_gate = false;
     private boolean in_finish_zone = false;
     private ItemDirection heroDirection = ItemDirection.NONE;
-    // deoarece update-urile la taste sunt foarte rapide, o singura apasare va fi considerata ca mai multe apasari;
-    // se folosesc pentru tasta space, pentru a nu lansa mai multe sulite la o singura apasare
+
+    /* deoarece update-urile la taste sunt foarte rapide, o singura apasare va fi considerata ca mai multe apasari;
+     se folosesc pentru tasta space, pentru a nu lansa mai multe sulite la o singura apasare */
     private boolean key_already_pressed = false;
     private int number_key_pressed = 0;
-    private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
+    private BufferedImage image;    /* Referinta catre imaginea curenta a eroului. */
 
     /*
         \brief Constructorul de initializare al clasei Hero.
@@ -184,40 +185,11 @@ public class Hero extends Character {
     // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
     @Override
     public void Draw(Graphics g) {
-        // g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
 
-        //g.fillRect(20, 20, 200, 60);
-        //g.fillRect();
-        //g.setColor(Color.black);
-
+        // afiseaza player-ul
+        g.drawImage(getCurrentAnimationFrame(), (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
 
         // ---------------------------------------------------------------
-
-        // afiseaza numarul de vieti ale player-ului
-        g.setColor(Color.GREEN);
-        g.fillRoundRect(20, 20, 170, 60, 20, 20);
-        for (int i = 0; i < life; i++) {
-            g.drawImage(Assets.heart_life_image, 30 + i * 50, 30, 60, 40, null);
-        }
-        //g.setColor(Color.black);
-        //g.fillRect((int)(refLink.GetWidth())-200,(int)(refLink.GetHeight())-200, 200, 200);
-
-
-        // afiseaza numarul de pietre colectate de player
-        g.setColor(Color.cyan);
-        g.fillRoundRect(200, 20, 100, 60, 20, 20);
-
-        g.drawImage(stoneImage, 210, 30, 40, 40, null);
-        Font font1 = new Font("arial", 1, 40);
-        g.setFont(font1);
-        g.setColor(Color.white);
-
-        String nr = Integer.toString(nr_stone);
-        g.drawString(nr, 250, 55);
-
-
-        // ---------------------------------------------------------------
-
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
         g.setColor(Color.blue);
@@ -226,10 +198,10 @@ public class Hero extends Character {
 
         //g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
 
-        //System.out.println("player_x: " + x + " ---  player_y: " + y);
+        System.out.println("player_x: " + x + " ---  player_y: " + y);
 
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
     }
+
 
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {      //moving to the left
@@ -249,7 +221,6 @@ public class Hero extends Character {
     }
 
     public boolean playerInFinishZone() {
-        //if(x > refLink.GetWidth() + refLink.getGameCamera().getxOffset()-200 && y > refLink.GetHeight() +refLink.getGameCamera().getyOffset() -200){
         if (x > finish_zone_x && y > finish_zone_y) {
             in_finish_zone = true;
             return true;
@@ -262,11 +233,13 @@ public class Hero extends Character {
         }
     }
 
+
+
+    // verfica daca numarul minim de pietre a fost colectat pentru a putea trece la urmatorul nivel
     public boolean stonesAreCollected() {
-        //System.out.println("collected-->>>");
-        //System.out.println("NOTT   collected");
         return nr_stone >= 0;
     }
+
 
     public void createSword(ItemDirection heroDirection) {
         // creez un obiect de tip sabie
@@ -278,6 +251,8 @@ public class Hero extends Character {
         refLink.getGame().getPlayState().setSwords(swords);
     }
 
+
+    // preia lista de explozii existente, creeza si adauga noua explozie, apoi rezurneza lista
     public void createExplosionEffect() {
         List<Explosion> explosions = refLink.getGame().getPlayState().getExplosions();
         Explosion explosion = new Explosion(refLink, x, y);

@@ -2,6 +2,7 @@ package PIUGame.States;
 
 import PIUGame.Database.Table.Record;
 import PIUGame.Database.Table.RecordDAO;
+import PIUGame.GameObjects.UIImageButton;
 import PIUGame.GameObjects.UIManager;
 import PIUGame.GameObjects.UITextButton;
 import PIUGame.Graphics.Assets;
@@ -26,7 +27,7 @@ public class ScoreState extends State {
         recordList = recordDAO.getRecords();
         sort();
 
-        settingManager.addObject(new UITextButton((refLink.getGame().getWidth() / 2) - 100, 560, 200, 80, "<- Back to meniu", new ClickListener() {
+        settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 560, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
@@ -47,10 +48,22 @@ public class ScoreState extends State {
         // seteaza imagine de fundal
         g.drawImage(Assets.setting_background_image, 0, 0, refLink.getWidth(), refLink.getHeight(), null);
 
+
+        // afiseaza un mesaj intr-un chenar pentru titlu
+        Color rectangle_color = new Color(255, 255, 150, 50);
+        g.setColor(rectangle_color);
+        g.fillRoundRect(refLink.getGame().getWidth() / 2 - 180, 20, 400, 70, 50, 50);
+
         Font fontTitle = new Font("arial", 1, 50);
         g.setFont(fontTitle);
         g.setColor(Color.white);
-        g.drawString("Best Score", refLink.getGame().getWidth() / 2 - 100, 70);
+        g.drawString("Best Score", refLink.getGame().getWidth() / 2 - 120, 70);
+
+
+        // seteaza un chenar de fundal pentru informatiile afisate din baza de date
+        rectangle_color = new Color(255, 255, 150, 50);
+        g.setColor(rectangle_color);
+        g.fillRoundRect(refLink.getGame().getWidth() / 2 - 650, 95, 1300, 470, 50, 50);
 
         Font fontTable = new Font("arial", 1, 30);
         g.setFont(fontTable);

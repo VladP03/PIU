@@ -49,7 +49,7 @@ public class PlayState extends State {
     private UIManager resumeManager;                                            // Referinta catre obiectul care gestioneaza meniul de Resume(cand se apasa pe butonul MENU)
     private Map map;                                                            // < Referinta catre harta curenta.
 
-    private int index_level = 1;                                                // Indexul nivelului
+    private int index_level = 2;                                                // Indexul nivelului
 
     // brief Constructorul de initializare al clasei
     // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
@@ -112,8 +112,14 @@ public class PlayState extends State {
                 }
             }
 
-            for (Stone s : stoneList) {
-                s.Update();
+            if(!stoneList.isEmpty()){
+                for(Stone s: stoneList)
+                {
+                    s.Update();
+                    if(stoneList.isEmpty()){
+                        break;
+                    }
+                }
             }
 
             if (!monsterList.isEmpty()) {
@@ -137,14 +143,7 @@ public class PlayState extends State {
                         t.resetPosition();
                     }
                     if (hero.getLife() == 0) {
-                        //hero.setIsAlive(false);
-
-                        //waitForExplosionEffect();
-//                        if(explosion_effect_finished == true){
-//                            State.SetState(new LoseState(refLink));
-//                        }
                         State.setState(new LoseState(refLink));
-//                        refLink.GetGame().getDatabaseConnection().update();
                     }
                 }
             }
@@ -164,11 +163,8 @@ public class PlayState extends State {
 
         if (hero.levelFinished()) {
             if (index_level == 2) {
-                //System.out.println("done");
-//                refLink.GetGame().getDatabaseConnection().update();
                 State.setState(new FinishedGame(refLink));
             } else {
-                //System.out.println("not yet");
                 index_level++;
 
                 // se reinitializeaza obiectele din joc la trecerea catre un nivel nou
@@ -226,6 +222,22 @@ public class PlayState extends State {
             map_elements.Draw(g, index_level);
             hero.Draw(g);
 
+            if (!swords.isEmpty()) {
+                for (Sword s : swords) {
+                    s.Draw(g);
+                }
+            }
+
+
+            if (!explosions.isEmpty()) {
+                for (Explosion e : explosions) {
+                    e.Draw(g);
+                    if (!explosions.isEmpty()) {
+                        break;
+                    }
+                }
+            }
+
             for (Stone s : stoneList) {
                 s.Draw(g);
             }
@@ -249,6 +261,43 @@ public class PlayState extends State {
         g.setFont(font_timer);
         g.setColor(Color.WHITE);
         g.drawString("" + minutes + " : " + seconds, 1250, 60);
+
+
+        // afiseaza numarul de vieti ale player-ului
+        Color lifeBoxColor = new Color(130, 229, 231, 200);
+        g.setColor(lifeBoxColor);
+        g.fillRoundRect(20, 20, 170, 60, 20, 20);
+        for (int i = 0; i < hero.getLife(); i++) {
+            g.drawImage(Assets.heart_life_image, 25 + i * 50, 30, 60, 40, null);
+        }
+
+
+        // afiseaza numarul de pietre colectate de player
+        Color stoneBoxColor = new Color(4, 105, 106, 200);
+        g.setColor(stoneBoxColor);
+        g.fillRoundRect(200, 20, 100, 60, 20, 20);
+
+        g.drawImage(Assets.stone_image, 210, 30, 40, 40, null);
+        Font font1 = new Font("arial", 1, 40);
+        g.setFont(font1);
+        g.setColor(Color.white);
+
+        String nrOfStone = Integer.toString(hero.nr_stone);
+        g.drawString(nrOfStone, 250, 55);
+
+
+        // afiseaza nivelul la care este player-ul
+        Color levelBoxColor = new Color(5, 166, 167, 200);
+        g.setColor(levelBoxColor);
+        g.fillRoundRect(320, 20, 110, 60, 20, 20);
+
+        Font fontLevel = new Font("arial", 1, 30);
+        g.setFont(fontLevel);
+        g.setColor(Color.white);
+
+        String currentLevel = "Lvl: ";
+        currentLevel += Integer.toString(index_level);
+        g.drawString(currentLevel, 330, 60);
 
 
         // deseneaza butonul de resume

@@ -43,10 +43,11 @@ public class FinishedGame extends State {
             }
         }));
 
+        String gameDuration = PlayState.getMinutes() + ":" + PlayState.getSeconds();
         RecordDAO recordDAO = new RecordDAO();
         Record record = Record.builder()
                 .name(ChooseNameWindow.getPlayerName())
-                .time(PlayState.getMinutes() + ":" + PlayState.getSeconds())
+                .time(gameDuration)
                 .levelDifficulty(PlayState.levelDifficulty)
                 .build();
 
@@ -63,14 +64,13 @@ public class FinishedGame extends State {
     @Override
     public void Draw(Graphics g) {
 
-
         // add a background image
         g.drawImage(Assets.win_background_image, 0, 0, refLink.getWidth(), refLink.getHeight(), null);
 
         // afiseaza un mesaj intr-un chenar
         Color rectangle_color = new Color(20, 140, 120, 50);
         g.setColor(rectangle_color);
-        g.fillRoundRect(refLink.getGame().getWidth() / 2 - 270, 20, 700, 75, 50, 50);
+        g.fillRoundRect(30, 20, 1350, 75, 50, 50);
 
 
         Font font1 = new Font("arial", 1, 30);
