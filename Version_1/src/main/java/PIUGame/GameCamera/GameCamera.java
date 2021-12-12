@@ -19,6 +19,8 @@ public class GameCamera {
         checkForBlankSpace();
     }
 
+
+    // verifica marginile hartii
     private void checkForBlankSpace() {
         checkForBlankSpaceOnWidth();
         checkForBlankSpaceOnHeight();

@@ -158,7 +158,7 @@ public class Assets {
         grass_tile_image = grass_tile_SpriteSheet.crop_precise(0,0, 63, 60);
 
 
-        /// Se obtin subimaginile corespunzatoare elementelor necesare.
+        /// Se obtin subimaginile corespunzatoare elementelor necesare pentru harta 1
         tree_type_1_image = tree_type_1_SpriteSheet.crop_precise(0,0, 800, 1000);
         tree_type_2_image = tree_type_2_SpriteSheet.crop_precise(0,0, 310, 520);
         ground_path_horizontal_image = ground_path_horizontal_SpriteSheet.crop_precise(0,0, 150, 178);

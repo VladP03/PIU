@@ -18,7 +18,7 @@ public class LoseState extends State {
         settingManager = new UIManager(refLink);
         refLink.getMouseManager().setUIManager(settingManager);
 
-
+        // buton care creaza din nou starea de playState
         settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 160, 300, 90, Assets.new_game_button_image, new ClickListener() {
             @Override
             public void onClick() {
@@ -32,6 +32,7 @@ public class LoseState extends State {
             }
         }));
 
+        // buton care deschide meniul de setari
         settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 260, 300, 90, Assets.settings_button_image, new ClickListener() {
             @Override
             public void onClick() {
@@ -43,6 +44,7 @@ public class LoseState extends State {
         }));
 
 
+        // buton care ne intoarce la meniul principal
         settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 360, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {

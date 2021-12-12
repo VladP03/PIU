@@ -28,9 +28,6 @@ public class ChooseNameWindow implements ActionListener {
     public ChooseNameWindow(RefLinks refLink) {
 
         this.refLink = refLink;
-
-        //System.out.println("in create window constructor");
-
         initWindow();
     }
 
@@ -93,14 +90,11 @@ public class ChooseNameWindow implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         playerName = nameTextField.getText();
 
-        //System.out.println("name is: " + playerName);
-
+        // cand este apasat butonul de Play se distruge fereastra si se continua cu cea a jocului
         if (event.getSource() == playButton) {
-            //System.out.println("Button pressed");
             newNameFrame.dispose();
             refLink.getGame().setPlayState(new PlayState(refLink));
             State.setState(refLink.getGame().playState);
-            //State.SetState(new PlayState(refLink));
             refLink.getGame().getPlayState().updateObjectWithListener();
 
         }

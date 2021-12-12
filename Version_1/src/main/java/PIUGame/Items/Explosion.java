@@ -16,11 +16,13 @@ public class Explosion extends Item {
 
     private int repeated_times = 0;
 
+
     public Explosion(RefLinks refLink, float x, float y) {
         super(refLink, x - 30, y - 70, 100, 100);
 
-        explosion_animation = new Animation(1, explosion_effect_image);
+        explosion_animation = new Animation(10, explosion_effect_image);
     }
+
 
     @Override
     public void Update() {
@@ -31,22 +33,11 @@ public class Explosion extends Item {
         }
     }
 
+
     @Override
     public void Draw(Graphics g) {
-        //g.drawImage(stone_image, (int)x, (int)y, 50, 50, null);
-        //g.drawImage(stone_image, (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
-
-        g.setColor(Color.red);
-        //g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
-
-        //g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
-
-//        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
-
         // draw the actual image
         g.drawImage(getCurrentAnimationFrame(), (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
-
-        //System.out.println("            exista");
 
     }
 

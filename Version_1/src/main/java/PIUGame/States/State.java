@@ -8,9 +8,9 @@ import java.awt.*;
 public abstract class State {
 
     @Getter
-    private static State previousState = null;     // < Referinta catre starea anterioara a jocului.
+    private static State previousState = null;     // Referinta catre starea anterioara a jocului.
     @Getter
-    private static State currentState = null;     // < Referinta catre starea curenta a jocului: game, meniu, settings, about etc.
+    private static State currentState = null;     // Referinta catre starea curenta a jocului: game, meniu, settings, about etc.
     protected RefLinks refLink;
 
     public State(RefLinks refLink) {

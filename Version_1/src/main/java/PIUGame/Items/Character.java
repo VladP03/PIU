@@ -13,15 +13,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Character extends Item {
-    public static final int DEFAULT_LIFE = 3;   /*!< Valoarea implicita a vietii unui caracter.*/
-    public static final float DEFAULT_SPEED = 9.0f; /*!< Viteza implicita a unu caracter.*/
-    public static final int DEFAULT_CREATURE_WIDTH = 64;   /*!< Latimea implicita a imaginii caracterului.*/
-    public static final int DEFAULT_CREATURE_HEIGHT = 64;   /*!< Inaltimea implicita a imaginii caracterului.*/
+    public static final int DEFAULT_LIFE = 3;               // Valoarea implicita a vietii unui caracter.
+    public static final float DEFAULT_SPEED = 6.0f;         // Viteza implicita a unu caracter.
+    public static final int DEFAULT_CREATURE_WIDTH = 64;    // Latimea implicita a imaginii caracterului.
+    public static final int DEFAULT_CREATURE_HEIGHT = 64;   // Inaltimea implicita a imaginii caracterului.
 
-    protected int life;     /*!< Retine viata caracterului.*/
-    protected float speed;  /*!< Retine viteza de deplasare caracterului.*/
-    protected float xMove;  /*!< Retine numarul de pixeli cu care trebuie sa se podifice pozitia caracterului pe axa X.*/
-    protected float yMove;  /*!< Retine numarul de pixeli cu care trebuie sa se podifice pozitia caracterului pe axa Y.*/
+    protected int life;             // Retine viata caracterului.
+    protected float speed;          // Retine viteza de deplasare caracterului.
+    protected float xMove;          // Retine numarul de pixeli cu care trebuie sa se podifice pozitia caracterului pe axa X.
+    protected float yMove;          // Retine numarul de pixeli cu care trebuie sa se podifice pozitia caracterului pe axa Y.
 
     /*
         \brief Constructor de initializare al clasei Character
@@ -67,6 +67,7 @@ public abstract class Character extends Item {
         }
     }
 
+
     // brief Modifica pozitia caracterului pe axa Y.
     public void MoveY() {
         ///Aduna la pozitia curenta numarul de pixeli cu care trebuie sa se deplaseze pe axa Y.
@@ -83,6 +84,7 @@ public abstract class Character extends Item {
             }
         }
     }
+
 
     protected boolean collisionWithTile(int x, int y) {
         return refLink.getMap().GetTile(x, y).IsSolid();

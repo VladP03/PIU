@@ -58,6 +58,10 @@ public class ReinitializeObjects {
         refLink.getGame().getPlayState().setMinutes(0);
         refLink.getGame().getPlayState().setSeconds(0);
 
+        // stabilesc numarul de pietre care este necesar pentru a trece la nivelul urmator
+        refLink.getGame().getPlayState().getHero().setMin_nr_stone(6);
+
+
         //stabilesc pozitiile pietrelor
         List<Stone> stoneList = new ArrayList<>();
         stoneList.add(new Stone(refLink, 620, 144));
@@ -87,8 +91,8 @@ public class ReinitializeObjects {
         refLink.getGame().getPlayState().getHero().setX(140);
         refLink.getGame().getPlayState().getHero().setY(180);
 
-        refLink.getGame().getPlayState().getHero().setX(2500);
-        refLink.getGame().getPlayState().getHero().setY(2540);
+//        refLink.getGame().getPlayState().getHero().setX(2500);
+//        refLink.getGame().getPlayState().getHero().setY(2540);
 
         // salvez pozitia initiala pentru situatia in care player-ul moare dar inca mai are vieti si va trebui readus in pozitia din care a plecat
         refLink.getGame().getPlayState().getHero().setInitialX(140);
@@ -101,6 +105,9 @@ public class ReinitializeObjects {
         // zona in care se trece efectic la nivelul urmator
         refLink.getGame().getPlayState().getHero().setTarget_to_follow_x(2793);
         refLink.getGame().getPlayState().getHero().setTarget_to_follow_y(3500);
+
+        // stabilesc numarul de pietre care este necesar pentru a trece la nivelul urmator
+        refLink.getGame().getPlayState().getHero().setMin_nr_stone(12);
 
 
         // se reseteaza variabila care ne spune ca suntem in zona de final (ultima verificare ce ne permite trece la nivelul urmator)
@@ -139,6 +146,8 @@ public class ReinitializeObjects {
         monster.add(new Monster(refLink, 122, 2511));
         monster.add(new Monster(refLink, 572, 2799));
         monster.add(new Monster(refLink, 743, 2430));
+
+
         // reinitializez obiectele din PlayState
         refLink.getGame().getPlayState().setStoneList(stoneList);
         refLink.getGame().getPlayState().setMonsterList(monster);

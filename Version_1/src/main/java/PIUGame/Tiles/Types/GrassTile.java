@@ -9,7 +9,7 @@ public class GrassTile extends Tile {
         super(Assets.grass_tile_image, id);
     }
 
-    // brief Suprascrie metoda IsSolid() din clasa de baza in sensul ca va fi luat in calcul in caz de coliziune.
+    //  Suprascrie metoda IsSolid() din clasa de baza in sensul ca va fi luat in calcul in caz de coliziune.
     @Override
     public boolean IsSolid() {
         return false;

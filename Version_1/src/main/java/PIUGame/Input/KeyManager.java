@@ -7,11 +7,11 @@ import static java.lang.Thread.sleep;
 
 public class KeyManager implements KeyListener {
 
-    private final boolean[] keys;           // < Vector de flaguri pentru toate tastele. Tastele vor fi regasite dupa cod [0 - 255]
-    public boolean up;          // < Flag pentru tasta "sus" apasata.
-    public boolean down;        // < Flag pentru tasta "jos" apasata.
-    public boolean left;        // < Flag pentru tasta "stanga" apasata.
-    public boolean right;       // < Flag pentru tasta "dreapta" apasata.
+    private final boolean[] keys;           //  Vector de flaguri pentru toate tastele. Tastele vor fi regasite dupa cod [0 - 255]
+    public boolean up;                      // Flag pentru tasta "sus" apasata.
+    public boolean down;                    // Flag pentru tasta "jos" apasata.
+    public boolean left;                    // Flag pentru tasta "stanga" apasata.
+    public boolean right;                   // Flag pentru tasta "dreapta" apasata.
     public boolean escape;
     public boolean space;
     public boolean pause;
@@ -43,12 +43,11 @@ public class KeyManager implements KeyListener {
     public void keyPressed(KeyEvent e) {
         ///se retine in vectorul de flaguri ca o tasta a fost apasata.
         keys[e.getKeyCode()] = true;
-        //System.out.println("tasta");
     }
 
     /*
-        \brief Functie ce va fi apelata atunci cand un un eveniment de tasta eliberata este generat.
-         \param e obiectul eveniment de tastatura.
+        Functie ce va fi apelata atunci cand un un eveniment de tasta eliberata este generat.
+        \param e obiectul eveniment de tastatura.
      */
     @Override
     public void keyReleased(KeyEvent e) {
@@ -57,7 +56,7 @@ public class KeyManager implements KeyListener {
     }
 
     /*
-        \brief Functie ce va fi apelata atunci cand o tasta a fost apasata si eliberata.
+        Functie ce va fi apelata atunci cand o tasta a fost apasata si eliberata.
         Momentan aceasta functie nu este utila in program.
      */
     @Override

@@ -22,7 +22,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Hero extends Character {
-    public int nr_stone = 0;
+
     //Animation
     private final Animation animDown;
     private final Animation animUp;
@@ -44,6 +44,10 @@ public class Hero extends Character {
     private boolean key_already_pressed = false;
     private int number_key_pressed = 0;
     private BufferedImage image;    /* Referinta catre imaginea curenta a eroului. */
+
+    public int nr_stone_collected = 0;
+    public int min_nr_stone = 6;
+
 
     /*
         \brief Constructorul de initializare al clasei Hero.
@@ -72,10 +76,10 @@ public class Hero extends Character {
 
 
         //Animation
-        animDown = new Animation(100, Assets.hero_down);      //mod_3
-        animUp = new Animation(100, Assets.hero_up);      //mod_3
-        animLeft = new Animation(100, Assets.hero_left);      //mod_3
-        animRight = new Animation(100, Assets.hero_right);      //mod_3
+        animDown = new Animation(100, Assets.hero_down);
+        animUp = new Animation(100, Assets.hero_up);
+        animLeft = new Animation(100, Assets.hero_left);
+        animRight = new Animation(100, Assets.hero_right);
         noAnim = new Animation(0, Assets.hero_noAnimation);
 
         lifeImage = Assets.heart_life_image;
@@ -92,15 +96,11 @@ public class Hero extends Character {
         animRight.Update();
         noAnim.Update();
 
-        //System.out.println(nr_stone);
-
 
         for (Stone s : PlayState.stoneList) {
             if (s.stone_collected && !s.visited) {
-                nr_stone++;
+                nr_stone_collected++;
                 s.visited = true;
-                //s.stone_collected = true;
-                //System.out.println(s.stone_collected);
                 break;
 
             }
@@ -112,11 +112,11 @@ public class Hero extends Character {
         Move();
         ///Actualizeaza imaginea
 
-        refLink.getGameCamera().centerOnEntity(this);       //mod_2
+        refLink.getGameCamera().centerOnEntity(this);
 
     }
 
-    // brief Verifica daca a fost apasata o tasta din cele stabilite pentru controlul eroului.
+    // Verifica daca a fost apasata o tasta din cele stabilite pentru controlul eroului.
     private void GetInput() {
         ///Implicit eroul nu trebuie sa se deplaseze daca nu este apasata o tasta
         xMove = 0;
@@ -169,37 +169,28 @@ public class Hero extends Character {
             }
             ///Verificare apasare tasta "space" pentru tragere
             if (refLink.getKeyManager().space && key_already_pressed == false) {
-                System.out.println("space pressed");
                 key_already_pressed = true;
                 createSword(heroDirection);
-
             }
 
         }
-
-        //System.out.println("x= "+ x + "    y= " + y);
     }
 
 
-    // brief Randeaza/deseneaza eroul in noua pozitie.
-    // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
+
+    //  Randeaza/deseneaza eroul in noua pozitie.
     @Override
     public void Draw(Graphics g) {
 
         // afiseaza player-ul
         g.drawImage(getCurrentAnimationFrame(), (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
 
-        // ---------------------------------------------------------------
-
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
-        g.setColor(Color.blue);
-        //g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
+/*        g.setColor(Color.blue);
         //g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
-
         //g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
-
         System.out.println("player_x: " + x + " ---  player_y: " + y);
-
+*/
     }
 
 
@@ -237,7 +228,7 @@ public class Hero extends Character {
 
     // verfica daca numarul minim de pietre a fost colectat pentru a putea trece la urmatorul nivel
     public boolean stonesAreCollected() {
-        return nr_stone >= 0;
+        return nr_stone_collected >= min_nr_stone;
     }
 
 

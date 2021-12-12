@@ -16,6 +16,8 @@ public class Animation {
         lastTime = System.currentTimeMillis();
     }
 
+
+    // functia Update este apelata o data la 0.16ms, iar fiecare frame din vectorul de imagini va sta activ atat timp cat timer < speed
     public void Update(){
         timer += System.currentTimeMillis() -lastTime;
         lastTime = System.currentTimeMillis();

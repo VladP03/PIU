@@ -18,7 +18,6 @@ public class MouseManager extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("clicked");
     }
 
     @Override

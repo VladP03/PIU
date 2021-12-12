@@ -47,8 +47,8 @@ public class Game implements Runnable {
         long oldTime = System.nanoTime();
         long curentTime;
 
-        final int framesPerSecond = 60;                             /*!< Constanta intreaga initializata cu numarul de frame-uri pe secunda.*/
-        final double timeFrame = 1000000000 / framesPerSecond;      /*!< Durata unui frame in nanosecunde.  = 16.666.666ns =~ 16.6ms =~0.016s */
+        final int framesPerSecond = 60;                             // Constanta intreaga initializata cu numarul de frame-uri pe secunda.
+        final double timeFrame = 1000000000 / framesPerSecond;      // Durata unui frame in nanosecunde.  = 16.666.666ns =~ 16.6ms =~0.016s
 
         /// Atat timp timp cat threadul este pornit Update() & Draw()
         while (runState == true) {
@@ -126,7 +126,7 @@ public class Game implements Runnable {
     private void Update() throws InterruptedException {
         ///Determina starea tastelor
         keyManager.Update();
-        //mouseManager.Update();      //mod_1
+        //mouseManager.Update();
         ///Trebuie obtinuta starea curenta pentru care urmeaza a se actualiza starea, atentie trebuie sa fie diferita de null.
         if (State.getCurrentState() != null) {
             ///Actualizez starea curenta a jocului daca exista.

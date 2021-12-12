@@ -14,19 +14,15 @@ public class MenuState extends State {
 
 
     public MenuState(RefLinks refLink) {
-        ///Apel al constructorului clasei de baza.
         super(refLink);
         menuManager = new UIManager(refLink);
         refLink.getMouseManager().setUIManager(menuManager);
-        //refLink.GetMouseManager().setUIManager(null);
-        //refLink.GetMouseManager().setUIManager(menuManager);
 
 
         menuManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 140, 300, 90, Assets.start_button_image, new ClickListener() {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
-                //State.SetState(refLink.GetGame().playState);
                 State.setState(new ChooseNameState(refLink));
             }
         }));
@@ -70,37 +66,23 @@ public class MenuState extends State {
                 //refLink.GetGame().StopGame();
             }
         }));
-        //refLink.GetMouseManager().setUIManager(null);
     }
 
 
-    // brief Actualizeaza starea curenta a meniului.
+    //  Actualizeaza starea curenta a meniului.
     @Override
     public void Update() {
-//        if(refLink.GetMouseManager().isLeftPressed()){
-//            State.SetState(refLink.GetGame().playState);
-//        }
         menuManager.Update();
-        //System.out.println("mouse");
     }
 
-    // brief Deseneaza (randeaza) pe ecran starea curenta a meniului.
-    // param g Contextul grafic in care trebuie sa deseneze starea jocului pe ecran.
+    // Deseneaza (randeaza) pe ecran starea curenta a meniului.
     @Override
     public void Draw(Graphics g) {
         // add a background image
         g.drawImage(Assets.menu_background_image, 0, 0, refLink.getWidth(), refLink.getHeight(), null);
 
-        // afiseaza un mesaj intr-un chenar
-//        g.setColor(Color.GRAY);
-//        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 100, 20, 220, 60, 30, 30);
-
+        // seteaza fontul si culoarea acestuia
         Font font1 = new Font("arial", 1, 50);
-        g.setFont(font1);
-        g.setColor(Color.white);
-//        g.drawString("Menu", refLink.GetGame().GetWidth() / 2 - 70, 70);
-
-
         g.setFont(font1);
         g.setColor(Color.white);
         menuManager.Draw(g);

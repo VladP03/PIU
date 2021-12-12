@@ -12,10 +12,8 @@ public class ResumeState extends State {
 
     private final UIManager resumeManager;
 
-    // brief Constructorul de initializare al clasei.
-    // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
+    // Constructorul de initializare al clasei.
     public ResumeState(RefLinks refLink) {
-        ///Apel al constructorului clasei de baza.
         super(refLink);
         resumeManager = new UIManager(refLink);
         refLink.getMouseManager().setUIManager(resumeManager);
@@ -25,7 +23,6 @@ public class ResumeState extends State {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
-                //State.SetState(refLink.GetGame().playState);
                 State.setState(State.getPreviousState());
 
                 refLink.getGame().getPlayState().updateObjectWithListener();
@@ -37,7 +34,6 @@ public class ResumeState extends State {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
-                //State.SetState(new PlayState(refLink));     // se creaza din nou starea de play, altfel vor ramane salvate datele existente
                 State.setState(new MenuState(refLink));
             }
         }));
@@ -47,32 +43,19 @@ public class ResumeState extends State {
             @Override
             public void onClick() {
                 refLink.getMouseManager().setUIManager(null);
-                //State.SetState(refLink.GetGame().settingState);
                 System.exit(1);
-                //refLink.GetGame().StopGame();
             }
         }));
 
 
     }
 
-    // brief Deseneaza (randeaza) pe ecran starea curenta a meniu about.
-    // param g Contextul grafic in care trebuie sa deseneze starea jocului pe ecran.
+    //  Deseneaza (randeaza) pe ecran starea curenta a meniu about.
     @Override
     public void Draw(Graphics g) {
 
         // add a background image
         g.drawImage(Assets.resume_background_image, 0, 0, refLink.getWidth(), refLink.getHeight(), null);
-
-
-        // afiseaza un mesaj intr-un chenar
-//        g.setColor(Color.GRAY);
-//        g.fillRoundRect(refLink.GetGame().GetWidth() / 2 - 180, 20, 420, 75, 50, 50);
-//
-//        Font font1 = new Font("arial", 1, 40);
-//        g.setFont(font1);
-//        g.setColor(Color.white);
-//        g.drawString("Resume Game", refLink.GetGame().GetWidth() / 2 - 150, 70);
 
         Font font2 = new Font("arial", 1, 40);
         g.setFont(font2);

@@ -12,17 +12,17 @@ public class Tile {
 
     /// De remarcat ca urmatoarele dale sunt statice si publice. Acest lucru imi permite sa le am incarcate
     /// o singura data in memorie
-    private static final TileFactory factory = new TileFactory();                               // < Fabrica de dale
+    private static final TileFactory factory = new TileFactory();                               // Fabrica de dale
 
-    public static Tile grassTile        = factory.makeTile(TileTypes.GRASS,0);              // < Dala de tip iarba
-    public static Tile solidGrassTile   = factory.makeTile(TileTypes.SOLIDGRASS,1);         // < Dala de tip zid
+    public static Tile grassTile        = factory.makeTile(TileTypes.GRASS,0);              // Dala de tip iarba
+    public static Tile solidGrassTile   = factory.makeTile(TileTypes.SOLIDGRASS,1);         // Dala de tip zid
 
 
-    public static final int TILE_WIDTH  = 48;                       // < Latimea unei dale.
-    public static final int TILE_HEIGHT = 48;                       // < Inaltimea unei dale.
+    public static final int TILE_WIDTH  = 48;                       // Latimea unei dale.
+    public static final int TILE_HEIGHT = 48;                       // Inaltimea unei dale.
 
-    protected BufferedImage img;                                    // < Imaginea aferenta tipului de dala.
-    protected final int id;                                         // < Id-ul unic aferent tipului de dala.
+    protected BufferedImage img;                                    // Imaginea aferenta tipului de dala.
+    protected final int id;                                         // Id-ul unic aferent tipului de dala.
     String my_id;
 
 
@@ -53,10 +53,13 @@ public class Tile {
         /// Desenare dala
         g.drawImage(img, x, y, TILE_WIDTH, TILE_HEIGHT, null);
 
-        Font font1 = new Font("arial", 1, 20);
 
-        g.setFont(font1);
-        g.setColor(Color.white);
+        // Utilizate pentru constructie hartii (pentru debug)
+//        Font font1 = new Font("arial", 1, 20);
+//        g.setFont(font1);
+//        g.setColor(Color.white);
+//        g.drawString(my_id, (int)x, (int)y);
+//        g.drawRect((int)(x), (int)(y), 48, 48);
 
     }
 

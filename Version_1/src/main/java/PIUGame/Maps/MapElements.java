@@ -100,7 +100,7 @@ public class MapElements {
 
 
                 for (int i = 0; i < 10; i++) {
-                    //g.drawImage(Assets.tree_type_1_image, (int) (i *50 - refLink.getGameCamera().getxOffset()), (int) (200 - refLink.getGameCamera().getyOffset()), 50, 70, null);
+                    //g.drawImage(Assets.tree_type_1_image, (int) (i *50 - refLink.getGameCamera().getXOffset()), (int) (200 - refLink.getGameCamera().getYOffset()), 50, 70, null);
                 }
 
                 for (int i = 0; i < 10; i++) {

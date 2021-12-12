@@ -78,6 +78,7 @@ public class ScoreState extends State {
         g.setColor(Color.white);
 
 
+
         int i = 40;
         int k = 0;
         for (Record rec : recordList) {

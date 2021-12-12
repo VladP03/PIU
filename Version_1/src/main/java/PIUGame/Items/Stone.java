@@ -11,10 +11,9 @@ import java.awt.image.BufferedImage;
 public class Stone extends Item {
 
     public BufferedImage stone_image;
+    public boolean stone_collected = false;         // retine daca o piatra a fost colectata
+    public boolean visited = false;                 // chiar daca piatra a fost colectata, ea nu trebuie adaugata la numarul total, daca se mai trece prin acea zona
 
-    public boolean stone_collected = false;
-
-    public boolean visited = false;
 
     public Stone(RefLinks refLink, int x, int y) {
         super(refLink, x, y, 50, 50);
@@ -28,31 +27,18 @@ public class Stone extends Item {
         if (!stone_collected) {
             stoneCollected();
         }
-        //System.out.println(stone_collected);
     }
 
     @Override
     public void Draw(Graphics g) {
+        // piatra se deseneaza atat timp cat inca nu a fost colectata
         if (!stone_collected) {
-            //g.drawImage(stone_image, (int)x, (int)y, 50, 50, null);
-            //g.drawImage(stone_image, (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
-
-            g.setColor(Color.red);
-            //g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
-
-            //g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
-
-            //g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
-
-            // draw the actual image
             g.drawImage(stone_image, (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
-
-            //System.out.println("            exista");
         } else {
-            //System.out.println("nu mai e");
         }
     }
 
+    // verifica daca o piatra a fost colectata(adica daca a intrat in coliziune cu player-ul)
     public boolean stoneCollected() {
         if (collisionWithPlayer()) {
             stone_collected = true;

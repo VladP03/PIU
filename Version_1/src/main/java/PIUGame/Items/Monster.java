@@ -20,8 +20,8 @@ public class Monster extends Character {
     private final Animation animRight;
     private final Animation noAnim;
 
-    private final int nr_of_cycles = 0;       // nr of cycles to check if the player has blocked somewere
-    private float previous_x = 0;       // previous position
+    private final int nr_of_cycles = 0;         // numar de cicli pentru a verifica daca player-ul s-a blocat undeva
+    private float previous_x = 0;               // pozitia anterioasa
     private float previous_y = 0;
 
     private float target_to_follow_x;
@@ -30,12 +30,12 @@ public class Monster extends Character {
     private final int blocked = 0;
 
     private ItemDirection monsterDirection = ItemDirection.NONE;
-    private int distance_to_walk = 0;
-    private int distance_contor = 0;
+    private int distance_to_walk = 0;                               // pentru monstrii care se deplaseaza pe o singura directie
+    private int distance_contor = 0;                                // salveaza cat a parcurs monstrul pana la "distance_to_walk"
 
     //private float speed_moster = 2.0f;
 
-    private BufferedImage image;    // < Referinta catre imaginea curenta a eroului.*/
+    private BufferedImage image;            //  Referinta catre imaginea curenta a eroului.
 
 
     // brief Constructorul de initializare al clasei Hero.
@@ -43,9 +43,7 @@ public class Monster extends Character {
     // param x Pozitia initiala pe axa X a eroului.
     // param y Pozitia initiala pe axa Y a eroului//
     public Monster(RefLinks refLink, float x, float y) {
-        ///Apel al constructorului clasei de baza
         super(refLink, x, y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
-
 
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
         normalBounds.x = 20;
@@ -58,7 +56,6 @@ public class Monster extends Character {
         attackBounds.y = 10;
         attackBounds.width = 38;
         attackBounds.height = 38;
-
 
         //Animation
         animDown = new Animation(100, Assets.monster_down);
@@ -79,7 +76,6 @@ public class Monster extends Character {
 
     // constructor pentru caracterele ce se misca pe o traiectorie fixa
     public Monster(RefLinks refLink, float x, float y, ItemDirection itemDirection, int distance_to_walk) {
-        ///Apel al constructorului clasei de baza
         super(refLink, x, y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
 
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
@@ -134,49 +130,10 @@ public class Monster extends Character {
     }
 
     // brief Verifica daca a fost apasata o tasta din cele stabilite pentru controlul eroului.
-
     private void GetInput() {
         ///Implicit eroul nu trebuie sa se deplaseze daca nu este apasata o tasta
         xMove = 0;
         yMove = 0;
-        ///Verificare apasare tasta "sus"
-
-//
-//        System.out.println("m_x: " + x + " --- m_y: " + y +  "\n");
-//
-//        System.out.println("cycles: " + nr_of_cycles + "\n");
-//
-//        System.out.println("rezult_x: " + Math.abs(x - previous_x));
-//        System.out.println("rezult_y: " + Math.abs(y - previous_y));
-//
-//        if(blocked == 0) {
-//            // check if the player has blocked somewere and increment how many times
-//            if (Math.abs(x - previous_x) == 0.0f && Math.abs(y - previous_y) < 0.7f) {
-//                nr_of_cycles++;
-//                System.out.println("aici");
-//            } else {
-//                nr_of_cycles = 0;
-//            }
-//        }
-//        else{
-//            if(blocked == 30){
-//                blocked = 0;
-//                //nr_of_cycles=0;
-//            }
-//        }
-//
-//        if(nr_of_cycles < 10){
-//            target_to_follow_x = PlayState.GetHero().x;
-//            target_to_follow_y = PlayState.GetHero().y;
-//        }
-//        else{
-//            if(nr_of_cycles > 10){
-//                blocked++;
-//                target_to_follow_x = x + 100;
-//                target_to_follow_y = y + 30;
-//            }
-//        }
-
 
         target_to_follow_x = PlayState.getHero().x;
         target_to_follow_y = PlayState.getHero().y;
@@ -185,7 +142,6 @@ public class Monster extends Character {
         previous_y = y;
 
         if (monsterDirection == ItemDirection.NONE) {
-            //if(refLink.GetGame().playState.GetHero())
             if (x > target_to_follow_x) {
                 xMove = -speed;
             } else {
@@ -241,26 +197,6 @@ public class Monster extends Character {
                     break;
             }
         }
-
-
-//        //if(refLink.GetGame().playState.GetHero())
-//        if(x > PlayState.GetHero().x){
-//            xMove = -speed;
-//        }
-//        else{
-//            if(x < PlayState.GetHero().x - 3 ) {        // se face comparatia cu pozitia player-ului - 3 pixeli pentru a evita tranzitia deranjanta a imaginii de la stanga la dreapta
-//                xMove = speed;
-//            }
-//        }
-//        if(y > PlayState.GetHero().y){
-//            yMove = -speed;
-//        }
-//        if(y < PlayState.GetHero().y){
-//            yMove = speed;
-//        }
-
-        //System.out.println("                                   xM= "+ x + "    yM= " + y);
-
     }
 
 
@@ -268,7 +204,7 @@ public class Monster extends Character {
         return collisionWithPlayer();
     }
 
-
+    // verifica coliziunea cu player-ul
     public boolean collisionWithPlayer() {
         return (x + bounds.x + bounds.width) >= (PlayState.getHero().x + PlayState.getHero().bounds.x) &&
                 (x + bounds.x) <= (PlayState.getHero().x + PlayState.getHero().bounds.x + PlayState.getHero().bounds.width) &&
@@ -276,21 +212,9 @@ public class Monster extends Character {
                 (y + bounds.y + bounds.height) >= (PlayState.getHero().y + PlayState.getHero().bounds.y);
     }
 
-    // brief Randeaza/deseneaza eroul in noua pozitie.
-    // brief g Contextul grafi in care trebuie efectuata desenarea eroului.
+    // Randeaza/deseneaza eroul in noua pozitie.
     @Override
     public void Draw(Graphics g) {
-        //g.drawImage(getCurrentAnimationFrame(), (int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height, null);
-
-
-        ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
-        g.setColor(Color.red);
-//        g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
-//        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getxOffset()), (int)(y + bounds.y - refLink.getGameCamera().getyOffset()), bounds.width, bounds.height);
-
-
-//        g.fillRect((int)(x - refLink.getGameCamera().getxOffset()), (int)(y - refLink.getGameCamera().getyOffset()), width, height);
-
         g.drawImage(getCurrentAnimationFrame(), (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
     }
 
@@ -307,6 +231,8 @@ public class Monster extends Character {
         return noAnim.getCurrentFrame();
     }
 
+
+    // seteaza viteza monstrului in functie de nivelul de dificultate
     public void setMonsterSpeed() {
         switch (refLink.getGame().getPlayState().getLevelDifficulty()) {
             case EASY:

@@ -10,34 +10,26 @@ import java.util.List;
 public class Sword extends Character {
 
     //Animation
-    private final BufferedImage animDown;     //mod_3
-    private final BufferedImage animUp;     //mod_3
-    private final BufferedImage animLeft;     //mod_3
-    private final BufferedImage animRight;     //mod_3
-    private final BufferedImage noAnim;     //mod_3
+    private final BufferedImage animDown;
+    private final BufferedImage animUp;
+    private final BufferedImage animLeft;
+    private final BufferedImage animRight;
+    private final BufferedImage noAnim;
     private final int DEFAULT_WIDTH = 30;
-
-    private final float sord_speed = 3.5f;    // viteza de deplasare a sabiei
-
-    private float previous_x = 0;       // previous position
+    private final float sword_speed = 3.5f;    // viteza de deplasare a sabiei
+    private float previous_x = 0;              // pozitia anterioara
     private float previous_y = 0;
-
     private ItemDirection swordDirection = ItemDirection.NONE;
+    private BufferedImage image;    //  Referinta catre imaginea curenta a eroului.
 
-    private BufferedImage image;    // < Referinta catre imaginea curenta a eroului.*/
 
     // brief Constructorul de initializare al clasei Hero.
     // param refLink Referinta catre obiectul shortcut (obiect ce retine o serie de referinte din program).
     // param x Pozitia initiala pe axa X a eroului.
     // param y Pozitia initiala pe axa Y a eroului//
-
     // constructor pentru caracterele ce se misca pe o traiectorie fixa
     public Sword(RefLinks refLink, float x, float y, ItemDirection sordDirection) {
-        ///Apel al constructorului clasei de baza
         super(refLink, x, y, 30, 30);
-
-        ///Seteaza imaginea de start a eroului
-        //image = Assets.heroLeft;
 
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
         normalBounds.x = 0;
@@ -64,7 +56,6 @@ public class Sword extends Character {
         this.swordDirection = sordDirection;
     }
 
-    // brief Actualizeaza pozitia si imaginea eroului.
 
     @Override
     public void Update() {
@@ -76,35 +67,33 @@ public class Sword extends Character {
     }
 
 
-    // brief Verifica daca a fost apasata o tasta din cele stabilite pentru controlul eroului.
     private void GetInput() {
-        ///Implicit eroul nu trebuie sa se deplaseze daca nu este apasata o tasta
         xMove = 0;
         yMove = 0;
 
 
-        if (swordDirection == ItemDirection.NONE) {        // player-ul sta pe loc si trage, am decis ca sageata sa se duca la dreapta
-            xMove = sord_speed;
+        if (swordDirection == ItemDirection.NONE) {        // cand player-ul sta pe loc si trage, am decis ca sageata sa se duca la dreapta
+            xMove = sword_speed;
         } else {
             switch (swordDirection) {
                 case DOWN:
-                    yMove = sord_speed;
+                    yMove = sword_speed;
                     break;
                 case UP:
-                    yMove = -sord_speed;
+                    yMove = -sword_speed;
                     break;
                 case LEFT:
-                    xMove = -sord_speed;
+                    xMove = -sword_speed;
                     break;
                 case RIGHT:
-                    xMove = sord_speed;
+                    xMove = sword_speed;
                     break;
                 default:
                     break;
             }
         }
 
-        // daca sabia a ajuns intr-un obiect prin care nu poate trece pozitia va ramane aceeasi, iar acest lucru inseamna ca trebuie stearsa
+        // daca sabia a ajuns intr-un obiect prin care nu poate trece, pozitia ei va ramane aceeasi, iar acest lucru inseamna ca trebuie stearsa
         if (x == previous_x && y == previous_y) {
             distroySord();
         }

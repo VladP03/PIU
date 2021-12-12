@@ -11,10 +11,10 @@ import java.awt.*;
 @Setter
 public class Map {
 
-    protected RefLinks refLink;     // < O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.
-    private int width;              // < Latimea hartii in numar de dale.
-    private int height;             // < Inaltimea hartii in numar de dale.
-    private int[][] tiles;         // < Referinta catre o matrice cu codurile dalelor ce vor construi harta.
+    protected RefLinks refLink;     // O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.
+    private int width;              // Latimea hartii in numar de dale.
+    private int height;             // Inaltimea hartii in numar de dale.
+    private int[][] tiles;          // Referinta catre o matrice cu codurile dalelor ce vor construi harta.
 
     public Map(RefLinks refLink, int map_level) {
         /// Retine referinta "shortcut".
@@ -32,14 +32,13 @@ public class Map {
         int yEnd = (int) Math.min(height, (refLink.getGame().getGameCamera().getYOffset() + refLink.getGame().getHeight()) / Tile.TILE_HEIGHT + 1);
 
         ///Se parcurge matricea de dale (codurile aferente) si se deseneaza harta respectiva
-        //for(int y = 0; y < refLink.GetGame().GetHeight()/Tile.TILE_HEIGHT; y++)
         for (int y = yStart; y < yEnd; y++) {
-            //for(int x = 0; x < refLink.GetGame().GetWidth()/Tile.TILE_WIDTH; x++)
             for (int x = xStart; x < xEnd; x++) {
                 GetTile(x, y).Draw(g, (int) (x * Tile.TILE_HEIGHT - refLink.getGameCamera().getXOffset()), (int) (y * Tile.TILE_WIDTH - refLink.getGameCamera().getYOffset()));
             }
         }
     }
+
 
     // brief Intoarce o referinta catre dala aferenta codului din matrice de dale.
     // In situatia in care dala nu este gasita datorita unei erori ce tine de cod dala, coordonate gresite etc se
@@ -84,7 +83,6 @@ public class Map {
             for (int x = 0; x < width; x++) {
                 switch (map_level) {
                     case 1:
-//                        tiles[x][y] = MiddleEastMap(y, x);
                         tiles[x][y] = MapLevel_1.getPreciseTile(y, x);
                         break;
                     case 2:

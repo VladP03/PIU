@@ -12,15 +12,13 @@ public class AboutState extends State {
 
     private final UIManager aboutManager;
 
-    // brief Constructorul de initializare al clasei.
-    // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
+    // Constructorul de initializare al clasei.
     public AboutState(RefLinks refLink) {
-        ///Apel al constructorului clasei de baza.
         super(refLink);
         aboutManager = new UIManager(refLink);
         refLink.getMouseManager().setUIManager(aboutManager);
 
-
+        // buton care ne duce inapoi la meniul principal
         aboutManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 600, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {
@@ -31,8 +29,7 @@ public class AboutState extends State {
         }));
     }
 
-    // brief Deseneaza (randeaza) pe ecran starea curenta a meniu about.
-    // param g Contextul grafic in care trebuie sa deseneze starea jocului pe ecran.
+    // Deseneaza (randeaza) pe ecran starea curenta a meniu about.
     @Override
     public void Draw(Graphics g) {
 

@@ -21,6 +21,7 @@ public class FinishedGame extends State {
         settingManager = new UIManager(refLink);
         refLink.getMouseManager().setUIManager(settingManager);
 
+        // buton care creaza din nou starea de playState
         settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 220, 300, 90, Assets.new_game_button_image, new ClickListener() {
             @Override
             public void onClick() {
@@ -34,7 +35,7 @@ public class FinishedGame extends State {
             }
         }));
 
-
+        // buton care ne intoarce la meniul principal
         settingManager.addObject(new UIImageButton((refLink.getGame().getWidth() / 2) - 100, 320, 300, 90, Assets.back_to_menu_button_image, new ClickListener() {
             @Override
             public void onClick() {

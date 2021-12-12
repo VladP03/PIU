@@ -29,14 +29,7 @@ public class SettingState extends State {
             public void onClick() {
                 levelDifficulty = LevelDifficulty.EASY;
                 refLink.getGame().getPlayState().setLevelDifficulty(levelDifficulty);
-
                 refLink.getMouseManager().setUIManager(null);
-
-//                settingMonster = PlayState.GetMonster();
-//                for(Monster m: settingMonster){
-//                    m.SetSpeed(0.4f);
-//                }
-
                 State.setState(new MenuState(refLink));
             }
         }));
@@ -93,7 +86,6 @@ public class SettingState extends State {
     }
 
     // Deseneaza (randeaza) pe ecran setarile
-    // param g Contextul grafic in care trebuie sa deseneze starea setarilor pe ecran.
     @Override
     public void Draw(Graphics g) {
         // seteaza imagine de fundal

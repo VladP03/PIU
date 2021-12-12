@@ -27,11 +27,11 @@ public class PlayState extends State {
     public List<Explosion> explosions = new ArrayList<Explosion>();                     // Lista animatiilor de explozii cand sabia intalneste un obstacol
 
     @Getter @Setter
-    private static Hero hero;                                                   // < Referinta catre obiectul animat erou (controlat de utilizator).
+    private static Hero hero;                                                   // Referinta catre obiectul animat erou (controlat de utilizator).
     @Getter @Setter
-    public static List<Monster> monsterList;                                        // Lista monstrilor
+    public static List<Monster> monsterList;                                    // Lista monstrilor
     @Getter @Setter
-    public static List<Stone> stoneList;                                                // Lista pietrelor pe care trebuie sa le colecteze eroul
+    public static List<Stone> stoneList;                                        // Lista pietrelor pe care trebuie sa le colecteze eroul
 
     public static MapElements map_elements;                                     // Elementele de pe harta care sunt desenate peste tiles pe baza coordonatelor date
 
@@ -49,7 +49,7 @@ public class PlayState extends State {
     private UIManager resumeManager;                                            // Referinta catre obiectul care gestioneaza meniul de Resume(cand se apasa pe butonul MENU)
     private Map map;                                                            // < Referinta catre harta curenta.
 
-    private int index_level = 2;                                                // Indexul nivelului
+    private int index_level = 1;                                                // Indexul nivelului
 
     // brief Constructorul de initializare al clasei
     // param refLink O referinta catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program
@@ -92,6 +92,7 @@ public class PlayState extends State {
         }));
     }
 
+    // Actualizeaza starea jocului(variabilele)
     @Override
     public void Update() {
         if (!refLink.getKeyManager().pause_value) {      //jocul este pornit
@@ -133,10 +134,7 @@ public class PlayState extends State {
 
             for (Monster m : monsterList) {
                 if (m.hasKilledPlayer()) {
-                    System.out.println("mort");
-
                     hero.createExplosionEffect();
-
                     hero.resetPosition();
                     hero.setLife(hero.getLife() - 1);
                     for (Monster t : monsterList) {
@@ -148,6 +146,7 @@ public class PlayState extends State {
                 }
             }
 
+            // determina intervalul de timp care s-a scurs de la inceputul jocului
             if (timer_count <= 60) {
                 timer_count++;
             } else {
@@ -161,6 +160,7 @@ public class PlayState extends State {
             }
         }
 
+        // verifica daca nivelul s-a terminat
         if (hero.levelFinished()) {
             if (index_level == 2) {
                 State.setState(new FinishedGame(refLink));
@@ -175,7 +175,6 @@ public class PlayState extends State {
 
             }
         }
-        //resumeManager.Update();
     }
 
     // brief Deseneaza (randeaza) pe ecran starea curenta a jocului.
@@ -185,8 +184,6 @@ public class PlayState extends State {
 
 
         if (!refLink.getKeyManager().pause_value) {      // jocul este pornit
-
-            //map_elements.Draw(g, index_level);
 
             map.Draw(g);
             map_elements.Draw(g, index_level);
@@ -282,7 +279,7 @@ public class PlayState extends State {
         g.setFont(font1);
         g.setColor(Color.white);
 
-        String nrOfStone = Integer.toString(hero.nr_stone);
+        String nrOfStone = Integer.toString(hero.nr_stone_collected);
         g.drawString(nrOfStone, 250, 55);
 
 

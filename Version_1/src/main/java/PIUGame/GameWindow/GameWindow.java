@@ -32,22 +32,27 @@ public class GameWindow {
         /// Aloca memorie pentru obiectul de tip fereastra si seteaza denumirea
         /// ce apare in bara de titlu
         wndFrame = new JFrame(wndTitle);
+
         /// Seteaza dimensiunile ferestrei in pixeli
         wndFrame.setSize(wndWidth, wndHeight);
+
         /// Operatia de inchidere (fereastra sa poata fi inchisa atunci cand
         /// este apasat butonul x din dreapta sus al ferestrei). Totodata acest
         /// lucru garanteaza ca nu doar fereastra va fi inchisa ci intregul
         /// program
         wndFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         /// Avand in vedere ca dimensiunea ferestrei poate fi modificata
         /// si corespunzator continutul actualizat (aici ma refer la dalele
         /// randate) va recomand sa constrangeti deocamdata jucatorul
         /// sa se joace in fereastra stabilitata de voi. Puteti reveni asupra
         /// urmatorului apel ulterior.
         wndFrame.setResizable(false);
+
         /// Recomand ca fereastra sa apara in centrul ecranului. Pentru orice
         /// alte pozitie se va apela "wndFrame.setLocation(x, y)" etc.
         wndFrame.setLocationRelativeTo(null);
+
         /// Implicit o fereastra cand este creata nu este vizibila motiv pentru
         /// care trebuie setata aceasta proprietate
         wndFrame.setVisible(true);
@@ -55,19 +60,22 @@ public class GameWindow {
 
         /// Creaza obiectul de tip canvas (panza) pe care se poate desena.
         canvas = new Canvas();
-        /// In aceeasi maniera trebuiesc setate proprietatile pentru acest obiect
+
+        /// In aceeasi maniera trebuie setate proprietatile pentru acest obiect
         /// canvas (panza): dimensiuni preferabile, minime, maxime etc.
         /// Urmotorul apel de functie seteaza dimensiunea "preferata"/implicita
         /// a obiectului de tip canvas.
-        /// Functia primeste ca parametru un obiect de tip Dimension ca incapsuleaza
+        /// Functia primeste ca parametru un obiect de tip Dimension care incapsuleaza
         /// doua proprietati: latime si inaltime. Cum acest obiect nu exista
         /// a fost creat unul si dat ca parametru.
         canvas.setPreferredSize(new Dimension(wndWidth, wndHeight));
+
         /// Avand in vedere ca elementele unei ferestre pot fi scalate atunci cand
         /// fereastra este redimensionata
         canvas.setMaximumSize(new Dimension(wndWidth, wndHeight));
         canvas.setMinimumSize(new Dimension(wndWidth, wndHeight));
         canvas.setFocusable(false);
+
         /// Avand in vedere ca obiectul de tip canvas, proaspat creat, nu este automat
         /// adaugat in fereastra trebuie apelata metoda add a obiectul wndFrame
         canvas.setBackground(Color.BLACK);
