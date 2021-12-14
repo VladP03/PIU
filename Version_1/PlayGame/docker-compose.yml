@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  postgresdb:
+    image: postgres:14
+    container_name: database
+    restart: always
+    command:
+      -p 5433
+    environment:
+      POSTGRES_DB: piu_project
+      POSTGRES_USER: pq_piu
+      POSTGRES_PASSWORD: pq_piu
+    ports:
+      - 5433:5433
