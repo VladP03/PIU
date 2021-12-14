@@ -1,5 +1,6 @@
 package PIUGame.GameWindow;
 
+import PIUGame.Graphics.Assets;
 import lombok.Getter;
 import lombok.Setter;
 import javax.swing.*;
@@ -56,7 +57,7 @@ public class GameWindow {
         /// Implicit o fereastra cand este creata nu este vizibila motiv pentru
         /// care trebuie setata aceasta proprietate
         wndFrame.setVisible(true);
-        wndFrame.setBackground(Color.BLACK);
+        wndFrame.setBackground(Color.WHITE);
 
         /// Creaza obiectul de tip canvas (panza) pe care se poate desena.
         canvas = new Canvas();
@@ -78,7 +79,8 @@ public class GameWindow {
 
         /// Avand in vedere ca obiectul de tip canvas, proaspat creat, nu este automat
         /// adaugat in fereastra trebuie apelata metoda add a obiectul wndFrame
-        canvas.setBackground(Color.BLACK);
+
+        canvas.setBackground(Color.WHITE);
         wndFrame.add(canvas);
         /// Urmatorul apel de functie are ca scop eventuala redimensionare a ferestrei
         /// ca tot ce contine sa poate fi afisat complet

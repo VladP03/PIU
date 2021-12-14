@@ -33,6 +33,9 @@ public class Stone extends Item {
     public void Draw(Graphics g) {
         // piatra se deseneaza atat timp cat inca nu a fost colectata
         if (!stone_collected) {
+
+//            g.setColor(Color.green);
+//            g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getXOffset()), (int)(y + bounds.y - refLink.getGameCamera().getYOffset()), bounds.width, bounds.height);
             g.drawImage(stone_image, (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
         } else {
         }

@@ -216,6 +216,8 @@ public class Monster extends Character {
     @Override
     public void Draw(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - refLink.getGameCamera().getXOffset()), (int) (y - refLink.getGameCamera().getYOffset()), width, height, null);
+//        g.setColor(Color.GREEN);
+//        g.fillRect((int)(x + bounds.x - refLink.getGameCamera().getXOffset()), (int)(y + bounds.y - refLink.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
 
     private BufferedImage getCurrentAnimationFrame() {

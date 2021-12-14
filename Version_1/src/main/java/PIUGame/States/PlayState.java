@@ -185,6 +185,7 @@ public class PlayState extends State {
 
         if (!refLink.getKeyManager().pause_value) {      // jocul este pornit
 
+            //map_elements.Draw(g, index_level);
             map.Draw(g);
             map_elements.Draw(g, index_level);
             hero.Draw(g);

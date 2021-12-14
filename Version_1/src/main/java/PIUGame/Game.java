@@ -108,6 +108,7 @@ public class Game implements Runnable {
     private void InitGame() {
         wnd.BuildGameWindow();
 
+
         wnd.getWndFrame().addKeyListener(keyManager);
         wnd.getWndFrame().addMouseListener(mouseManager);
         wnd.getWndFrame().addMouseMotionListener(mouseManager);
@@ -149,8 +150,10 @@ public class Game implements Runnable {
                 e.printStackTrace();
             }
         }
+
         /// Se obtine contextul grafic curent in care se poate desena.
         graphics = bs.getDrawGraphics();
+
         /// Se sterge ce era
         graphics.clearRect(0, 0, wnd.getWndWidth(), wnd.getWndHeight());
 

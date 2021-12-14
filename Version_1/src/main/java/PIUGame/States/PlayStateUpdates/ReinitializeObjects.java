@@ -46,7 +46,7 @@ public class ReinitializeObjects {
         refLink.getGame().getPlayState().getHero().setFinish_zone_x(1750);
         refLink.getGame().getPlayState().getHero().setFinish_zone_y(770);
 
-        // zona in care se trece la nivelul urmator
+        // zona in care se trece efectiv la nivelul urmator
         refLink.getGame().getPlayState().getHero().setTarget_to_follow_x(1825);
         refLink.getGame().getPlayState().getHero().setTarget_to_follow_y(770);
 
